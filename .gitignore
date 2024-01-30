@@ -5,3 +5,4 @@
 #Additional exludes
 .classpath
 .project
+/bin1/
