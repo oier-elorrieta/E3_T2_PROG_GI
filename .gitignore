@@ -1,5 +1,5 @@
 #Exclude binaries
-*/bin
+./bin
 #Exclude .class
 *.class
 #Additional exludes
