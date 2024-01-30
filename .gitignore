@@ -1,8 +1,0 @@
-#Exclude binaries
-./bin
-#Exclude .class
-*.class
-#Additional exludes
-.classpath
-.project
-/bin1/
