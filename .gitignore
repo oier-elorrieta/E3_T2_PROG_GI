@@ -1,0 +1,4 @@
+#Exclude binaries
+*/bin
+#Exclude .class
+*.class
