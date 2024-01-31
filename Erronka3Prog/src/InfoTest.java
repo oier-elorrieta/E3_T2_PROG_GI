@@ -4,9 +4,6 @@ import org.junit.Test;
 
 public class InfoTest {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+	// Ezin da oraindik ezer probatu, gure planteamendua clase honekin bein datu basera konektatuta dagoenean aplikatu ahal delakobakarrik.
 
 }
