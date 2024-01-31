@@ -4,13 +4,7 @@ public class Zinema {
 	private int id;
 	private String izena;
 	private String helbidea;
-<<<<<<< HEAD
-
-
-=======
 	
-	
->>>>>>> 0cb6962a20965ce7c3a9ec6eeeab7f2bc9d829df
 	public Zinema() {
 	}
 	public Zinema(int id, String izena, String helbidea) {
@@ -55,11 +49,4 @@ public class Zinema {
 	public void setHelbidea(String helbidea) {
 		this.helbidea = helbidea;
 	}
-<<<<<<< HEAD
-
-
-=======
-	
-	
->>>>>>> 0cb6962a20965ce7c3a9ec6eeeab7f2bc9d829df
 }
