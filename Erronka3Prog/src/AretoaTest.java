@@ -34,6 +34,10 @@ public class AretoaTest {
         assertEquals("maria@gmail.com", bezero.getMail());
         assertEquals("maria456", bezero.getErabiltzailea());
     }
+<<<<<<< HEAD
     
 }
 
+=======
+}
+>>>>>>> 0cb6962a20965ce7c3a9ec6eeeab7f2bc9d829df
