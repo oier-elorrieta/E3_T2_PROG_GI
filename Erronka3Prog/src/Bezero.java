@@ -1,22 +1,71 @@
+import java.util.Date;
 import java.util.Objects;
 
 public class Bezero {
 	private String nan;
 	private String izena;
 	private String abizena;
-	private int j_data;
+	private Date j_data;
 	private String mail;
+	private char sexua;
+	private char pasahitza;
 	
-	public Bezero(String nan, String izena, int j_data, String mail) {
+	public Bezero(String nan, String izena, Date j_data, String mail) {
 		this.nan = nan;
 		this.izena = izena;
 		this.j_data = j_data;
 		this.mail = mail;
 	}
+	
+	public Bezero(String nan, String izena, String abizena, Date j_data, String mail, char sexua, char pasahitza) {
+		this.nan = nan;
+		this.izena = izena;
+		this.abizena = abizena;
+		this.j_data = j_data;
+		this.mail = mail;
+		this.sexua = sexua;
+		this.pasahitza = pasahitza;
+	}
 
-	
-	
-	public Bezero(String nan, String izena, int j_data) {
+
+
+	public String getAbizena() {
+		return abizena;
+	}
+
+
+
+	public void setAbizena(String abizena) {
+		this.abizena = abizena;
+	}
+
+
+
+	public char getSexua() {
+		return sexua;
+	}
+
+
+
+	public void setSexua(char sexua) {
+		this.sexua = sexua;
+	}
+
+
+
+	public char getPasahitza() {
+		return pasahitza;
+	}
+
+
+
+	public void setPasahitza(char pasahitza) {
+		this.pasahitza = pasahitza;
+	}
+
+
+
+	public Bezero(String nan, String izena, Date j_data) {
 		super();
 		this.nan = nan;
 		this.izena = izena;
@@ -77,13 +126,13 @@ public class Bezero {
 
 
 
-	public int getJ_data() {
+	public Date getJ_data() {
 		return j_data;
 	}
 
 
 
-	public void setJ_data(int j_data) {
+	public void setJ_data(Date j_data) {
 		this.j_data = j_data;
 	}
 
