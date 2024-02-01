@@ -2,35 +2,37 @@ import java.util.Objects;
 
 public class Sarrera {
 	private int id;
-	private int data;
-	private Object filma;
-	private int ordutegia;
-	private int aretoa;
+	private int saioa;
 	private float prezioa;
-
-	public Sarrera() {
+	private int erosketa;
+	public int getId() {
+		return id;
 	}
-
-	public Sarrera(int id, int data, Object filma, int ordutegia, int aretoa, float prezioa) {
+	public void setId(int id) {
 		this.id = id;
-		this.data = data;
-		this.filma = filma;
-		this.ordutegia = ordutegia;
-		this.aretoa = aretoa;
+	}
+	public int getSaioa() {
+		return saioa;
+	}
+	public void setSaioa(int saioa) {
+		this.saioa = saioa;
+	}
+	public float getPrezioa() {
+		return prezioa;
+	}
+	public void setPrezioa(float prezioa) {
 		this.prezioa = prezioa;
 	}
-	
-	@Override
-	public String toString() {
-		return "Sarrera [id=" + id + ", data=" + data + ", ordutegia=" + ordutegia + ", aretoa=" + aretoa + ", prezioa="
-				+ prezioa + "]";
+	public int getErosketa() {
+		return erosketa;
 	}
-	
+	public void setErosketa(int erosketa) {
+		this.erosketa = erosketa;
+	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(aretoa, data, id, ordutegia, prezioa);
+		return Objects.hash(erosketa, id, prezioa, saioa);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -40,44 +42,21 @@ public class Sarrera {
 		if (getClass() != obj.getClass())
 			return false;
 		Sarrera other = (Sarrera) obj;
-		return aretoa == other.aretoa && data == other.data && id == other.id && ordutegia == other.ordutegia
-				&& Float.floatToIntBits(prezioa) == Float.floatToIntBits(other.prezioa);
+		return erosketa == other.erosketa && id == other.id
+				&& Float.floatToIntBits(prezioa) == Float.floatToIntBits(other.prezioa) && saioa == other.saioa;
+	}
+	@Override
+	public String toString() {
+		return "Sarrera [id=" + id + ", saioa=" + saioa + ", prezioa=" + prezioa + ", erosketa=" + erosketa + "]";
+	}
+	public Sarrera(int id, int saioa, float prezioa, int erosketa) {
+		this.id = id;
+		this.saioa = saioa;
+		this.prezioa = prezioa;
+		this.erosketa = erosketa;
+	}
+	public Sarrera() {
 	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getData() {
-		return data;
-	}
-	public void setData(int data) {
-		this.data = data;
-	}
-	public Object getFilma() {
-		return filma;
-	}
-	public void setFilma(Object filma) {
-		this.filma = filma;
-	}
-	public int getOrdutegia() {
-		return ordutegia;
-	}
-	public void setOrdutegia(int ordutegia) {
-		this.ordutegia = ordutegia;
-	}
-	public int getAretoa() {
-		return aretoa;
-	}
-	public void setAretoa(int aretoa) {
-		this.aretoa = aretoa;
-	}
-	public float getPrezioa() {
-		return prezioa;
-	}
-	public void setPrezioa(float prezioa) {
-		this.prezioa = prezioa;
-	}
+	
 }

@@ -5,45 +5,56 @@ public class Filma {
         private int id;
         private int iraupena;
         private String generoa;
-        private double presioa;
+        private double prezioa;
         private String izena;
+        private String zuendaria;
+        private String sinopsia;
         
         
         
-        public Filma() {
-        
-        }
-        public Filma(int id, int iraupena, String generoa, double presioa, String izena) {
-
-            this.id = id;
-            this.iraupena = iraupena;
-            this.generoa = generoa;
-            this.presioa = presioa;
-            this.izena = izena;
-        }
-        @Override
-        public int hashCode() {
-            return Objects.hash(generoa, id, iraupena, izena, presioa);
-        }
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (obj == null)
-                return false;
-            if (getClass() != obj.getClass())
-                return false;
-            Filma other = (Filma) obj;
-            return Objects.equals(generoa, other.generoa) && id == other.id && iraupena == other.iraupena
-                    && Objects.equals(izena, other.izena)
-                    && Double.doubleToLongBits(presioa) == Double.doubleToLongBits(other.presioa);
-        }
-        @Override
-        public String toString() {
-            return "Filma [id=" + id + ", iraupena=" + iraupena + ", generoa=" + generoa + ", presioa=" + presioa
-                    + ", izena=" + izena + "]";
-        }
-        public int getId() {
+        public Filma(int id, int iraupena, String generoa, double prezioa, String izena) {
+			this.id = id;
+			this.iraupena = iraupena;
+			this.generoa = generoa;
+			this.prezioa = prezioa;
+			this.izena = izena;
+		}
+		@Override
+		public int hashCode() {
+			return Objects.hash(generoa, id, iraupena, izena, prezioa, sinopsia, zuendaria);
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Filma other = (Filma) obj;
+			return Objects.equals(generoa, other.generoa) && id == other.id && iraupena == other.iraupena
+					&& Objects.equals(izena, other.izena)
+					&& Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa)
+					&& Objects.equals(sinopsia, other.sinopsia) && Objects.equals(zuendaria, other.zuendaria);
+		}
+		@Override
+		public String toString() {
+			return "Filma [id=" + id + ", iraupena=" + iraupena + ", generoa=" + generoa + ", prezioa=" + prezioa
+					+ ", izena=" + izena + ", zuendaria=" + zuendaria + ", sinopsia=" + sinopsia + "]";
+		}
+		public Filma() {
+		}
+		public Filma(int id, int iraupena, String generoa, double prezioa, String izena, String zuendaria,
+				String sinopsia) {
+			this.id = id;
+			this.iraupena = iraupena;
+			this.generoa = generoa;
+			this.prezioa = prezioa;
+			this.izena = izena;
+			this.zuendaria = zuendaria;
+			this.sinopsia = sinopsia;
+		}
+		public int getId() {
             return id;
         }
         public void setId(int id) {
@@ -61,11 +72,11 @@ public class Filma {
         public void setGeneroa(String generoa) {
             this.generoa = generoa;
         }
-        public double getPresioa() {
-            return presioa;
+        public double getprezioa() {
+            return prezioa;
         }
-        public void setPresioa(double presioa) {
-            this.presioa = presioa;
+        public void setprezioa(double prezioa) {
+            this.prezioa = prezioa;
         }
         public String getIzena() {
             return izena;
@@ -73,6 +84,18 @@ public class Filma {
         public void setIzena(String izena) {
             this.izena = izena;
         }
+		public String getZuendaria() {
+			return zuendaria;
+		}
+		public void setZuendaria(String zuendaria) {
+			this.zuendaria = zuendaria;
+		}
+		public String getSinopsia() {
+			return sinopsia;
+		}
+		public void setSinopsia(String sinopsia) {
+			this.sinopsia = sinopsia;
+		}
         
         
     }
