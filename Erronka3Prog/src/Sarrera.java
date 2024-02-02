@@ -5,6 +5,7 @@ public class Sarrera {
 	private int saioa;
 	private float prezioa;
 	private int erosketa;
+
 	public int getId() {
 		return id;
 	}

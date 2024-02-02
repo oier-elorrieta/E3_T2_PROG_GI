@@ -8,7 +8,7 @@ public class Bezero {
 	private Date j_data;
 	private String mail;
 	private char sexua;
-	private char pasahitza;
+	private String pasahitza;
 	
 	public Bezero(String nan, String izena, Date j_data, String mail) {
 		this.nan = nan;
@@ -17,7 +17,7 @@ public class Bezero {
 		this.mail = mail;
 	}
 	
-	public Bezero(String nan, String izena, String abizena, Date j_data, String mail, char sexua, char pasahitza) {
+	public Bezero(String nan, String izena, String abizena, Date j_data, String mail, char sexua, String pasahitza) {
 		this.nan = nan;
 		this.izena = izena;
 		this.abizena = abizena;
@@ -53,13 +53,13 @@ public class Bezero {
 
 
 
-	public char getPasahitza() {
+	public String getPasahitza() {
 		return pasahitza;
 	}
 
 
 
-	public void setPasahitza(char pasahitza) {
+	public void setPasahitza(String pasahitza) {
 		this.pasahitza = pasahitza;
 	}
 
@@ -75,16 +75,11 @@ public class Bezero {
 
 
 
-	@Override
-	public String toString() {
-		return "Bezero [nan=" + nan + ", izena=" + izena + ", j_data=" + j_data + ", mail=" + mail + "]";
-	}
-
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(izena, j_data, mail, nan);
+		return Objects.hash(abizena, izena, j_data, mail, nan, pasahitza, sexua);
 	}
 
 	@Override
@@ -96,11 +91,16 @@ public class Bezero {
 		if (getClass() != obj.getClass())
 			return false;
 		Bezero other = (Bezero) obj;
-		return Objects.equals(izena, other.izena)
-				&& j_data == other.j_data && Objects.equals(mail, other.mail) && Objects.equals(nan, other.nan);
+		return Objects.equals(abizena, other.abizena) && Objects.equals(izena, other.izena)
+				&& Objects.equals(j_data, other.j_data) && Objects.equals(mail, other.mail)
+				&& Objects.equals(nan, other.nan) && pasahitza == other.pasahitza && sexua == other.sexua;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Bezero [nan=" + nan + ", izena=" + izena + ", abizena=" + abizena + ", j_data=" + j_data + ", mail="
+				+ mail + ", sexua=" + sexua + ", pasahitza=" + pasahitza + "]";
+	}
 
 	public String getNan() {
 		return nan;
