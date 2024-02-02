@@ -5,9 +5,9 @@ public class ZinemaTest {
 
     @Test
     public void testEqualsAndHashCode() {
-        Zinema cinema1 = new Zinema(1, "Cinema 1", "Elorrieta");
-        Zinema cinema2 = new Zinema(1, "Cinema 1", "Elorrieta");
-        Zinema cinema3 = new Zinema(2, "Cinema 2", "Mungia");
+        Zinema cinema1 = new Zinema(1, "Cinema 1", "Elorrieta",20);
+        Zinema cinema2 = new Zinema(1, "Cinema 1", "Elorrieta",20);
+        Zinema cinema3 = new Zinema(2, "Cinema 2", "Mungia", 15);
 
         // Test equals method
         assertTrue(cinema1.equals(cinema2));
@@ -20,8 +20,8 @@ public class ZinemaTest {
 
     @Test
     public void testToString() {
-        Zinema cinema = new Zinema(3, "Cinema 3", "Derio");
-        String expected = "Zinema [id=3, izena=Cinema 3, helbidea=Derio]";
+        Zinema cinema = new Zinema(3, "Cinema 3", "Derio",8);
+        String expected = "Zinema [id=3, izena=Cinema 3, helbidea=Derio, aretokop=8]";
         assertEquals(expected, cinema.toString());
     }
 
@@ -37,5 +37,9 @@ public class ZinemaTest {
 
         cinema.setHelbidea("elorrieta");
         assertEquals("elorrieta", cinema.getHelbidea());
+        
+        cinema.setAretokop(12);
+        assertEquals(12, cinema.getAretokop());
     }
 }
+
