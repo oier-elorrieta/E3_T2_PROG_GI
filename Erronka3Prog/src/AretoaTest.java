@@ -1,40 +1,43 @@
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class AretoaTest {
 
-	
+    @Test
+    public void testEqualsAndHashCode() {
+        Aretoa aretoa1 = new Aretoa(1, 101, 201);
+        Aretoa aretoa2 = new Aretoa(1, 101, 201);
+        Aretoa aretoa3 = new Aretoa(2, 102, 202);
+
+        // Test equals method
+        assertTrue(aretoa1.equals(aretoa2));
+        assertFalse(aretoa1.equals(aretoa3));
+
+        // Test hashCode method
+        assertEquals(aretoa1.hashCode(), aretoa2.hashCode());
+        assertNotEquals(aretoa1.hashCode(), aretoa3.hashCode());
+    }
 
     @Test
-    public void testEquals() {
-    	/*
-        Aretoa aretoa1 = new Aretoa(1, 123, 20220130, 1200, "Filmak");
-        Aretoa aretoa2 = new Aretoa(1, 123, 20220130, 1200, "Filmak");
-        Aretoa aretoa3 = new Aretoa(2, 456, 20220130, 1400, "Beste filmak");
-
-        assertTrue(aretoa1.equals(aretoa2));
-        assertFalse(aretoa1.equals(aretoa3));*/
+    public void testToString() {
+        Aretoa aretoa = new Aretoa(3, 103, 203);
+        String expected = "Aretoa [izena=3, id=103, zinema=203]";
+        assertEquals(expected, aretoa.toString());
     }
-    
+
     @Test
     public void testGettersAndSetters() {
-        Bezero bezero = new Bezero("12345678A", "Juan", 19900101, "juan@gmail.com", "pasahitza123", "juan123");
+        Aretoa aretoa = new Aretoa();
 
-        // Setter froga
-        bezero.setNan("87654321B");
-        bezero.setIzena("Maria");
-        bezero.setJ_data(19901231);
-        bezero.setMail("maria@gmail.com");
+        aretoa.setIzena(4);
+        assertEquals(4, aretoa.getIzena());
 
+        aretoa.setId(104);
+        assertEquals(104, aretoa.getId());
 
-        // Getters froga
-        assertEquals("87654321B", bezero.getNan());
-        assertEquals("Maria", bezero.getIzena());
-        assertEquals(19901231, bezero.getJ_data());
-        assertEquals("maria@gmail.com", bezero.getMail());
-        assertEquals("maria456", bezero.getErabiltzailea());
+        aretoa.setZinema(204);
+        assertEquals(204, aretoa.getZinema());
     }
-
 }
+
 

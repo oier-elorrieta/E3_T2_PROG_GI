@@ -31,12 +31,12 @@ public class FilmaTest {
       Filma.setId(1);
       Filma.setIraupena(120);
       Filma.setGeneroa("drama");
-      Filma.setPresioa(7.5);
+      Filma.setprezioa(7.5);
       Filma.setIzena("avatar");
       assertEquals(1, Filma.getId());
       assertEquals(120, Filma.getIraupena());
       assertEquals("drama", Filma.getGeneroa());
-      assertEquals(7,5, Filma.getPresioa());
+      assertEquals(7,5, Filma.getprezioa());
       assertEquals("avatar", Filma.getIzena());
   }
 }
