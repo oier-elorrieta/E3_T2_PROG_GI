@@ -5,6 +5,8 @@ public class Aretoa {
 	public int izena;
 	public int id;
 	public int zinema;
+	
+	
 	public int getIzena() {
 		return izena;
 	}
