@@ -6,6 +6,10 @@ public class Sarrera {
 	private float prezioa;
 	private int erosketa;
 
+	
+	public Sarrera() {
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -38,18 +42,10 @@ public class Sarrera {
 		this.erosketa = erosketa;
 	}
 
-	public int getSarrerakop() {
-		return sarrerakop;
-	}
-
-	public void setSarrerakop(int sarrerakop) {
-		this.sarrerakop = sarrerakop;
-	}
-
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(erosketa, id, prezioa, saioa, sarrerakop);
+		return Objects.hash(erosketa, id, prezioa, saioa);
 	}
 
 	@Override
@@ -62,15 +58,14 @@ public class Sarrera {
 			return false;
 		Sarrera other = (Sarrera) obj;
 		return erosketa == other.erosketa && id == other.id
-				&& Float.floatToIntBits(prezioa) == Float.floatToIntBits(other.prezioa) && saioa == other.saioa
-				&& sarrerakop == other.sarrerakop;
+				&& Float.floatToIntBits(prezioa) == Float.floatToIntBits(other.prezioa) && saioa == other.saioa;
 	}
 
 	
 	@Override
 	public String toString() {
 		return "Sarrera [id=" + id + ", saioa=" + saioa + ", prezioa=" + prezioa + ", erosketa=" + erosketa
-				+ ", sarrerakop=" + sarrerakop + "]";
+				+ "]";
 	}
 
 	public Sarrera(int id, int saioa, float prezioa, int erosketa) {
@@ -78,9 +73,5 @@ public class Sarrera {
 		this.saioa = saioa;
 		this.prezioa = prezioa;
 		this.erosketa = erosketa;
-		this.sarrerakop = sarrerakop;
 	}
-	
-	
-	
 }
