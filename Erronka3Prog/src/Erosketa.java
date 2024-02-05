@@ -1,15 +1,19 @@
 import java.util.Objects;
 
 public class Erosketa {
-	private int erosketa;
+	private Object erosketa;
 	private int jatorria;
 	private int deskontua;
 	private double preziotot;
 	private String nan;
 	
 	
-	public int getErosketa() {
+	
+	public Object getErosketa() {
 		return erosketa;
+	}
+	public void setErosketa(Object erosketa) {
+		this.erosketa = erosketa;
 	}
 	public void setErosketa(int erosketa) {
 		this.erosketa = erosketa;

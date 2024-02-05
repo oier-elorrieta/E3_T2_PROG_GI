@@ -2,45 +2,67 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Saioa {
-		private int IdSaioa;
+		private Object saioa;
 		private Date data;
-		private int IdFilma;
-		private int IdAreto;
-		public Saioa(int idSaioa, Date data, int idFilma, int idAreto) {
+		private Object filma;
+		private Object areto;
+		
+		
+		public Saioa(Object saioa, Date data, Object filma, Object areto) {
 			super();
-			IdSaioa = idSaioa;
+			this.saioa = saioa;
 			this.data = data;
-			IdFilma = idFilma;
-			IdAreto = idAreto;
+			this.filma = filma;
+			this.areto = areto;
 		}
-		public int getIdSaioa() {
-			return IdSaioa;
+
+
+		public Object getSaioa() {
+			return saioa;
 		}
-		public void setIdSaioa(int idSaioa) {
-			IdSaioa = idSaioa;
+
+
+		public void setSaioa(Object saioa) {
+			this.saioa = saioa;
 		}
+
+
 		public Date getData() {
 			return data;
 		}
+
+
 		public void setData(Date data) {
 			this.data = data;
 		}
-		public int getIdFilma() {
-			return IdFilma;
+
+
+		public Object getFilma() {
+			return filma;
 		}
-		public void setIdFilma(int idFilma) {
-			IdFilma = idFilma;
+
+
+		public void setFilma(Object filma) {
+			this.filma = filma;
 		}
-		public int getIdAreto() {
-			return IdAreto;
+
+
+		public Object getAreto() {
+			return areto;
 		}
-		public void setIdAreto(int idAreto) {
-			IdAreto = idAreto;
+
+
+		public void setAreto(Object areto) {
+			this.areto = areto;
 		}
+
+
 		@Override
 		public int hashCode() {
-			return Objects.hash(IdAreto, IdFilma, IdSaioa, data);
+			return Objects.hash(areto, data, filma, saioa);
 		}
+
+
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)
@@ -50,15 +72,18 @@ public class Saioa {
 			if (getClass() != obj.getClass())
 				return false;
 			Saioa other = (Saioa) obj;
-			return IdAreto == other.IdAreto && IdFilma == other.IdFilma && IdSaioa == other.IdSaioa
-					&& Objects.equals(data, other.data);
+			return Objects.equals(areto, other.areto) && Objects.equals(data, other.data)
+					&& Objects.equals(filma, other.filma) && Objects.equals(saioa, other.saioa);
 		}
-		
+
+
 		@Override
 		public String toString() {
-			return "Saioa [IdSaioa=" + IdSaioa + ", data=" + data + ", IdFilma=" + IdFilma + ", IdAreto=" + IdAreto
-					+ "]";
+			return "Saioa [saioa=" + saioa + ", data=" + data + ", filma=" + filma + ", areto=" + areto + "]";
 		}
+		
+		
+		
 		
 		
 }
