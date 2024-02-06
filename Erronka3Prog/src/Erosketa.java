@@ -1,22 +1,17 @@
 import java.util.Objects;
 
 public class Erosketa {
-	private Object erosketa;
+	private int id;
 	private int jatorria;
 	private int deskontua;
 	private double preziotot;
-	private String nan;
+	private Bezero bezero;
 	
-	
-	
-	public Object getErosketa() {
-		return erosketa;
+	public int getId() {
+		return id;
 	}
-	public void setErosketa(Object erosketa) {
-		this.erosketa = erosketa;
-	}
-	public void setErosketa(int erosketa) {
-		this.erosketa = erosketa;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public int getJatorria() {
 		return jatorria;
@@ -36,15 +31,15 @@ public class Erosketa {
 	public void setPreziotot(double preziotot) {
 		this.preziotot = preziotot;
 	}
-	public String getNan() {
-		return nan;
+	public Bezero getBezero() {
+		return bezero;
 	}
-	public void setNan(String nan) {
-		this.nan = nan;
+	public void setBezero(Bezero bezero) {
+		this.bezero = bezero;
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(deskontua, erosketa, jatorria, nan, preziotot);
+		return Objects.hash(bezero, deskontua, id, jatorria, preziotot);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -55,26 +50,26 @@ public class Erosketa {
 		if (getClass() != obj.getClass())
 			return false;
 		Erosketa other = (Erosketa) obj;
-		return deskontua == other.deskontua && erosketa == other.erosketa && jatorria == other.jatorria
-				&& Objects.equals(nan, other.nan)
+		return Objects.equals(bezero, other.bezero) && deskontua == other.deskontua && id == other.id
+				&& jatorria == other.jatorria
 				&& Double.doubleToLongBits(preziotot) == Double.doubleToLongBits(other.preziotot);
 	}
 	@Override
 	public String toString() {
-		return "Erosketa [erosketa=" + erosketa + ", jatorria=" + jatorria + ", deskontua=" + deskontua + ", preziotot="
-				+ preziotot + ", nan=" + nan + "]";
+		return "Erosketa [id=" + id + ", jatorria=" + jatorria + ", deskontua=" + deskontua + ", preziotot=" + preziotot
+				+ ", bezero=" + bezero + "]";
 	}
-	public Erosketa(int erosketa, int jatorria, int deskontua, double preziotot, String nan) {
-		super();
-		this.erosketa = erosketa;
+	public Erosketa(int id, int jatorria, int deskontua, double preziotot, Bezero bezero) {
+		this.id = id;
 		this.jatorria = jatorria;
 		this.deskontua = deskontua;
 		this.preziotot = preziotot;
-		this.nan = nan;
+		this.bezero = bezero;
 	}
 	public Erosketa() {
-		super();
 	}
+	
+	
 	
 	
 	
