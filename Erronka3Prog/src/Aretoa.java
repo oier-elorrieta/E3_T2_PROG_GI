@@ -5,11 +5,9 @@ public class Aretoa {
 	public int id;
 	public int izena;
 	public Object zinema;
-	public Saioa SaioList[];
-	
+
 	
 	public Aretoa(int id, int izena, Object zinema) {
-		super();
 		this.id = id;
 		this.izena = izena;
 		this.zinema = zinema;

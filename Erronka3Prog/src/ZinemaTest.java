@@ -5,22 +5,25 @@ public class ZinemaTest {
 
     @Test
     public void testEqualsAndHashCode() {
-        Zinema cinema1 = new Zinema(1, "Cinema 1", "Elorrieta", 0);
-        Zinema cinema2 = new Zinema(1, "Cinema 1", "Elorrieta",0);
-        Zinema cinema3 = new Zinema(2, "Cinema 2", "Mungia",0);
+    	Aretoa aretoa2 = new Aretoa(1, 101, 201);
+        Aretoa[] aretoarray = new Aretoa[]{aretoa2};
+        Saioa[] saio = new Saioa[1];
 
-        // Test equals method
-        assertTrue(cinema1.equals(cinema2));
-        assertFalse(cinema1.equals(cinema3));
+        Zinema zinema1 = new Zinema(23, "izena", "Helbidea", "kontaktua", "deskribapena", aretoarray, saio);
+        Zinema zinema2 = new Zinema();
+        Zinema zinema3 = new Zinema();
 
-        // Test hashCode method
-        assertEquals(cinema1.hashCode(), cinema2.hashCode());
-        assertNotEquals(cinema1.hashCode(), cinema3.hashCode());
+        // test equals metodoa
+        assertTrue(zinema1.equals(zinema2));
+        assertFalse(zinema1.equals(zinema3));
+
+        // Hashcode metodoa
+        assertEquals(zinema1.hashCode(), zinema2.hashCode());
+        assertNotEquals(zinema1.hashCode(), zinema3.hashCode());
     }
-
     @Test
     public void testToString() {
-        Zinema cinema = new Zinema(3, "Cinema 3", "Derio",0);
+        Zinema cinema = new Zinema();
         String expected = "Zinema [id=3, izena=Cinema 3, helbidea=Derio]";
         assertEquals(expected, cinema.toString());
     }

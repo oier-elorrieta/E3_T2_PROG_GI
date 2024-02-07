@@ -4,67 +4,47 @@ import org.junit.Test;
 
 public class ErosketaTest {
 
-	
-
     @Test
     public void testEquals() {
-    	Bezero bezero1 = new Bezero();
-        Bezero bezero2 = new Bezero();
-       
-        Erosketa erosketa1 = new Erosketa(1, 123, 10.000f, 25.25, bezero1);
-        Erosketa erosketa2 = new Erosketa(1, 123, 10.000f, 25.25, bezero1);
+        Bezero bezero1 = new Bezero("16110577c", "Jon", null);
+        Bezero bezero2 = new Bezero("16110566a", "Unai", null);
+
+        Erosketa erosketa1 = new Erosketa(1, 123, 10, 25.25, bezero1);
+        Erosketa erosketa2 = new Erosketa(1, 123, 10, 25.25, bezero1);
         Erosketa erosketa3 = new Erosketa(2, 456, 20, 34.43, bezero2);
 
         assertTrue(erosketa1.equals(erosketa2));
         assertFalse(erosketa1.equals(erosketa3));
-
-        // ObjetuaK OBJETU TIPOAREKIN
-        Erosketa erosketa4 = new Erosketa(erosketa4, 789, 5, 50.0, "789XYZ");
-        Erosketa erosketa5 = new Erosketa(erosketa5, 789, 5, 50.0, "789XYZ");
-        Erosketa erosketa6 = new Erosketa(erosketa6, 123, 8, 80.0, "123QWE");
-        //
-
-        assertTrue(erosketa4.equals(erosketa5));
-        assertFalse(erosketa4.equals(erosketa6));
     }
 
     @Test
     public void testGettersAndSetters() {
-        Erosketa erosketa = new Erosketa(1, 123, 10, 100.0, "123ABC");
+        Erosketa erosketa = new Erosketa(1, 123, 10, 100.0, new Bezero("123ABC", "Jon", null));
 
-        // Setterrak
-        erosketa.setErosketa(2);
+        // Setters
         erosketa.setJatorria(456);
         erosketa.setDeskontua(20);
         erosketa.setPreziotot(200.0);
-        erosketa.setNan("456DEF");
+        erosketa.setBezero(new Bezero("456DEF", "Mikel", null));
 
-        // Getterrak
-        assertEquals(2, erosketa.getErosketa());
+        // Getters
+        assertEquals(1, erosketa.getId());
         assertEquals(456, erosketa.getJatorria());
         assertEquals(20, erosketa.getDeskontua());
         assertEquals(200.0, erosketa.getPreziotot(), 0.001);
-        assertEquals("456DEF", erosketa.getNan());
+        assertEquals("456DEF", erosketa.getBezero().getNan());
     }
 
     @Test
     public void testHashCode() {
-        // Hashcode int-ekin
-        Erosketa erosketa1 = new Erosketa(1, 123, 10, 100.0, "123ABC");
-        Erosketa erosketa2 = new Erosketa(1, 123, 10, 100.0, "123ABC");
-        Erosketa erosketa3 = new Erosketa(2, 456, 20, 200.0, "456DEF");
+        Bezero bezero1 = new Bezero("123ABC", "Jon", null);
+        Bezero bezero2 = new Bezero("456DEF", "Unai", null);
+
+        Erosketa erosketa1 = new Erosketa(1, 123, 10, 100.0, bezero1);
+        Erosketa erosketa2 = new Erosketa(1, 123, 10, 100.0, bezero1);
+        Erosketa erosketa3 = new Erosketa(2, 456, 20, 200.0, bezero2);
 
         assertEquals(erosketa1.hashCode(), erosketa2.hashCode());
         assertNotEquals(erosketa1.hashCode(), erosketa3.hashCode());
-
-        // Hashcode objetuekin
-        Erosketa erosketa4 = new Erosketa("objeto", 789, 5, 50.0, "789XYZ");
-        Erosketa erosketa5 = new Erosketa("objeto", 789, 5, 50.0, "789XYZ");
-        Erosketa erosketa6 = new Erosketa("otro", 123, 8, 80.0, "123QWE");
-
-        assertEquals(erosketa4.hashCode(), erosketa5.hashCode());
-        assertNotEquals(erosketa4.hashCode(), erosketa6.hashCode());
     }
-
 }
-

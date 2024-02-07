@@ -7,8 +7,8 @@ public class Zinema {
 	private String helbidea;
 	private String kontaktua;
 	private String deskribapena;
-	private Aretoa aretoak[];
-	private Saioa saioak[];
+	private Aretoa[] aretoak;
+	private Saioa[] saioak;
 	public int getId() {
 		return id;
 	}

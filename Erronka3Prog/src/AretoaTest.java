@@ -27,11 +27,9 @@ public class AretoaTest {
 
     @Test
     public void testGettersAndSetters() {
-        Aretoa aretoa = new Aretoa();
-
-        aretoa.setIzena(4);
-        assertEquals(4, aretoa.getIzena());
-
+    	Zinema zinema = new Zinema(1, "izena", "helbidea", "kontaktua","deskribapena", null, null);
+        Aretoa aretoa = new Aretoa(0, 0, zinema);
+        
         aretoa.setId(104);
         assertEquals(104, aretoa.getId());
 

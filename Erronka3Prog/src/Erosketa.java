@@ -1,5 +1,4 @@
 import java.util.Objects;
-
 public class Erosketa {
 	private int id;
 	private int jatorria;
