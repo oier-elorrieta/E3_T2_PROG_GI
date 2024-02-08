@@ -71,9 +71,7 @@ public class SarreraTest {
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
   
 	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");
-	  Erosketa erosketa = new Erosketa(2, 24, 20, 123, bezero1);
-
-    
+	  
       Sarrera sarrera = new Sarrera();
 
       // Setterren balioak
