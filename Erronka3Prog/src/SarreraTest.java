@@ -10,47 +10,81 @@ public class SarreraTest {
 	  Date date = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
 	  Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+	  Filma filma2 = new Filma(1, 2, null, 0, null, null, null);
+	  Aretoa aretoa2 = new Aretoa(1, 2, new Filma(0, 0, null, 0, null, null, null));
+	  Date d1 = new Date();
+	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", d1, "juan@gmail.com", 'G',"pasahitz123");
+	  
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
+	  Saioa saioa2 = new Saioa(1, date, filma1, aretoa1);
+	  Erosketa erosketa = new Erosketa(2, 24, 20, 123, bezero1);
+	  Erosketa erosketa2 = new Erosketa();
 	  
 	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, erosketa);
-      Sarrera sarrera2 = new Sarrera(1, 10, 5.0f,1);
-      Sarrera sarrera3 = new Sarrera(2, 11, 5.0f,2);
+      Sarrera sarrera2 = new Sarrera(1, saioa1, 5.0f, erosketa);
+      Sarrera sarrera3 = new Sarrera(2, saioa2, 5.0f, erosketa2);
       assertTrue(sarrera1.equals(sarrera2));
       assertFalse(sarrera1.equals(sarrera3));
   }
   @Test
   public void testHashCode() {
-	  Sarrera sarrera1 = new Sarrera(1, 10, 5.0f,1);
-      Sarrera sarrera2 = new Sarrera(1, 10, 5.0f,1);
-      Sarrera sarrera3 = new Sarrera(2, 11, 5.0f,2);
+	  Date date = new Date();
+	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
+	  Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+	  Filma filma2 = new Filma(1, 2, null, 0, null, null, null);
+	  Aretoa aretoa2 = new Aretoa(1, 2, new Filma(0, 0, null, 0, null, null, null));
+	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");
+	  
+	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
+	  Saioa saioa2 = new Saioa(1, date, filma1, aretoa1);
+	  Erosketa erosketa = new Erosketa(2, 24, 20, 123, bezero1);
+	  Erosketa erosketa2 = new Erosketa();
+	  
+	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, erosketa);
+      Sarrera sarrera2 = new Sarrera(1, saioa1, 5.0f, erosketa);
+      Sarrera sarrera3 = new Sarrera(2, saioa2, 5.0f, erosketa2);
     
       assertEquals(sarrera1.hashCode(), sarrera2.hashCode());
       assertNotEquals(sarrera1.hashCode(), sarrera3.hashCode());
   }
   @Test
   public void testToString() {
-	  Sarrera sarrera = new Sarrera(1, 10, 5.0f,1);
+	  Date date = new Date();
+	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
+	  Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
+	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");
+	  Erosketa erosketa = new Erosketa(2, 24, 20, 123, bezero1);
+	  
+			  
+	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, erosketa);
 	     
-      assertEquals("Sarrera [id=1, saioa=10, prezioa=5.0, erosketa=1]", sarrera.toString());
+	  assertEquals("Sarrera [1, saioa1, 5.0f, erosketa]", sarrera1.toString());
   }
   @Test
   public void testGettersAndSetters() {
+	  
 	  Date date = new Date();
-	    
-	    Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-	    Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
-	    Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
-	    
-	    saioa1.setId(4);
-	    assertEquals(4, saioa1.getId());
+	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
+	  Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
+  
+	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");
+	  Erosketa erosketa = new Erosketa(2, 24, 20, 123, bezero1);
 
-	    saioa1.setData(date);
-	    assertEquals(date, saioa1.getData());
+    
+      Sarrera sarrera = new Sarrera();
 
-	    saioa1.setFilma(104);
-	    assertEquals(104, saioa1.getFilma());
+      // Setterren balioak
+      sarrera.setId(1);
+      sarrera.setSaioa(saioa1);
+      sarrera.setPrezioa(10.0f);
+      sarrera.setErosketa(erosketa);
 
-	    saioa1.setAreto(204);
-	    assertEquals(204, saioa1.getAreto());
+      // Comprueba que los valores establecidos coincidan con los obtenidos mediante los getters
+      assertEquals(1, sarrera.getId());
+      assertEquals(saioa1, sarrera.getSaioa());
+      assertEquals(10.0f, sarrera.getPrezioa(), 0.001);
+      assertEquals(erosketa, sarrera.getErosketa());
 	}
 }
