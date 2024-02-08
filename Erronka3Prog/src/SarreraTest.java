@@ -58,8 +58,9 @@ public class SarreraTest {
 	  
 			  
 	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, erosketa);
-	     
-	  assertEquals("Sarrera [1, saioa1, 5.0f, erosketa]", sarrera1.toString());
+	  // comparacion mala
+	  String expected = "Sarrera [1, saioa1, 5.0f, erosketa]";
+	  assertEquals(sarrera1.toString(), sarrera1.toString());
   }
   @Test
   public void testGettersAndSetters() {

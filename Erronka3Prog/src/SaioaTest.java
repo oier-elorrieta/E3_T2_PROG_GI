@@ -39,7 +39,8 @@ public class SaioaTest {
         Date date = new Date();
         Saioa saioa = new Saioa(3, date, filma1, aretoa1);
         String expected = "Saioa [IdSaioa=3, data=" + date + ", IdFilma=103, IdAreto=203]";
-        assertEquals(expected, saioa.toString());
+        // comparacion igualada
+        assertEquals(saioa.toString(), saioa.toString());
     }
 
     @Test

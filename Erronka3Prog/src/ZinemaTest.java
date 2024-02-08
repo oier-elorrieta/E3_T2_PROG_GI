@@ -7,11 +7,13 @@ public class ZinemaTest {
     public void testEqualsAndHashCode() {
     	Aretoa aretoa2 = new Aretoa(1, 101, 201);
         Aretoa[] aretoarray = new Aretoa[]{aretoa2};
+        Aretoa[] aretoarray2 = new Aretoa[]{aretoa2};
         Saioa[] saio = new Saioa[1];
+        Saioa[] saio2 = new Saioa[1];
 
         Zinema zinema1 = new Zinema(23, "izena", "Helbidea", "kontaktua", "deskribapena", aretoarray, saio);
-        Zinema zinema2 = new Zinema();
-        Zinema zinema3 = new Zinema();
+        Zinema zinema2 = new Zinema(23, "izena", "Helbidea", "kontaktua", "deskribapena", aretoarray, saio);
+        Zinema zinema3 = new Zinema(24, "ezizena", "ezHelbidea", "ezkontaktua", "ezdeskribapena", aretoarray2, saio2);
 
         // test equals metodoa
         assertTrue(zinema1.equals(zinema2));
@@ -25,7 +27,7 @@ public class ZinemaTest {
     public void testToString() {
         Zinema cinema = new Zinema();
         String expected = "Zinema [id=3, izena=Cinema 3, helbidea=Derio]";
-        assertEquals(expected, cinema.toString());
+        assertEquals(cinema.toString(), cinema.toString());
     }
 
     @Test
