@@ -4,7 +4,7 @@ public class Erosketa {
 	private int jatorria;
 	private int deskontua;
 	private double preziotot;
-	private Sarrera Sarrera;
+	private Sarrera[] Sarrera;
 	private Bezero bezero;
 	
 	public int getId() {
@@ -38,15 +38,16 @@ public class Erosketa {
 		this.bezero = bezero;
 	}
 	
-	public Sarrera getSarrera() {
+	
+	public Sarrera[] getSarrera() {
 		return Sarrera;
 	}
-	public void setSarrera(Sarrera sarrera) {
+	public void setSarrera(Sarrera[] sarrera) {
 		Sarrera = sarrera;
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(bezero, deskontua, id, jatorria, preziotot);
+		return Objects.hash(bezero, deskontua, id, jatorria, preziotot, Sarrera);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -58,25 +59,23 @@ public class Erosketa {
 			return false;
 		Erosketa other = (Erosketa) obj;
 		return Objects.equals(bezero, other.bezero) && deskontua == other.deskontua && id == other.id
-				&& jatorria == other.jatorria
+				&& jatorria == other.jatorria && Sarrera == other.Sarrera 
 				&& Double.doubleToLongBits(preziotot) == Double.doubleToLongBits(other.preziotot);
 	}
 	@Override
 	public String toString() {
 		return "Erosketa [id=" + id + ", jatorria=" + jatorria + ", deskontua=" + deskontua + ", preziotot=" + preziotot
-				+ ", bezero=" + bezero + "]";
+				+ ", bezero=" + bezero + "Sarrera=" + Sarrera + "]";
 	}
-	public Erosketa(int id, int jatorria, int deskontua, double preziotot, Bezero bezero) {
+	public Erosketa(int id, int jatorria, int deskontua, double preziotot, Bezero bezero, Sarrera[] Sarrera) {
 		this.id = id;
 		this.jatorria = jatorria;
 		this.deskontua = deskontua;
 		this.preziotot = preziotot;
+		this.Sarrera = Sarrera;
 		this.bezero = bezero;
 	}
-	public Erosketa() {
-	}
-	
-	
+
 	
 	
 	

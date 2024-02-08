@@ -12,7 +12,7 @@ public class Filma {
         
 		public Filma(int id, int iraupena, String generoa, double prezioa, String izena, String zuzendaria,
 				String sinopsia) {
-			super();
+			
 			this.id = id;
 			this.iraupena = iraupena;
 			this.generoa = generoa;
