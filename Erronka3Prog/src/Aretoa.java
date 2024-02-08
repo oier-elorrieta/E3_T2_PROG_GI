@@ -4,13 +4,12 @@ import java.util.Objects;
 public class Aretoa {
 	public int id;
 	public int izena;
-	public Object zinema;
-
 	
-	public Aretoa(int id, int izena, Object zinema) {
+	
+	public Aretoa(int id, int izena) {
 		this.id = id;
 		this.izena = izena;
-		this.zinema = zinema;
+		
 	}
 
 
@@ -34,19 +33,9 @@ public class Aretoa {
 	}
 
 
-	public Object getZinema() {
-		return zinema;
-	}
-
-
-	public void setZinema(Object zinema) {
-		this.zinema = zinema;
-	}
-
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, izena, zinema);
+		return Objects.hash(id, izena);
 	}
 
 
@@ -59,13 +48,13 @@ public class Aretoa {
 		if (getClass() != obj.getClass())
 			return false;
 		Aretoa other = (Aretoa) obj;
-		return id == other.id && izena == other.izena && Objects.equals(zinema, other.zinema);
+		return id == other.id && izena == other.izena;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Aretoa [id=" + id + ", izena=" + izena + ", zinema=" + zinema + "]";
+		return "Aretoa [id=" + id + ", izena=" + izena + ", zinema=]";
 	}
 	
 	

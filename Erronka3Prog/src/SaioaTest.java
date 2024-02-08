@@ -10,8 +10,8 @@ public class SaioaTest {
         Date date2 = new Date();
        
         Filma zinema = new Filma(0, 0, null, 0, null, null, null);
-        Aretoa aretoa1 = new Aretoa(0, 0, zinema);
-        Aretoa aretoa2 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+        Aretoa aretoa1 = new Aretoa(0, 0);
+        Aretoa aretoa2 = new Aretoa(0, 0);
         
         Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
         Filma filma2 = new Filma(1, 0, null, 0, null, null, null);
@@ -34,7 +34,7 @@ public class SaioaTest {
     public void testToString() {
     	
     	Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-    	Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+    	Aretoa aretoa1 = new Aretoa(0, 0);
     	
         Date date = new Date();
         Saioa saioa = new Saioa(3, date, filma1, aretoa1);
@@ -48,7 +48,7 @@ public class SaioaTest {
     	 Date date = new Date();
     	    
     	    Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-    	    Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+    	    Aretoa aretoa1 = new Aretoa(0, 0);
     	    Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
     	    
     	    saioa1.setId(4);
@@ -59,7 +59,7 @@ public class SaioaTest {
 
     	    // Filma eta aretoa sortu
     	    Filma filma2 = new Filma(104, 0, null, 0, null, null, null);
-    	    Aretoa aretoa2 = new Aretoa(204, 0, new Filma(0, 0, null, 0, null, null, null));
+    	    Aretoa aretoa2 = new Aretoa(204, 0);
 
     	    saioa1.setFilma(filma2);
     	    assertEquals(filma2, saioa1.getFilma());
@@ -73,7 +73,7 @@ public class SaioaTest {
     public void testEqualsWithDifferentClass() {
     	Date date = new Date();
         Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-        Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+        Aretoa aretoa1 = new Aretoa(0, 0);
         Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
 
         assertFalse(saioa1.equals(new String("Not a Saioa object")));

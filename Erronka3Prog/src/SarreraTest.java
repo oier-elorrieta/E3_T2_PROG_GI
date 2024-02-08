@@ -9,9 +9,9 @@ public class SarreraTest {
 	  
 	  Date date = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-	  Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+	  Aretoa aretoa1 = new Aretoa(0, 0);
 	  Filma filma2 = new Filma(1, 2, null, 0, null, null, null);
-	  Aretoa aretoa2 = new Aretoa(1, 2, new Filma(0, 0, null, 0, null, null, null));
+	  Aretoa aretoa2 = new Aretoa(1, 2);
 	  Date d1 = new Date();
 	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", d1, "juan@gmail.com", 'G',"pasahitz123");
 	  
@@ -30,9 +30,9 @@ public class SarreraTest {
   public void testHashCode() {
 	  Date date = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-	  Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+	  Aretoa aretoa1 = new Aretoa(0, 0);
 	  Filma filma2 = new Filma(1, 2, null, 0, null, null, null);
-	  Aretoa aretoa2 = new Aretoa(1, 2, new Filma(0, 0, null, 0, null, null, null));
+	  Aretoa aretoa2 = new Aretoa(1, 2);
 	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");
 	  
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
@@ -51,7 +51,7 @@ public class SarreraTest {
   public void testToString() {
 	  Date date = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-	  Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+	  Aretoa aretoa1 = new Aretoa(0, 0);
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
 	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");
 	  Erosketa erosketa = new Erosketa(2, 24, 20, 123, bezero1);
@@ -67,7 +67,7 @@ public class SarreraTest {
 	  
 	  Date date = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-	  Aretoa aretoa1 = new Aretoa(0, 0, new Filma(0, 0, null, 0, null, null, null));
+	  Aretoa aretoa1 = new Aretoa(0, 0);
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
   
 	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");

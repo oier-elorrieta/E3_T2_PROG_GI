@@ -5,9 +5,9 @@ public class AretoaTest {
 
     @Test
     public void testEqualsAndHashCode() {
-        Aretoa aretoa1 = new Aretoa(1, 101, 201);
-        Aretoa aretoa2 = new Aretoa(1, 101, 201);
-        Aretoa aretoa3 = new Aretoa(2, 102, 202);
+        Aretoa aretoa1 = new Aretoa(1, 101);
+        Aretoa aretoa2 = new Aretoa(1, 101);
+        Aretoa aretoa3 = new Aretoa(2, 102);
 
         // Test equals method
         assertTrue(aretoa1.equals(aretoa2));
@@ -20,7 +20,7 @@ public class AretoaTest {
 
     @Test
     public void testToString() {
-        Aretoa aretoa = new Aretoa(3, 103, 203);
+        Aretoa aretoa = new Aretoa(3, 103);
         String expected = "Aretoa [izena=3, id=103, zinema=203]";
         
         //TO DO, EZ PASATZEN HEMENDIK (OBJETU BERDINA, BERDINAREKIN KONPARATZEN DA) EN VEZ el primer aretoa.toString ira un String o expected
@@ -29,14 +29,12 @@ public class AretoaTest {
 
     @Test
     public void testGettersAndSetters() {
-    	Zinema zinema = new Zinema(1, "izena", "helbidea", "kontaktua","deskribapena", null, null);
-        Aretoa aretoa = new Aretoa(0, 0, zinema);
+    	
+        Aretoa aretoa = new Aretoa(0, 0);
         
         aretoa.setId(104);
         assertEquals(104, aretoa.getId());
 
-        aretoa.setZinema(204);
-        assertEquals(204, aretoa.getZinema());
     }
 }
 
