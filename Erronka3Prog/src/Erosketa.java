@@ -4,6 +4,7 @@ public class Erosketa {
 	private int jatorria;
 	private int deskontua;
 	private double preziotot;
+	private Sarrera Sarrera;
 	private Bezero bezero;
 	
 	public int getId() {
@@ -35,6 +36,13 @@ public class Erosketa {
 	}
 	public void setBezero(Bezero bezero) {
 		this.bezero = bezero;
+	}
+	
+	public Sarrera getSarrera() {
+		return Sarrera;
+	}
+	public void setSarrera(Sarrera sarrera) {
+		Sarrera = sarrera;
 	}
 	@Override
 	public int hashCode() {

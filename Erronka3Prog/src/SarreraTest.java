@@ -80,12 +80,12 @@ public class SarreraTest {
       sarrera.setId(1);
       sarrera.setSaioa(saioa1);
       sarrera.setPrezioa(10.0f);
-      sarrera.setErosketa(erosketa);
+      sarrera.setKantitatea(5);
 
       // Comprueba que los valores establecidos coincidan con los obtenidos mediante los getters
       assertEquals(1, sarrera.getId());
       assertEquals(saioa1, sarrera.getSaioa());
       assertEquals(10.0f, sarrera.getPrezioa(), 0.001);
-      assertEquals(erosketa, sarrera.getErosketa());
+      assertEquals(5, sarrera.getKantitatea());
 	}
 }

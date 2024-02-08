@@ -4,7 +4,8 @@ public class Sarrera {
 	private int id;
 	private Saioa saioa;
 	private float prezioa;
-	private Erosketa erosketa;
+	private int kantitatea;
+	
 	public int getId() {
 		return id;
 	}
@@ -23,15 +24,18 @@ public class Sarrera {
 	public void setPrezioa(float prezioa) {
 		this.prezioa = prezioa;
 	}
-	public Erosketa getErosketa() {
-		return erosketa;
+
+	
+	public int getKantitatea() {
+		return kantitatea;
 	}
-	public void setErosketa(Erosketa erosketa) {
-		this.erosketa = erosketa;
+	public void setKantitatea(int kantitatea) {
+		this.kantitatea = kantitatea;
 	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(erosketa, id, prezioa, saioa);
+		return Objects.hash(kantitatea, id, prezioa, saioa);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -42,19 +46,19 @@ public class Sarrera {
 		if (getClass() != obj.getClass())
 			return false;
 		Sarrera other = (Sarrera) obj;
-		return Objects.equals(erosketa, other.erosketa) && id == other.id
+		return Objects.equals(kantitatea, other.kantitatea) && id == other.id
 				&& Float.floatToIntBits(prezioa) == Float.floatToIntBits(other.prezioa)
 				&& Objects.equals(saioa, other.saioa);
 	}
 	@Override
 	public String toString() {
-		return "Sarrera [id=" + id + ", saioa=" + saioa + ", prezioa=" + prezioa + ", erosketa=" + erosketa + "]";
+		return "Sarrera [id=" + id + ", saioa=" + saioa + ", prezioa=" + prezioa + ", kantitatea=" + kantitatea + "]";
 	}
 	public Sarrera(int id, Saioa saioa, float prezioa, Erosketa erosketa) {
 		this.id = id;
 		this.saioa = saioa;
 		this.prezioa = prezioa;
-		this.erosketa = erosketa;
+		this.kantitatea = kantitatea;
 	}
 	public Sarrera() {
 	}
