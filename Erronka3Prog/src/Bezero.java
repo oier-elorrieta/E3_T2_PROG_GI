@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.Objects;
+import java.sql.*;
 
 public class Bezero {
 	private String nan;
@@ -148,4 +149,27 @@ public class Bezero {
 		this.mail = mail;
 	}
 	
+	 public void load(Connection conexioa) {   
+	       try {
+	    	   conexioa = konexioa.hasi();
+	           System.out.println("Konektatuta");
+	           // Prestatu sententzia
+	           Statement s1 = conexioa.createStatement();
+	           String sql = "select * from bezeroa";
+	           ResultSet lerroak = s1.executeQuery(sql);
+	           while (lerroak.next()) {
+	               System.out.print(lerroak.getString("NAN") + "\t");
+	               System.out.print(lerroak.getString("Erabiltzailea") + "\t");
+	               System.out.print(lerroak.getString("Izena") + "\t");
+	               System.out.print(lerroak.getString("Abizena") + "\t");
+	               System.out.print(lerroak.getString("J_data") + "\t");
+	               System.out.print(lerroak.getString("Mail") + "\t");
+	               System.out.print(lerroak.getString("Generoa") + "\t");
+	               System.out.print(lerroak.getString("Pasahitza") + "\t");
+	               System.out.println("");
+	           }
+	       } catch (Exception sqe) {
+	           sqe.printStackTrace();
+	       }
+	}
 }

@@ -1,7 +1,7 @@
 import java.sql.*;
 
 public class konexioa {
-    public Connection hasi() {
+    public static Connection hasi() {
         Connection conexioa = null;
         try {
             conexioa = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zinema", "root", "");
