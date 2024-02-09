@@ -6,21 +6,21 @@ public class FilmaFroga {
         Statement statement = null;
         ResultSet resultSet = null;
         
-        // Crear una instancia de la clase konexioa y llamar al método hasi()
+     
         konexioa konexioaObjeto = new konexioa();
         conexion = konexioaObjeto.hasi();
 
         try {
-            // Crear un objeto Statement para enviar consultas SQL a la base de datos
+           
             statement = conexion.createStatement();
 
-            // Ejecutar la consulta SQL
+     
             String consulta = "SELECT * FROM FILMA";
             resultSet = statement.executeQuery(consulta);
 
-            // Procesar el resultado de la consulta
+          
             while (resultSet.next()) {
-                // Obtener valores de las columnas por nombre o índice
+              
                 int id = resultSet.getInt("Idfilma");
                 String izenburua = resultSet.getString("Izenburua");
                 int iraupena = resultSet.getInt("Iraupena");
@@ -29,7 +29,6 @@ public class FilmaFroga {
                 String zuzendaria = resultSet.getString("Zuzendaria");
                 String sinopsia = resultSet.getString("Sinopsia");
                 
-                // Hacer algo con los valores obtenidos, por ejemplo imprimirlos
                 System.out.println("Idfilma: " + id);
                 System.out.println("Izenburua: " + izenburua);
                 System.out.println("Iraupena: " + iraupena);
