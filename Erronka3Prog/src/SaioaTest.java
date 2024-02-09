@@ -9,12 +9,12 @@ public class SaioaTest {
         Date date1 = new Date();
         Date date2 = new Date();
        
-        Filma zinema = new Filma(0, 0, null, 0, null, null, null);
+        Filma zinema = new Filma();
         Aretoa aretoa1 = new Aretoa(0, "aka");
         Aretoa aretoa2 = new Aretoa(0, "izena");
         
-        Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-        Filma filma2 = new Filma(1, 0, null, 0, null, null, null);
+        Filma filma1 = new Filma();
+        Filma filma2 = new Filma();
         
       
         Saioa saioa1 = new Saioa(1, date1, filma1, aretoa1);
@@ -33,7 +33,7 @@ public class SaioaTest {
     @Test
     public void testToString() {
     	
-    	Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
+    	Filma filma1 = new Filma();
     	Aretoa aretoa1 = new Aretoa(0, "");
     	
         Date date = new Date();
@@ -47,7 +47,7 @@ public class SaioaTest {
     public void testGettersAndSetters() {
     	 Date date = new Date();
     	    
-    	    Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
+    	    Filma filma1 = new Filma();
     	    Aretoa aretoa1 = new Aretoa(0, "");
     	    Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
     	    
@@ -58,7 +58,7 @@ public class SaioaTest {
     	    assertEquals(date, saioa1.getData());
 
     	    // Filma eta aretoa sortu
-    	    Filma filma2 = new Filma(104, 0, null, 0, null, null, null);
+    	    Filma filma2 = new Filma();
     	    Aretoa aretoa2 = new Aretoa(204, "");
 
     	    saioa1.setFilma(filma2);
@@ -72,7 +72,7 @@ public class SaioaTest {
     @Test
     public void testEqualsWithDifferentClass() {
     	Date date = new Date();
-        Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
+        Filma filma1 = new Filma();
         Aretoa aretoa1 = new Aretoa(0, "");
         Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
 
