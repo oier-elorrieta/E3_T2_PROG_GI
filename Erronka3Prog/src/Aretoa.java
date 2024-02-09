@@ -1,14 +1,19 @@
 import java.util.Date;
+import java.sql.*;
 import java.util.Objects;
 
 public class Aretoa {
 	public int id;
-	public int izena;
+	public String izena;
 	
 	
-	public Aretoa(int id, int izena) {
+	public Aretoa(int id, String izena) {
 		this.id = id;
 		this.izena = izena;
+		
+	}
+	
+	public Aretoa() {
 		
 	}
 
@@ -23,12 +28,12 @@ public class Aretoa {
 	}
 
 
-	public int getIzena() {
+	public String getIzena() {
 		return izena;
 	}
 
 
-	public void setIzena(int izena) {
+	public void setIzena(String izena) {
 		this.izena = izena;
 	}
 
@@ -57,6 +62,42 @@ public class Aretoa {
 		return "Aretoa [id=" + id + ", izena=" + izena + ", zinema=]";
 	}
 	
+	public Aretoa[] load(Connection conexioa) {   
+        Aretoa[] aretoak = null;  
+        try {
+              conexioa = konexioa.hasi();
+              System.out.println("Konektatuta");
+              // Prestatu sententzia
+              int i = 0;
+              Statement s1 = conexioa.createStatement();
+              String sql = "select * from aretoa";
+              ResultSet lerroak = s1.executeQuery(sql);
+              int count = 0;
+              while(lerroak.next()) {
+            	  count++;
+              
+              }
+              aretoak = new Aretoa[count];
+              lerroak = s1.executeQuery(sql);
+              while (lerroak.next()) {
+                  Aretoa aretoa = new Aretoa();
+                  aretoa.setId(lerroak.getInt("id"));
+                  aretoa.setIzena(lerroak.getString("izena"));
+                  
+                  aretoak[i] = aretoa;
+                  i++;
+              
+              }
+          } catch (Exception sqe) {
+              sqe.printStackTrace();
+          }
+          for(int j = 0; j < aretoak.length; j++) {
+        	  System.out.println(aretoak[j].toString());
+          }
+              
+         
+          return (aretoak);
+   }
 	
 	
 }

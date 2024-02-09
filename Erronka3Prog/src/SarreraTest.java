@@ -10,9 +10,9 @@ public class SarreraTest {
 	  Date date = new Date();
 	  Date date2 = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-	  Aretoa aretoa1 = new Aretoa(0, 0);
+	  Aretoa aretoa1 = new Aretoa(0, "");
 	  Filma filma2 = new Filma(1, 2, null, 0, null, null, null);
-	  Aretoa aretoa2 = new Aretoa(1, 2);
+	  Aretoa aretoa2 = new Aretoa(1, "");
 	
 	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date2, "juan@gmail.com", 'G',"pasahitz123");
 	  Bezero bezero2 = new Bezero("87654321b", "unai", "PAK", date2, "unai@gmail.com", 'e',"123pasahitz");
@@ -34,9 +34,9 @@ public class SarreraTest {
 	  Date date = new Date();
 	  Date date2 = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-	  Aretoa aretoa1 = new Aretoa(0, 0);
+	  Aretoa aretoa1 = new Aretoa(0, "");
 	  Filma filma2 = new Filma(1, 2, null, 0, null, null, null);
-	  Aretoa aretoa2 = new Aretoa(1, 2);
+	  Aretoa aretoa2 = new Aretoa(1, "");
 	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date2, "juan@gmail.com", 'G',"pasahitz123");
 	  Bezero bezero2 = new Bezero("87654321b", "unai", "PAK", date2, "unai@gmail.com", 'e',"123pasahitz");
 	  
@@ -57,7 +57,7 @@ public class SarreraTest {
 	  Date date = new Date();
 	  Date date2 = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-	  Aretoa aretoa1 = new Aretoa(0, 0);
+	  Aretoa aretoa1 = new Aretoa(0, "");
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
 	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date2, "juan@gmail.com", 'G',"pasahitz123");
 	  Erosketa erosketa = new Erosketa(2, 24, 20, date, 123, bezero1, null);
@@ -73,7 +73,7 @@ public class SarreraTest {
 	  
 	  Date date = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
-	  Aretoa aretoa1 = new Aretoa(0, 0);
+	  Aretoa aretoa1 = new Aretoa(0, "");
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
   
 	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");

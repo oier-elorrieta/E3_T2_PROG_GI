@@ -5,7 +5,7 @@ public class ZinemaTest {
 
     @Test
     public void testEqualsAndHashCode() {
-    	Aretoa aretoa2 = new Aretoa(1, 101);
+    	Aretoa aretoa2 = new Aretoa(1, "");
         Aretoa[] aretoarray = new Aretoa[]{aretoa2};
         Aretoa[] aretoarray2 = new Aretoa[]{aretoa2};
         Saioa[] saio = new Saioa[1];
