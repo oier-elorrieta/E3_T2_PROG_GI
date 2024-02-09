@@ -8,19 +8,20 @@ public class SarreraTest {
   public void testEquals() {
 	  
 	  Date date = new Date();
+	  Date date2 = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
 	  Aretoa aretoa1 = new Aretoa(0, 0);
 	  Filma filma2 = new Filma(1, 2, null, 0, null, null, null);
 	  Aretoa aretoa2 = new Aretoa(1, 2);
-	  Date d1 = new Date();
-	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", d1, "juan@gmail.com", 'G',"pasahitz123");
-	  Bezero bezero2 = new Bezero("87654321b", "unai", "PAK", date, "unai@gmail.com", 'e',"123pasahitz");
+	
+	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date2, "juan@gmail.com", 'G',"pasahitz123");
+	  Bezero bezero2 = new Bezero("87654321b", "unai", "PAK", date2, "unai@gmail.com", 'e',"123pasahitz");
 	  
 	  
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
 	  Saioa saioa2 = new Saioa(1, date, filma1, aretoa1);
-	  Erosketa erosketa = new Erosketa(2, 24, 20, 123, bezero1, null);
-	  Erosketa erosketa2 = new Erosketa(0, 0, 0, 0, bezero2, null);
+	  Erosketa erosketa = new Erosketa(2, 24, 20, date2, 123, bezero1, null);
+	  Erosketa erosketa2 = new Erosketa(0, 0, 0, date2, 0, bezero2, null);
 	  
 	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, erosketa);
       Sarrera sarrera2 = new Sarrera(1, saioa1, 5.0f, erosketa);
@@ -31,17 +32,18 @@ public class SarreraTest {
   @Test
   public void testHashCode() {
 	  Date date = new Date();
+	  Date date2 = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
 	  Aretoa aretoa1 = new Aretoa(0, 0);
 	  Filma filma2 = new Filma(1, 2, null, 0, null, null, null);
 	  Aretoa aretoa2 = new Aretoa(1, 2);
-	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");
-	  Bezero bezero2 = new Bezero("87654321b", "unai", "PAK", date, "unai@gmail.com", 'e',"123pasahitz");
+	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date2, "juan@gmail.com", 'G',"pasahitz123");
+	  Bezero bezero2 = new Bezero("87654321b", "unai", "PAK", date2, "unai@gmail.com", 'e',"123pasahitz");
 	  
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
 	  Saioa saioa2 = new Saioa(1, date, filma1, aretoa1);
-	  Erosketa erosketa = new Erosketa(2, 24, 20, 123, bezero1, null);
-	  Erosketa erosketa2 = new Erosketa(0, 0, 0, 0, bezero2, null);
+	  Erosketa erosketa = new Erosketa(2, 24, 20, date, 123, bezero1, null);
+	  Erosketa erosketa2 = new Erosketa(0, 0, 0, date, 0, bezero2, null);
 	  
 	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, erosketa);
       Sarrera sarrera2 = new Sarrera(1, saioa1, 5.0f, erosketa);
@@ -53,11 +55,12 @@ public class SarreraTest {
   @Test
   public void testToString() {
 	  Date date = new Date();
+	  Date date2 = new Date();
 	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
 	  Aretoa aretoa1 = new Aretoa(0, 0);
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
-	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");
-	  Erosketa erosketa = new Erosketa(2, 24, 20, 123, bezero1, null);
+	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date2, "juan@gmail.com", 'G',"pasahitz123");
+	  Erosketa erosketa = new Erosketa(2, 24, 20, date, 123, bezero1, null);
 	  
 			  
 	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, erosketa);

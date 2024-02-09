@@ -9,9 +9,9 @@ public class ErosketaTest {
         Bezero bezero1 = new Bezero("16110577c", "Jon", null);
         Bezero bezero2 = new Bezero("16110566a", "Unai", null);
 
-        Erosketa erosketa1 = new Erosketa(1, 123, 10, 25.25, bezero1, null);
-        Erosketa erosketa2 = new Erosketa(1, 123, 10, 25.25, bezero1, null);
-        Erosketa erosketa3 = new Erosketa(2, 456, 20, 34.43, bezero2, null);
+        Erosketa erosketa1 = new Erosketa(1, 123, 10, null, 25.25, bezero1, null);
+        Erosketa erosketa2 = new Erosketa(1, 123, 10, null, 25.25, bezero1, null);
+        Erosketa erosketa3 = new Erosketa(2, 456, 20, null, 34.43, bezero2, null);
 
         assertTrue(erosketa1.equals(erosketa2));
         assertFalse(erosketa1.equals(erosketa3));
@@ -19,7 +19,7 @@ public class ErosketaTest {
 
     @Test
     public void testGettersAndSetters() {
-        Erosketa erosketa = new Erosketa(1, 123, 10, 100.0, new Bezero("123ABC", "Jon", null), null);
+        Erosketa erosketa = new Erosketa(1, 123, 10, null, 100.0, new Bezero("123ABC", "Jon", null), null);
 
         // Setters
         erosketa.setJatorria(456);
@@ -40,9 +40,9 @@ public class ErosketaTest {
         Bezero bezero1 = new Bezero("123ABC", "Jon", null);
         Bezero bezero2 = new Bezero("456DEF", "Unai", null);
 
-        Erosketa erosketa1 = new Erosketa(1, 123, 10, 100.0, bezero1, null);
-        Erosketa erosketa2 = new Erosketa(1, 123, 10, 100.0, bezero1, null);
-        Erosketa erosketa3 = new Erosketa(2, 456, 20, 200.0, bezero2, null);
+        Erosketa erosketa1 = new Erosketa(1, 123, 10, null, 100.0, bezero1, null);
+        Erosketa erosketa2 = new Erosketa(1, 123, 10, null, 100.0, bezero1, null);
+        Erosketa erosketa3 = new Erosketa(2, 456, 20, null, 200.0, bezero2, null);
 
         assertEquals(erosketa1.hashCode(), erosketa2.hashCode());
         assertNotEquals(erosketa1.hashCode(), erosketa3.hashCode());
