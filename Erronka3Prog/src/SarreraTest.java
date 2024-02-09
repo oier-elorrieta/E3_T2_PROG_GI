@@ -9,9 +9,9 @@ public class SarreraTest {
 	  
 	  Date date = new Date();
 	  Date date2 = new Date();
-	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
+	  Filma filma1 = new Filma();
 	  Aretoa aretoa1 = new Aretoa(0, "");
-	  Filma filma2 = new Filma(1, 2, null, 0, null, null, null);
+	  Filma filma2 = new Filma();
 	  Aretoa aretoa2 = new Aretoa(1, "");
 	
 	  Bezero bezero1 = new Bezero("12345678A", "Juan","juan", "Deavila", date2, "juan@gmail.com", 'G',"pasahitz123");
@@ -33,18 +33,14 @@ public class SarreraTest {
   public void testHashCode() {
 	  Date date = new Date();
 	  Date date2 = new Date();
-	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
+	  Filma filma1 = new Filma();
 	  Aretoa aretoa1 = new Aretoa(0, "");
-	  Filma filma2 = new Filma(1, 2, null, 0, null, null, null);
-<<<<<<< HEAD
+	  Filma filma2 = new Filma();
+
 	  Aretoa aretoa2 = new Aretoa(1, "");
-	  Bezero bezero1 = new Bezero("12345678A", "Juan", "Deavila", date2, "juan@gmail.com", 'G',"pasahitz123");
-	  Bezero bezero2 = new Bezero("87654321b", "unai", "PAK", date2, "unai@gmail.com", 'e',"123pasahitz");
-=======
-	  Aretoa aretoa2 = new Aretoa(1, 2);
 	  Bezero bezero1 = new Bezero("12345678A", "Juan","juan", "Deavila", date2, "juan@gmail.com", 'G',"pasahitz123");
 	  Bezero bezero2 = new Bezero("87654321b", "Unai","unai", "PAK", date2, "unai@gmail.com", 'e',"123pasahitz");
->>>>>>> 0f9a9d544d05af94e6edfb3280b0b882bcd44a0d
+
 	  
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
 	  Saioa saioa2 = new Saioa(1, date, filma1, aretoa1);
@@ -62,7 +58,7 @@ public class SarreraTest {
   public void testToString() {
 	  Date date = new Date();
 	  Date date2 = new Date();
-	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
+	  Filma filma1 = new Filma();
 	  Aretoa aretoa1 = new Aretoa(0, "");
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
 	  Bezero bezero1 = new Bezero("12345678A", "Juan","juan", "Deavila", date2, "juan@gmail.com", 'G',"pasahitz123");
@@ -78,7 +74,7 @@ public class SarreraTest {
   public void testGettersAndSetters() {
 	  
 	  Date date = new Date();
-	  Filma filma1 = new Filma(0, 0, null, 0, null, null, null);
+	  Filma filma1 = new Filma();
 	  Aretoa aretoa1 = new Aretoa(0, "");
 	  Saioa saioa1 = new Saioa(1, date, filma1, aretoa1);
   
