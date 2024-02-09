@@ -1,7 +1,9 @@
+import java.sql.Connection;
 import java.util.Objects;
 
 public class Filma {
-
+	konexioa konexioaObjeto = new konexioa();
+	Connection conexion = konexioaObjeto.hasi();
         private int id;
         private int iraupena;
         private String generoa;
@@ -9,6 +11,8 @@ public class Filma {
         private String izena;
         private String zuzendaria;
         private String sinopsia;
+        
+        
         
 		public Filma(int id, int iraupena, String generoa, double prezioa, String izena, String zuzendaria,
 				String sinopsia) {
@@ -103,5 +107,5 @@ public class Filma {
 			return "Filma [id=" + id + ", iraupena=" + iraupena + ", generoa=" + generoa + ", prezioa=" + prezioa
 					+ ", izena=" + izena + ", zuzendaria=" + zuzendaria + ", sinopsia=" + sinopsia + "]";
 		}
-		
+		 
     }

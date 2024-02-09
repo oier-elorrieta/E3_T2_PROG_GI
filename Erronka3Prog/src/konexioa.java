@@ -4,7 +4,7 @@ public class konexioa {
     public Connection hasi() {
         Connection conexioa = null;
         try {
-            conexioa = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_zinema", "root", "");
+            conexioa = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zinema", "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
