@@ -1,3 +1,6 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.Objects;
 
@@ -58,6 +61,46 @@ public class Saioa {
 		}
 		public Saioa() {
 		}
+		
+		public Saioa[] load(Connection conexioa) {   
+	        Saioa[] saioak = null;  
+	        try {
+	              conexioa = konexioa.hasi();
+	              System.out.println("Konektatuta");
+	              // Prestatu sententzia
+	              int i = 0;
+	              Statement s1 = conexioa.createStatement();
+	              String sql = "select * from saioa";
+	              ResultSet lerroak = s1.executeQuery(sql);
+	              int count = 0;
+	              while(lerroak.next()) {
+	            	  count++;
+	              
+	              }
+	              saioak = new Saioa[count];
+	              lerroak = s1.executeQuery(sql);
+	              while (lerroak.next()) {
+	                  Saioa saioa = new Saioa();
+	                  saioa.setId(lerroak.getInt("id"));
+	                  saioa.setData(lerroak.getDate("data"));
+	                  saioa.setFilma[](lerroak.getFilma("filma")); //HAY QUE PONER FILMA OBJETO
+	                  saioa.setAretoa(lerroak.getAretoa("aretoa"));
+	             
+	                  
+	                  saioak[i] = saioa;
+	                  i++;
+	              
+	              }
+	          } catch (Exception sqe) {
+	              sqe.printStackTrace();
+	          }
+	          for(int j = 0; j < saioak.length; j++) {
+	        	  System.out.println(saioak[j].toString());
+	          }
+	              
+	         
+	          return (saioak);
+	   }
 
 		
 		

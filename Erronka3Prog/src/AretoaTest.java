@@ -9,7 +9,7 @@ public class AretoaTest {
         Aretoa aretoa2 = new Aretoa(1, "aka");
         Aretoa aretoa3 = new Aretoa(2, "kak");
 
-        // Test equals method
+        // Test equals method 
         assertTrue(aretoa1.equals(aretoa2));
         assertFalse(aretoa1.equals(aretoa3));
 
