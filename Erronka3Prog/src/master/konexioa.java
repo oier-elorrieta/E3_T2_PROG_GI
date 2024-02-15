@@ -194,12 +194,12 @@ public class konexioa {
 	        sarrerak = new Sarrera[count];
 	        lerroak = s1.executeQuery(sql);
 	        while (lerroak.next()) {
-	            Sarrera sarrera = new Sarrera(count, null, count, null);
+	            Sarrera sarrera = new Sarrera();
 	            sarrera.setId(lerroak.getInt("id"));
-	            // Obtener los datos de la película y la sala
-	            Saioa saioa = new Saioa(); // Debes crear una instancia de Filma aquí
-	            saioa.setId(lerroak.getInt("IdSaioa")); // Suponiendo que el ID de la película está en una columna llamada id_pelicula
+	            Saioa saioa = new Saioa(); 
+	            saioa.setId(lerroak.getInt("IdSaioa")); 
 	            sarrera.setSaioa(saioa);
+	            
 	            sarrera.setPrezioa(lerroak.getFloat("Prezioa"));
 	            sarrera.setKantitatea(lerroak.getInt("Prezioa"));
 	            sarrerak[i] = sarrera;
@@ -215,11 +215,94 @@ public class konexioa {
 	    
 	    return sarrerak;
 	}
-    /*
-    public Zinema[] Zinemaload(Connection conexioa) {
-    }
     
-    public Erosketa[] Erosketaload(Connection conexioa) {}
-    */
+    public Zinema[] Zinemaload(Connection conexioa) {   //Zinemaren Datuak Kargatu//
+	    Zinema[] zinemak = null;  
+	    try {
+	        conexioa = konexioa.hasi();
+	        System.out.println("Konektatuta");
+	        // Prestatu sententzia
+	        int i = 0;
+	        Statement s1 = conexioa.createStatement();
+	        String sql = "select * from zinema";
+	        ResultSet lerroak = s1.executeQuery(sql);
+	        int count = 0;
+	        while(lerroak.next()) {
+	            count++;
+	        }
+	        zinemak = new Zinema[count];
+	        lerroak = s1.executeQuery(sql);
+	        while (lerroak.next()) {
+	            Zinema zinema = new Zinema();
+	            zinema.setId(lerroak.getInt("id"));
+	            zinema.setIzena(lerroak.getString("Izena"));
+	            zinema.setHelbidea(lerroak.getString("Helbidea"));
+	            zinema.setKontaktua(lerroak.getString("Kontaktua"));
+	            zinema.setDeskribapena(lerroak.getString("Deskribapena"));
+	            
+	            Aretoa aretoa = new Aretoa(); 
+	            aretoa.setId(lerroak.getInt("id_aretoa")); 
+	            zinema.setAretoak(new Aretoa[] {aretoa}); 
+	            
+	            Saioa saioa = new Saioa(); 
+	            saioa.setId(lerroak.getInt("IdSaioa")); 
+	            zinema.setSaioak(new Saioa[] {saioa}); 
+	  
+	            zinemak[i] = zinema;
+	            i++;
+	        }
+	    } catch (Exception sqe) {
+	        sqe.printStackTrace();
+	    }
+	    
+	    for(int j = 0; j < zinemak.length; j++) {
+	        System.out.println(zinemak[j].toString());
+	    }
+	    return zinemak;
+	}
     
+    public Erosketa[] Erosketaload(Connection conexioa) { //Erosketaren Datuak Kargatu//  
+	    Erosketa[] erosketak = null;  
+	    try {
+	        conexioa = konexioa.hasi();
+	        System.out.println("Konektatuta");
+	        // Prestatu sententzia
+	        int i = 0;
+	        Statement s1 = conexioa.createStatement();
+	        String sql = "select * from zinema";
+	        ResultSet lerroak = s1.executeQuery(sql);
+	        int count = 0;
+	        while(lerroak.next()) {
+	            count++;
+	        }
+	        erosketak = new Erosketa[count];
+	        lerroak = s1.executeQuery(sql);
+	        while (lerroak.next()) {
+	            Erosketa erosketa = new Erosketa();
+	            erosketa.setId(lerroak.getInt("id"));
+	            erosketa.setJatorria(lerroak.getInt("Jatorria"));
+	            erosketa.setDeskontua(lerroak.getInt("Deskontua"));
+	            erosketa.setData(lerroak.getDate("Data"));
+	            erosketa.setPreziotot(lerroak.getDouble("PrezioTot"));
+	            Bezero bezero = new Bezero();
+	            erosketa.setId(lerroak.getInt("NAN"));
+	            erosketa.setBezero(bezero);  
+	            
+	            Sarrera sarrera= new Sarrera(); 
+	            sarrera.setId(lerroak.getInt("IdSarrera")); 
+	            erosketa.setSarrera(new Sarrera[] {sarrera}); 
+	            
+	            erosketak[i] = erosketa;
+	            i++;
+	        }
+	    } catch (Exception sqe) {
+	        sqe.printStackTrace();
+	    }
+	    
+	    for(int j = 0; j < erosketak.length; j++) {
+	        System.out.println(erosketak[j].toString());
+	    }
+	    return erosketak;
+	}
+     
 }
