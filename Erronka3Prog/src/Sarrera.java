@@ -1,3 +1,6 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Objects;
 
 public class Sarrera {
@@ -60,10 +63,42 @@ public class Sarrera {
 		this.prezioa = prezioa;
 		this.kantitatea = kantitatea;
 	}
-	public Sarrera() {
+	public Sarrera[] Sarreraload(Connection conexioa) {   
+	    Sarrera[] sarrerak = null;  
+	    try {
+	        conexioa = konexioa.hasi();
+	        System.out.println("Konektatuta");
+	        // Prestatu sententzia
+	        int i = 0;
+	        Statement s1 = conexioa.createStatement();
+	        String sql = "select * from sarrera";
+	        ResultSet lerroak = s1.executeQuery(sql);
+	        int count = 0;
+	        while(lerroak.next()) {
+	            count++;
+	        }
+	        sarrerak = new Sarrera[count];
+	        lerroak = s1.executeQuery(sql);
+	        while (lerroak.next()) {
+	            Sarrera sarrera = new Sarrera();
+	            sarrera.setId(lerroak.getInt("id"));
+	            // Obtener los datos de la película y la sala
+	            Saioa saioa = new Saioa(); // Debes crear una instancia de Filma aquí
+	            saioa.setId(lerroak.getInt("IdSaioa")); // Suponiendo que el ID de la película está en una columna llamada id_pelicula
+	            sarrera.setSaioa(saioa);
+	            sarrera.setPrezioa(lerroak.getFloat("Prezioa"));
+	            sarrera.setKantitatea(lerroak.getInt("Prezioa"));
+	            sarrerak[i] = sarrera;
+	            i++;
+	        }
+	    } catch (Exception sqe) {
+	        sqe.printStackTrace();
+	    }
+	    
+	    for(int j = 0; j < sarrerak.length; j++) {
+	        System.out.println(sarrerak[j].toString());
+	    }
+	    
+	    return sarrerak;
 	}
-	
-
-	
-	
 }
