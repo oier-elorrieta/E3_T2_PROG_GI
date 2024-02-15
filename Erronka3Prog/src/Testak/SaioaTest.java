@@ -1,5 +1,11 @@
+package Testak;
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import master.Aretoa;
+import master.Filma;
+import master.Saioa;
+
 import java.util.Date;
 
 public class SaioaTest {

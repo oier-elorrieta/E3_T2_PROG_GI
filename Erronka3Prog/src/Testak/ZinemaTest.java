@@ -1,5 +1,11 @@
+package Testak;
 import static org.junit.Assert.*;
+import master.Zinema;
 import org.junit.Test;
+
+import master.Aretoa;
+import master.Saioa;
+import master.Zinema;
 
 public class ZinemaTest {
 

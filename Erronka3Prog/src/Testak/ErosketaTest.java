@@ -1,6 +1,10 @@
+package Testak;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import master.Bezero;
+import master.Erosketa;
 
 public class ErosketaTest {
 

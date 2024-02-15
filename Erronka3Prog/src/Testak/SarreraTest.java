@@ -1,8 +1,16 @@
+package Testak;
 import static org.junit.Assert.*;
 
 import java.util.Date;
 
 import org.junit.Test;
+
+import master.Aretoa;
+import master.Bezero;
+import master.Erosketa;
+import master.Filma;
+import master.Saioa;
+import master.Sarrera;
 public class SarreraTest {
   @Test
   public void testEquals() {
@@ -80,7 +88,7 @@ public class SarreraTest {
   
 	  Bezero bezero1 = new Bezero("12345678A", "Juan","juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");
 	  
-      Sarrera sarrera = new Sarrera();
+      Sarrera sarrera = new Sarrera(0, saioa1, 0, null);
 
       // Setterren balioak
       sarrera.setId(1);

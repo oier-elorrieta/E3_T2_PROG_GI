@@ -1,6 +1,9 @@
+package Testak;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import master.Filma;
 public class FilmaTest {
   @Test
   public void testEquals() {

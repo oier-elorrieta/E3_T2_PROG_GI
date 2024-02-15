@@ -1,4 +1,6 @@
+package vista;
 import java.awt.event.MouseAdapter;
+import master.Modelo;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;

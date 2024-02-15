@@ -1,4 +1,7 @@
+package master;
 import javax.swing.SwingUtilities;
+
+import vista.vEtorria;
 
 public class Modelo {
     public boolean irkeiLogin = false;

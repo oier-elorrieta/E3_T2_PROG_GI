@@ -1,3 +1,4 @@
+package master;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -80,7 +81,7 @@ public class Sarrera {
 	        sarrerak = new Sarrera[count];
 	        lerroak = s1.executeQuery(sql);
 	        while (lerroak.next()) {
-	            Sarrera sarrera = new Sarrera();
+	            Sarrera sarrera = new Sarrera(count, saioa, prezioa, null);
 	            sarrera.setId(lerroak.getInt("id"));
 	            // Obtener los datos de la película y la sala
 	            Saioa saioa = new Saioa(); // Debes crear una instancia de Filma aquí

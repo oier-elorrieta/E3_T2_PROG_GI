@@ -1,3 +1,4 @@
+package master;
 import java.sql.*;
 
 public class konexioa {
@@ -193,7 +194,7 @@ public class konexioa {
 	        sarrerak = new Sarrera[count];
 	        lerroak = s1.executeQuery(sql);
 	        while (lerroak.next()) {
-	            Sarrera sarrera = new Sarrera();
+	            Sarrera sarrera = new Sarrera(count, null, count, null);
 	            sarrera.setId(lerroak.getInt("id"));
 	            // Obtener los datos de la película y la sala
 	            Saioa saioa = new Saioa(); // Debes crear una instancia de Filma aquí
@@ -214,10 +215,11 @@ public class konexioa {
 	    
 	    return sarrerak;
 	}
-    
-    public Zinema[] Zinemaload(Connection conexioa) {}
+    /*
+    public Zinema[] Zinemaload(Connection conexioa) {
+    }
     
     public Erosketa[] Erosketaload(Connection conexioa) {}
-    
+    */
     
 }

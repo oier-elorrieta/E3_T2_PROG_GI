@@ -1,3 +1,4 @@
+package master;
 import java.util.Arrays;
 
 public class Info {
