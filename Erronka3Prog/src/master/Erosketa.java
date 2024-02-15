@@ -1,4 +1,7 @@
 package master;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.Objects;
 public class Erosketa {
@@ -19,6 +22,7 @@ public class Erosketa {
 	public int getJatorria() {
 		return jatorria;
 	}
+	
 	public void setJatorria(int jatorria) {
 		this.jatorria = jatorria;
 	}
@@ -86,8 +90,56 @@ public class Erosketa {
 		this.Sarrera = Sarrera;
 		this.bezero = bezero;
 	}
-
 	
+	public Erosketa() {
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	public Erosketa[] Erosketaload(Connection conexioa) {   
+	    Erosketa[] erosketak = null;  
+	    try {
+	        conexioa = konexioa.hasi();
+	        System.out.println("Konektatuta");
+	        // Prestatu sententzia
+	        int i = 0;
+	        Statement s1 = conexioa.createStatement();
+	        String sql = "select * from zinema";
+	        ResultSet lerroak = s1.executeQuery(sql);
+	        int count = 0;
+	        while(lerroak.next()) {
+	            count++;
+	        }
+	        erosketak = new Erosketa[count];
+	        lerroak = s1.executeQuery(sql);
+	        while (lerroak.next()) {
+	            Erosketa erosketa = new Erosketa();
+	            erosketa.setId(lerroak.getInt("id"));
+	            erosketa.setJatorria(lerroak.getInt("Jatorria"));
+	            erosketa.setDeskontua(lerroak.getInt("Deskontua"));
+	            erosketa.setData(lerroak.getDate("Data"));
+	            erosketa.setPreziotot(lerroak.getDouble("PrezioTot"));
+	            Bezero bezero = new Bezero();
+	            erosketa.setId(lerroak.getInt("NAN"));
+	            erosketa.setBezero(bezero);  
+	            
+	            Sarrera sarrera= new Sarrera(); 
+	            sarrera.setId(lerroak.getInt("IdSarrera")); 
+	            erosketa.setSarrera(new Sarrera[] {sarrera}); 
+	            
+	            erosketak[i] = erosketa;
+	            i++;
+	        }
+	    } catch (Exception sqe) {
+	        sqe.printStackTrace();
+	    }
+	    
+	    for(int j = 0; j < erosketak.length; j++) {
+	        System.out.println(erosketak[j].toString());
+	    }
+	    return erosketak;
+	}
 	
 	
 }
