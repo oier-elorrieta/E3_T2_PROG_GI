@@ -49,9 +49,6 @@ public class konexioa {
           } catch (Exception sqe) {
               sqe.printStackTrace();
           }
-          for(int j = 0; j < aretoak.length; j++) {
-        	  System.out.println(aretoak[j].toString());
-          }
 
           return (aretoak);
    }
@@ -90,9 +87,6 @@ public class konexioa {
 	       } catch (Exception sqe) {
 	           sqe.printStackTrace();
 	       }
-		 for(int j = 0; j < bezeroak.length; j++) {
-		 System.out.println(bezeroak[j].toString());
-		 }
 	       return (bezeroak);
 	}
     
@@ -169,9 +163,6 @@ public class konexioa {
 	        sqe.printStackTrace();
 	    }
 	    
-	    for(int j = 0; j < saioak.length; j++) {
-	        System.out.println(saioak[j].toString());
-	    }
 	    
 	    return saioak;
 	}
@@ -206,10 +197,6 @@ public class konexioa {
 	        }
 	    } catch (Exception sqe) {
 	        sqe.printStackTrace();
-	    }
-	    
-	    for(int j = 0; j < sarrerak.length; j++) {
-	        System.out.println(sarrerak[j].toString());
 	    }
 	    
 	    return sarrerak;
@@ -254,9 +241,6 @@ public class konexioa {
 	        sqe.printStackTrace();
 	    }
 	    
-	    for(int j = 0; j < zinemak.length; j++) {
-	        System.out.println(zinemak[j].toString());
-	    }
 	    return zinemak;
 	}
     
@@ -298,9 +282,6 @@ public class konexioa {
 	        sqe.printStackTrace();
 	    }
 	    
-	    for(int j = 0; j < erosketak.length; j++) {
-	        System.out.println(erosketak[j].toString());
-	    }
 	    return erosketak;
 	}
      
