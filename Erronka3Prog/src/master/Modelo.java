@@ -19,9 +19,8 @@ public class Modelo {
     Zinema Zinemak[];
 
 
-<<<<<<< HEAD
-    public boolean irkeiLogin = false;
-=======
+    public boolean irekiLogin = false;
+
 	
 	
 	
@@ -80,9 +79,6 @@ public class Modelo {
 	public void setZinemak(Zinema[] zinemak) {
 		Zinemak = zinemak;
 	}
-
-	public boolean irkeiLogin = false;
->>>>>>> 9ee74e23f500cc999a4f6e26e7aa59ef7d0ae101
 
     public Modelo() {
     }
