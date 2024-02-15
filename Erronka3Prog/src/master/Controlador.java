@@ -21,7 +21,7 @@ public class Controlador {
 
         Ongipanel.dispose();
 
-        vLogin Loginpanel = new vLogin();
+        vLogin Loginpanel = new vLogin(mDatuak);
         Loginpanel.setVisible(true);
     }
 }
