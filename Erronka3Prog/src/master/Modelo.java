@@ -1,9 +1,20 @@
 package master;
 import javax.swing.SwingUtilities;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import vista.vEtorria;
 
 public class Modelo {
+	Aretoa Aretoak[];
+	Bezero Bezeroak[];
+	Erosketa Erosketak[];
+	Filma Filmak[];
+	Saioa Saioak[];
+	Sarrera Sarrerak[];
+	Zinema Zinemak[];
+	
+	
     public boolean irkeiLogin = false;
 
     public Modelo() {
@@ -27,4 +38,5 @@ public class Modelo {
         Modelo modelo = new Modelo();
         modelo.abrirVetrorria();
     }
-}
+
+ }

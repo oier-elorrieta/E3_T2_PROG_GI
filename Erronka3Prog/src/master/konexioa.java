@@ -52,8 +52,7 @@ public class konexioa {
           for(int j = 0; j < aretoak.length; j++) {
         	  System.out.println(aretoak[j].toString());
           }
-              
-         
+
           return (aretoak);
    }
     
