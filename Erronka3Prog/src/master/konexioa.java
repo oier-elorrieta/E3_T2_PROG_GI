@@ -2,7 +2,7 @@ package master;
 import java.sql.*;
 
 public class konexioa {
-    public Connection hasi() {//Konexioa Datu Basearekin// 
+    public static Connection hasi() {//Konexioa Datu Basearekin// 
         Connection conexioa = null;
         try {
             conexioa = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zinema", "root", "");
