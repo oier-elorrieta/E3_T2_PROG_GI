@@ -13,26 +13,31 @@ public class Sarrera {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public Saioa getSaioa() {
 		return saioa;
 	}
+	
 	public void setSaioa(Saioa saioa) {
 		this.saioa = saioa;
 	}
+	
 	public float getPrezioa() {
 		return prezioa;
 	}
+	
 	public void setPrezioa(float prezioa) {
 		this.prezioa = prezioa;
 	}
-
 	
 	public int getKantitatea() {
 		return kantitatea;
 	}
+	
 	public void setKantitatea(int kantitatea) {
 		this.kantitatea = kantitatea;
 	}
@@ -58,11 +63,14 @@ public class Sarrera {
 	public String toString() {
 		return "Sarrera [id=" + id + ", saioa=" + saioa + ", prezioa=" + prezioa + ", kantitatea=" + kantitatea + "]";
 	}
-	public Sarrera(int id, Saioa saioa, float prezioa, Erosketa erosketa) {
+	public Sarrera(int id, Saioa saioa, float prezioa, int kantitatea) {
 		this.id = id;
 		this.saioa = saioa;
 		this.prezioa = prezioa;
 		this.kantitatea = kantitatea;
+	}
+	
+	public Sarrera() {
 	}
 	public Sarrera[] Sarreraload(Connection conexioa) {   
 	    Sarrera[] sarrerak = null;  
@@ -81,14 +89,13 @@ public class Sarrera {
 	        sarrerak = new Sarrera[count];
 	        lerroak = s1.executeQuery(sql);
 	        while (lerroak.next()) {
-	            Sarrera sarrera = new Sarrera(count, saioa, prezioa, null);
+	            Sarrera sarrera = new Sarrera();
 	            sarrera.setId(lerroak.getInt("id"));
-	            // Obtener los datos de la película y la sala
-	            Saioa saioa = new Saioa(); // Debes crear una instancia de Filma aquí
-	            saioa.setId(lerroak.getInt("IdSaioa")); // Suponiendo que el ID de la película está en una columna llamada id_pelicula
+	            Saioa saioa = new Saioa(); 
+	            saioa.setId(lerroak.getInt("IdSaioa")); 
 	            sarrera.setSaioa(saioa);
 	            sarrera.setPrezioa(lerroak.getFloat("Prezioa"));
-	            sarrera.setKantitatea(lerroak.getInt("Prezioa"));
+	            sarrera.setKantitatea(lerroak.getInt("Kantitatea"));
 	            sarrerak[i] = sarrera;
 	            i++;
 	        }
