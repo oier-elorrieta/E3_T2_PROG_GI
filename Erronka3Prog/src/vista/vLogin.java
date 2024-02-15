@@ -1,5 +1,6 @@
 package vista;
 
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import master.Modelo;
+import master.konexioa;
 
 public class vLogin extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -19,6 +21,8 @@ public class vLogin extends JFrame {
     private JTextField textPasahitza;
     private JTextField textErabiltzailea;
     private Modelo modelo;
+
+    
 
     /**
      * Create the frame.
