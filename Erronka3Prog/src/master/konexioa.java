@@ -2,7 +2,7 @@ package master;
 import java.sql.*;
 
 public class konexioa {
-    public static Connection hasi() {//Konexioa Datu Basearekin// 
+    public Connection hasi() {//Konexioa Datu Basearekin// 
         Connection conexioa = null;
         try {
             conexioa = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zinema", "root", "");
@@ -19,7 +19,19 @@ public class konexioa {
             e.printStackTrace();
         }
     }
-    		
+    
+    public void fullLoad(Modelo modelo, Connection conexioa) {
+        konexioa k1= new konexioa();
+        modelo.setAretoak(k1.Aretoload(conexioa));
+    	modelo.setBezeroak(k1.Bezeroload(conexioa));
+    	modelo.setErosketak(k1.Erosketaload(conexioa));
+    	modelo.setFilmak(k1.Filmaload(conexioa));
+    	modelo.setSaioak(k1.Saioaload(conexioa));
+    	modelo.setSarrerak(k1.Sarreraload(conexioa));
+    	modelo.setZinemak(k1.Zinemaload(conexioa));
+    }
+    
+    
     public Aretoa[] Aretoload(Connection conexioa) { //Aretoaren Datuak Kargatu//  
         Aretoa[] aretoak = null;  
         try {
