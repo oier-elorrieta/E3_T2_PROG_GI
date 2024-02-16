@@ -1,6 +1,5 @@
 package vista;
 
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +12,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import master.Modelo;
-import master.konexioa;
 
 public class vLogin extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -21,8 +19,6 @@ public class vLogin extends JFrame {
     private JTextField textPasahitza;
     private JTextField textErabiltzailea;
     private Modelo modelo;
-
-    
 
     /**
      * Create the frame.
@@ -59,18 +55,16 @@ public class vLogin extends JFrame {
         JButton btnAdos = new JButton("Ados");
         btnAdos.addActionListener(new ActionListener() {
             /**
-             * Description: Bi bide zabaltzen dira, admin eta erabiltzailea, bakoitzak
-             * programan sartzeko modu desberdinak dira.
+             * Description: Egiaztatu erabiltzailea eta pasahitza modeloan
              */
             public void actionPerformed(ActionEvent e) {
-                if (loginAdmin()) {
-                    // Admin baldin bada, atera VAmenua
-                    JOptionPane.showMessageDialog(contentPane, "    Barruan zaude" + '\n' + "Administrazailearen baimenak");
-                } else if (textErabiltzailea.getText().equals("erabili") && textPasahitza.getText().equals("4321")) {
-                    // Erabiltzailea baldin bada, atera GeneroAutaketaMenua
-                    JOptionPane.showMessageDialog(contentPane, "    Barruan zaude" + '\n' + " Erabiltzailearen baimenak");
+            	System.out.println("IRAKURRITA");
+                if (egiaztatuDatuak()) {
+                    // Datuak koinsiditzen dute
+                    JOptionPane.showMessageDialog(contentPane, "Barruan zaude!");
                 } else {
-                    JOptionPane.showMessageDialog(contentPane, "Zeozer txarto idatzi duzu");
+                    // Datuak ez dute koinsiditzen
+                    JOptionPane.showMessageDialog(contentPane, "Zeozer txarto dago.");
                 }
             }
         });
@@ -79,12 +73,17 @@ public class vLogin extends JFrame {
     }
 
     /**
-     * Description: Berifikatu administratzailea
-     * 
-     * @return
+     * Description: Erabiltzailea eta pasahitza berifikatu.
      */
-    private boolean loginAdmin() {
-        boolean loginAdminOk = modelo.baieztatuAdmin(textErabiltzailea.getText(), textPasahitza.getText());
-        return loginAdminOk;
+    private boolean egiaztatuDatuak() {
+        // Erabiltzaile eta pasahitza lortu
+        String erabiltzailea = textErabiltzailea.getText();
+        String pasahitza = textPasahitza.getText();
+        Modelo.Kontsulta();
+        
+        // Metodora deitu erabiltzailea eta pasahitza berifikatzeko
+        boolean datuakBerif = modelo.baieztatuAdmin(erabiltzailea, pasahitza);
+        
+        return datuakBerif;
     }
 }

@@ -2,6 +2,7 @@ package master;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Objects;
 
 public class Filma {
     private int id;
@@ -12,7 +13,28 @@ public class Filma {
     private String zuzendaria;
     private String sinopsia;
 
-    public Filma() {}
+    
+    @Override
+	public int hashCode() {
+		return Objects.hash(generoa, id, iraupena, izena, prezioa, sinopsia, zuzendaria);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Filma other = (Filma) obj;
+		return Objects.equals(generoa, other.generoa) && id == other.id && iraupena == other.iraupena
+				&& Objects.equals(izena, other.izena)
+				&& Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa)
+				&& Objects.equals(sinopsia, other.sinopsia) && Objects.equals(zuzendaria, other.zuzendaria);
+	}
+
+	public Filma() {}
 
     public int getId() {
         return id;

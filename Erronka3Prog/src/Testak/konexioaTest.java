@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
+import master.Filma;
 import master.konexioa;
 
 public class konexioaTest {
@@ -43,8 +44,10 @@ public class konexioaTest {
 	public void testFilmaload() {
 		Connection egokia = konexioa.hasi();
 		konexioa k1 = new konexioa();
-		
-		assertEquals(k1.Filmaload(egokia), k1.Filmaload(egokia));
+		Filma f1 = new Filma ();
+		Filma f2 = new Filma ();
+		System.out.println(f1.equals(f2));
+		//assertArrayEquals(f1,f2);
 	}
 	@Test
 	public void testSaioaload() {

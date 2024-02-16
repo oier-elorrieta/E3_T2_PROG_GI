@@ -14,7 +14,8 @@ public class vEtorria extends JFrame {
 	private JProgressBar Karga;
 	private JLabel lblOngiEtorri;
 	private JLabel lblSakatu;
-	private Modelo Modelo;
+	private final Modelo Modelo;
+	 
 
 	/**
 	 * Description: Leio bat irekitzen da non edozein lekutan klik egin ahal den,
@@ -72,7 +73,8 @@ public class vEtorria extends JFrame {
 							}
 							Karga.setValue(i);
 						}
-						Modelo.irkeiLogin = true;
+						
+						Modelo.irekiLogin = true;
 						dispose();
 					}
 				});

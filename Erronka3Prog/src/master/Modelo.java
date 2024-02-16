@@ -1,12 +1,16 @@
 package master;
 
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 import vista.vLogin;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+
 import vista.vEtorria;
 
 public class Modelo {
@@ -17,13 +21,32 @@ public class Modelo {
     Saioa Saioak[];
     Sarrera Sarrerak[];
     Zinema Zinemak[];
-
+    
+    
+    public void ezarripelikulak(DefaultTableModel model) {
+		Zinema[] Zinemak = getZinemak();
+		for (int i = 0; i < Zinemak.length; i++) {
+			model.addRow(new Object[] { i, Zinemak[i].getIzena(), false});
+		}
+	}
+    
+    public static  void Kontsulta() {
+    	Date date1 = new Date();
+        Date date2 = new Date();
+       
+        Bezero[] bezeroArray = new Bezero[2];
+    
+        Bezero bezero1 = new Bezero("12345678A", "Jon", "Jon69", "Pérez", date1, "jon@gmail.com", 'M', "1234");
+        Bezero bezero2 = new Bezero("87654321B", "Ane", "Ane44", "González", date2, "ane@gmail.com", 'F', "4321");
+        
+        bezeroArray[0] = bezero1;
+        bezeroArray[1] = bezero2;
+        
+        setBezeroak(bezeroArray);
+    }
+    
 
     public boolean irekiLogin = false;
-
-	
-	
-	
     public Aretoa[] getAretoak() {
 		return Aretoak;
 	}
@@ -97,51 +120,21 @@ public class Modelo {
       // leioa ixteko
     }
     
+    
     public boolean baieztatuAdmin(String erabiltzailea, String pasahitza) {
         boolean login_ok_admin = false;
-        Connection conexioa = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-            // Datu basearekin konexioa egiteko
-            conexioa = konexioa.hasi();
-
-            // Datu baseari kontsulta egin
-            String query = "SELECT * FROM bezeroa WHERE Erabiltzailea = ? AND Pasahitza = ?";
-            ps = conexioa.prepareStatement(query);
-            ps.setString(1, erabiltzailea);
-            ps.setString(2, pasahitza);
-
-            // Hau, kontsulta exekutatzeko da
-            rs = ps.executeQuery();
-
-            // Berifikatu usuariorenbat dagoela Karakteristika hauekin
-            login_ok_admin = rs.next();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-           
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (conexioa != null) {
-                    conexioa.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+        // Arraya rekorritzen du, bigarren alea-tik zortzigarrenaraino
+        System.out.println(Bezeroak.length);
+        for (int i = 0; i < Bezeroak.length; i ++) {
+            // Erabiltzailearn izena eta pasahitza artu
+        	
+            if (Bezeroak[i].getErabiltzailea() == (erabiltzailea) && Bezeroak[i].getPasahitza() == (pasahitza)) {
+                login_ok_admin = true;
+                System.out.println("ONDO DAGO");
+                break; // Bukletik atera koinsidentzia aurkitzerakoan
             }
         }
 
         return login_ok_admin;
-    }
-
-    public static void main(String[] args) {
-        Modelo modelo = new Modelo();
-        modelo.abrirvEtorria();
     }
 }
