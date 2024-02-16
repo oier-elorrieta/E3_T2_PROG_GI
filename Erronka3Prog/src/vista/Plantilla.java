@@ -5,7 +5,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 import master.Modelo;
-import master.Zinema;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +27,8 @@ public class Plantilla extends JFrame {
 	 * @param Modelo
 	 */
 	public Plantilla(Modelo Modelo) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\in1dm3-d\\Downloads\\logoErronka2.jpg"));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\in1dm3-d\\Downloads\\logoErronka2.jpg"));
+		
 		// Hasierako leihoa konfiguratu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Admin menua");
@@ -47,20 +47,19 @@ public class Plantilla extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(table);
 		Modelo.ezarripelikulak(model);
 		// Gorde botoia sortu
-		JButton closeButton = new JButton("Atera");
+		JButton closeButton = new JButton("Jarraitu");
 		closeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Popup atera
-				int option = JOptionPane.showConfirmDialog(Plantilla.this, "Ziur zaude atera nahi duzula?", "Atera",
-						JOptionPane.YES_NO_OPTION);
-				// Verificar la opción seleccionada por el usuario
-				if (option == JOptionPane.YES_OPTION) {
-					dispose();
-					SwingUtilities.invokeLater(new Runnable() {
-						public void run() {
-							new vLogin(Modelo).setVisible(true);
-						}
-					});
+				int rowCount = model.getRowCount();
+				// Fila bat baino gehiago dagoela konfirmatu
+				if (rowCount > 1) {
+					int selectedRow = table.getSelectedRow();
+					if (selectedRow >= 0) {
+						model.removeRow(selectedRow);
+						JOptionPane.showMessageDialog(Plantilla.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
+					}
+				} else {
+					JOptionPane.showMessageDialog(Plantilla.this, "Aukeratu Zinema bat", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -113,7 +112,7 @@ public class Plantilla extends JFrame {
 		// Radio button bakarra aukeratuta dagoela berifikatu
 		public Object getCellEditorValue(DefaultTableModel model) {
 			for (int i = 0; i < model.getRowCount(); i++) {
-				model.setValueAt(i == selectedRow, i, 4);
+				model.setValueAt(i == selectedRow, i, 2);
 			}
 			return true;
 		}
