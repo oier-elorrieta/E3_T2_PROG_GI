@@ -32,6 +32,19 @@ public class konexioa {
     }
     
     
+    
+    public void fullLoadG(Modelo modelo, Connection conexioa) {
+        konexioa k1= new konexioa();
+        modelo.setAretoak(k1.Aretoload(conexioa));
+    	modelo.setBezeroak(k1.Bezeroload(conexioa));
+    	modelo.setErosketak(k1.Erosketaload(conexioa));
+    	modelo.setFilmak(k1.Filmaload(conexioa));
+    	modelo.setSaioak(k1.Saioaload(conexioa));
+    	modelo.setSarrerak(k1.Sarreraload(conexioa));
+    	modelo.setZinemak(k1.Zinemaload(conexioa));
+    }
+    
+    
     public Aretoa[] Aretoload(Connection conexioa) { //Aretoaren Datuak Kargatu//  
         Aretoa[] aretoak = null;  
         try {
@@ -146,7 +159,7 @@ public class konexioa {
 	        // Prestatu sententzia
 	        int i = 0;
 	        Statement s1 = conexioa.createStatement();
-	        String sql = "select * from saioa";
+	        String sql = "SELECT * FROM saioa";
 	        ResultSet lerroak = s1.executeQuery(sql);
 	        int count = 0;
 	        while(lerroak.next()) {
@@ -222,7 +235,7 @@ public class konexioa {
 	        // Prestatu sententzia
 	        int i = 0;
 	        Statement s1 = conexioa.createStatement();
-	        String sql = "select * from zinema";
+	        String sql = "SELECT * FROM zinema WHERE id=1";
 	        ResultSet lerroak = s1.executeQuery(sql);
 	        int count = 0;
 	        while(lerroak.next()) {
