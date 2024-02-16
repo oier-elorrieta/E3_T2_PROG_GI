@@ -35,13 +35,18 @@ public class Modelo {
         
         return datuakBerif;
     }
-    public void ezarripelikulak(DefaultTableModel model) {
+    public void ezarrizinemak(DefaultTableModel model) {
 		Zinema[] Zinemak = getZinemak();
 		for (int i = 0; i < Zinemak.length; i++) {
 			model.addRow(new Object[] { i, Zinemak[i].getIzena(), false});
 		}
 	}
-    
+    public void ezarrifilmak(DefaultTableModel model) {
+		Filma[] Filmak = getFilmak();
+		for (int i = 0; i < Filmak.length; i++) {
+			model.addRow(new Object[] { i, Filmak[i].getIzena(), false});
+		}
+	}
     public  void Kontsulta() {
     	Date date1 = new Date();
         Date date2 = new Date();
