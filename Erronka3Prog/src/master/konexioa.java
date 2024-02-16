@@ -36,7 +36,6 @@ public class konexioa {
         Aretoa[] aretoak = null;  
         try {
               conexioa = konexioa.hasi();
-              System.out.println("Konektatuta");
               // Prestatu sententzia
               int i = 0;
               Statement s1 = conexioa.createStatement();
@@ -70,7 +69,6 @@ public class konexioa {
 		 Bezero[] bezeroak = null;;
 		 try {
 	    	   conexioa = konexioa.hasi();
-	           System.out.println("Konektatuta");
 	           // Prestatu sententzia
 	           int i = 0;
 	           Statement s1 = conexioa.createStatement();
@@ -83,7 +81,6 @@ public class konexioa {
 	           bezeroak =  new Bezero[count];
 	           lerroak = s1.executeQuery(sql);
 	           while (lerroak.next()) {
-	        	   System.out.println("a");
 	        	   Bezero bezeroa = new Bezero();
 	               bezeroa.setNan(lerroak.getString("NAN"));
 	               bezeroa.setErabiltzailea(lerroak.getString("Erabiltzailea"));
@@ -105,7 +102,6 @@ public class konexioa {
     public Filma[] Filmaload(Connection conexioa) {  //Filmen Datuak Kargatu//
         Filma[] filmak = null;
         try {
-            System.out.println("Konektatuta");
             // Preparar sentencia
             Statement s1 = conexioa.createStatement();
             String sql = "select * from filma";
@@ -132,9 +128,6 @@ public class konexioa {
         } catch (Exception sqe) {
             sqe.printStackTrace();
         }
-        for (int j = 0; j < filmak.length; j++) {
-            System.out.println(filmak[j].toString());
-        }
         return filmak;
     }
     
@@ -142,7 +135,6 @@ public class konexioa {
 	    Saioa[] saioak = null;  
 	    try {
 	        conexioa = konexioa.hasi();
-	        System.out.println("Konektatuta");
 	        // Prestatu sententzia
 	        int i = 0;
 	        Statement s1 = conexioa.createStatement();
@@ -183,7 +175,6 @@ public class konexioa {
 	    Sarrera[] sarrerak = null;  
 	    try {
 	        conexioa = konexioa.hasi();
-	        System.out.println("Konektatuta");
 	        // Prestatu sententzia
 	        int i = 0;
 	        Statement s1 = conexioa.createStatement();
@@ -218,7 +209,6 @@ public class konexioa {
 	    Zinema[] zinemak = null;  
 	    try {
 	        conexioa = konexioa.hasi();
-	        System.out.println("Konektatuta");
 	        // Prestatu sententzia
 	        int i = 0;
 	        Statement s1 = conexioa.createStatement();
@@ -260,7 +250,6 @@ public class konexioa {
 	    Erosketa[] erosketak = null;  
 	    try {
 	        conexioa = konexioa.hasi();
-	        System.out.println("Konektatuta");
 	        // Prestatu sententzia
 	        int i = 0;
 	        Statement s1 = conexioa.createStatement();

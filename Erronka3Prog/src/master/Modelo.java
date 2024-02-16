@@ -1,6 +1,8 @@
 package master;
 
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 import vista.vLogin;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,9 +22,6 @@ public class Modelo {
 
 
     public boolean irekiLogin = false;
-
-	
-	
 	
     public Aretoa[] getAretoak() {
 		return Aretoak;
