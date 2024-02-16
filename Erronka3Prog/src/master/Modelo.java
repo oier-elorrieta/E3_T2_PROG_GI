@@ -3,6 +3,8 @@ package master;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 import vista.vLogin;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,7 +24,6 @@ public class Modelo {
     Sarrera Sarrerak[];
     Zinema Zinemak[];
     
-    
 
     public boolean egiaztatuDatuak(JTextField lblErabiltzailea,JTextField  lblPasahitza) {
         // Erabiltzaile eta pasahitza lortu
@@ -34,6 +35,12 @@ public class Modelo {
         
         return datuakBerif;
     }
+    public void ezarripelikulak(DefaultTableModel model) {
+		Zinema[] Zinemak = getZinemak();
+		for (int i = 0; i < Zinemak.length; i++) {
+			model.addRow(new Object[] { i, Zinemak[i].getIzena(), false});
+		}
+	}
     
     public  void Kontsulta() {
     	Date date1 = new Date();
@@ -53,8 +60,8 @@ public class Modelo {
     
 
     public boolean irekiLogin = false;
-
-    public Aretoa[] getAretoak(	) {
+    
+    public Aretoa[] getAretoak() {
 		return Aretoak;
 	}
 
