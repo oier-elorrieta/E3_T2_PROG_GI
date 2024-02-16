@@ -31,9 +31,9 @@ public class SarreraTest {
 	  Erosketa erosketa = new Erosketa(2, 24, 20, date2, 123, bezero1, null);
 	  Erosketa erosketa2 = new Erosketa(0, 0, 0, date2, 0, bezero2, null);
 	  
-	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, erosketa);
-      Sarrera sarrera2 = new Sarrera(1, saioa1, 5.0f, erosketa);
-      Sarrera sarrera3 = new Sarrera(2, saioa2, 5.0f, erosketa2);
+	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, 3);
+      Sarrera sarrera2 = new Sarrera(1, saioa1, 5.0f, 3);
+      Sarrera sarrera3 = new Sarrera(2, saioa2, 5.0f, 2);
       assertTrue(sarrera1.equals(sarrera2));
       assertFalse(sarrera1.equals(sarrera3));
   }
@@ -55,9 +55,9 @@ public class SarreraTest {
 	  Erosketa erosketa = new Erosketa(2, 24, 20, date, 123, bezero1, null);
 	  Erosketa erosketa2 = new Erosketa(0, 0, 0, date, 0, bezero2, null);
 	  
-	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, erosketa);
-      Sarrera sarrera2 = new Sarrera(1, saioa1, 5.0f, erosketa);
-      Sarrera sarrera3 = new Sarrera(2, saioa2, 5.0f, erosketa2);
+	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, 3);
+      Sarrera sarrera2 = new Sarrera(1, saioa1, 5.0f, 3);
+      Sarrera sarrera3 = new Sarrera(2, saioa2, 5.0f, 2);
     
       assertEquals(sarrera1.hashCode(), sarrera2.hashCode());
       assertNotEquals(sarrera1.hashCode(), sarrera3.hashCode());
@@ -73,7 +73,7 @@ public class SarreraTest {
 	  Erosketa erosketa = new Erosketa(2, 24, 20, date, 123, bezero1, null);
 	  
 			  
-	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, erosketa);
+	  Sarrera sarrera1 = new Sarrera(1, saioa1, 5.0f, 3);
 	  // comparacion mala
 	  String expected = "Sarrera [1, saioa1, 5.0f, erosketa]";
 	  assertEquals(sarrera1.toString(), sarrera1.toString());
@@ -88,7 +88,7 @@ public class SarreraTest {
   
 	  Bezero bezero1 = new Bezero("12345678A", "Juan","juan", "Deavila", date, "juan@gmail.com", 'G',"pasahitz123");
 	  
-      Sarrera sarrera = new Sarrera(0, saioa1, 0, null);
+      Sarrera sarrera = new Sarrera(0, saioa1, 0.5f, 3);
 
       // Setterren balioak
       sarrera.setId(1);
