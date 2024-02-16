@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 
 
 
-public class Plantilla extends JFrame {
+public class vFilma extends JFrame {
 	/**
 	 * Description: Hasierako aldagaiak
 	 */
@@ -26,7 +26,7 @@ public class Plantilla extends JFrame {
 	 *
 	 * @param Modelo
 	 */
-	public Plantilla(Modelo Modelo) {
+	public vFilma(Modelo Modelo) {
 		//setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\in1dm3-d\\Downloads\\logoErronka2.jpg"));
 		
 		// Hasierako leihoa konfiguratu
@@ -45,7 +45,7 @@ public class Plantilla extends JFrame {
 		table.getColumnModel().getColumn(2).setCellRenderer(new RadioButtonRenderer());
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
-		Modelo.ezarrizinemak(model);
+		Modelo.ezarrifilmak(model);
 		// Gorde botoia sortu
 		JButton closeButton = new JButton("Jarraitu");
 		closeButton.addActionListener(new ActionListener() {
@@ -56,10 +56,10 @@ public class Plantilla extends JFrame {
 					int selectedRow = table.getSelectedRow();
 					if (selectedRow >= 0) {
 						model.removeRow(selectedRow);
-						JOptionPane.showMessageDialog(Plantilla.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(vFilma.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
 					}
 				} else {
-					JOptionPane.showMessageDialog(Plantilla.this, "Aukeratu Zinema bat", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(vFilma.this, "Aukeratu Zinema bat", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
