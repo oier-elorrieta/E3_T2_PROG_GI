@@ -122,13 +122,5 @@ public class Plantilla extends JFrame {
 		}
 	}
 	
-	/*Modelora*/
-    public void ezarripelikulak(DefaultTableModel model) {
-		Zinema[] Zinemak = getZinemak();
-		for (int i = 0; i < Zinemak.length; i++) {
-			model.addRow(new Object[] { i, Zinemak[i].getIzena(), false});
-		}
-	}
-	
 }
 

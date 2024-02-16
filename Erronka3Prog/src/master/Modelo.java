@@ -23,6 +23,12 @@ public class Modelo {
     Zinema Zinemak[];
     
     
+    public void ezarripelikulak(DefaultTableModel model) {
+		Zinema[] Zinemak = getZinemak();
+		for (int i = 0; i < Zinemak.length; i++) {
+			model.addRow(new Object[] { i, Zinemak[i].getIzena(), false});
+		}
+	}
     
     public static  void Kontsulta() {
     	Date date1 = new Date();
