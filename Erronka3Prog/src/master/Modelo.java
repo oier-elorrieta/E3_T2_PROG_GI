@@ -1,5 +1,7 @@
 package master;
 
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import vista.vLogin;
 import java.sql.Connection;
@@ -21,8 +23,19 @@ public class Modelo {
     Zinema Zinemak[];
     
     
+
+    public boolean egiaztatuDatuak(JTextField lblErabiltzailea,JTextField  lblPasahitza) {
+        // Erabiltzaile eta pasahitza lortu
+        String erabiltzailea = lblErabiltzailea.getText();
+        String pasahitza = lblPasahitza.getText();
+       
+        // Metodora deitu erabiltzailea eta pasahitza berifikatzeko
+        boolean datuakBerif = baieztatuAdmin(erabiltzailea, pasahitza);
+        
+        return datuakBerif;
+    }
     
-    public static  void Kontsulta() {
+    public  void Kontsulta() {
     	Date date1 = new Date();
         Date date2 = new Date();
        
@@ -35,12 +48,13 @@ public class Modelo {
         bezeroArray[1] = bezero2;
         
         setBezeroak(bezeroArray);
+        System.out.println(this.Bezeroak.length);
     }
     
 
     public boolean irekiLogin = false;
 
-    public Aretoa[] getAretoak() {
+    public Aretoa[] getAretoak(	) {
 		return Aretoak;
 	}
 
@@ -118,16 +132,51 @@ public class Modelo {
         boolean login_ok_admin = false;
         // Arraya rekorritzen du, bigarren alea-tik zortzigarrenaraino
         System.out.println(Bezeroak.length);
-        for (int i = 0; i < Bezeroak.length; i ++) {
-            // Erabiltzailearn izena eta pasahitza artu
-        	
-            if (Bezeroak[i].getErabiltzailea() == (erabiltzailea) && Bezeroak[i].getPasahitza() == (pasahitza)) {
-                login_ok_admin = true;
-                System.out.println("ONDO DAGO");
-                break; // Bukletik atera koinsidentzia aurkitzerakoan
+        int pos = 0;
+        boolean aurkituta = false;
+        while (pos<Bezeroak.length && aurkituta==false) {
+        	System.out.println(Bezeroak[pos].getErabiltzailea());
+        	System.out.println(erabiltzailea);
+        	if (Bezeroak[pos].getErabiltzailea().equals(erabiltzailea)) {
+                aurkituta = true;
+        	}
+        	pos++;
+        }
+       if (aurkituta) {
+    	   pos--;
+    	   System.out.println("Encuentra");
+    	   if (Bezeroak[pos].getPasahitza().equals(pasahitza)) {
+    		   System.out.println("Barruan");
+    		   login_ok_admin = true;
+    	   }
+       }    	   
+        return login_ok_admin;
+    }
+   /*  boolean login_ok_admin = false;
+      //  boolean[] emaitzak = new boolean[2];
+     //   
+    //    emaitzak[0] = false;
+      //  emaitzak[2] = false;
+        // Arraya rekorritzen du
+        // System.out.println(Bezeroak.length);
+        for (int i = 0; i < Bezeroak.length; i++) {
+            // Erabiltzailearen izena aztertu
+            if (Bezeroak[i].getErabiltzailea().equals(erabiltzailea)) {
+                // Pasahitza aztertu
+            	//emaitzak[1] = true;
+            	System.out.println("pasatu da 1");
+            if (Bezeroak[i].getPasahitza().equals(pasahitza)) {
+            	System.out.println("pasatu da 2");
+            	//emaitzak[2] = true;
+                    // Si ambos son iguales, establecemos login_ok_admin en true y salimos del bucle
+                    login_ok_admin = true;
+                    
+                    break;
+                }
             }
         }
 
         return login_ok_admin;
     }
+    */
 }

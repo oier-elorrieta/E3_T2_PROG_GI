@@ -58,8 +58,11 @@ public class vLogin extends JFrame {
              * Description: Egiaztatu erabiltzailea eta pasahitza modeloan
              */
             public void actionPerformed(ActionEvent e) {
-            	System.out.println("IRAKURRITA");
-                if (egiaztatuDatuak()) {
+            	
+            	modelo.Kontsulta();
+            	 //String erabiltzailea = textErabiltzailea.getText();
+                 //String pasahitza = textPasahitza.getText();
+                if (modelo.egiaztatuDatuak(textErabiltzailea, textPasahitza)) {
                     // Datuak koinsiditzen dute
                     JOptionPane.showMessageDialog(contentPane, "Barruan zaude!");
                 } else {
@@ -75,15 +78,15 @@ public class vLogin extends JFrame {
     /**
      * Description: Erabiltzailea eta pasahitza berifikatu.
      */
-    private boolean egiaztatuDatuak() {
-        // Erabiltzaile eta pasahitza lortu
-        String erabiltzailea = textErabiltzailea.getText();
-        String pasahitza = textPasahitza.getText();
-        Modelo.Kontsulta();
-        
+   /* private boolean egiaztatuDatuak() {
+       // Erabiltzaile eta pasahitza lortu
+       
+        System.out.println(erabiltzailea);
         // Metodora deitu erabiltzailea eta pasahitza berifikatzeko
         boolean datuakBerif = modelo.baieztatuAdmin(erabiltzailea, pasahitza);
         
         return datuakBerif;
-    }
+    }*/
+    
+
 }
