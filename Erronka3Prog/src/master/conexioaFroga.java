@@ -9,32 +9,7 @@ import java.sql.Statement;
 import java.util.Date;
 
 public class conexioaFroga {
-	public static void main(String[] args) {
-		Connection conexioa = null; // Debes inicializar la conexión
-		conexioa = konexioa.hasi();
-		System.out.println("Konektatuta");
-
-		// Cargar cines
-		conexioaFroga froga = new conexioaFroga();
-		Zinema[] cines = froga.Zinemaload(conexioa);
-
-		// Imprimir los resultados para verificar si se han cargado correctamente
-		for (Zinema cine : cines) {
-			if (cine != null) {
-				System.out.println("Cine ID: " + cine.getId());
-				System.out.println("Nombre del cine: " + cine.getIzena());
-				Aretoa[] salas = cine.getAretoak();
-				if (salas != null) {
-					for (Aretoa sala : salas) {
-						System.out.println("  Sala ID: " + sala.getId());
-						System.out.println("  Nombre de la sala: " + sala.getIzena());
-					}
-				}
-				System.out.println("----------------------------------");
-			}
-		}
-	}
-
+	
 	public Zinema[] fullLoad(Connection conexioa) {
 		 Zinema[] zinemak = null;
 		 try {
@@ -98,8 +73,16 @@ public class conexioaFroga {
 		            	saioa.setId(s1.executeQuery(sql).getInt("IdSaioa"));
 		            	saioa.setData(s1.executeQuery(sql).getDate("S_Data"));
 		            	Filma filma = new Filma();
-		            	saioa.setFilma(filma);
+		            	sql = "SELECT f.* FROM Filma f inner join Saioa s using (idfilma) WHERE IdSaioa = "+ s +" and idZinema = " + i;
+		            	filma.setId(s1.executeQuery(sql).getInt("idfilma"));
+		            	filma.setIraupena(s1.executeQuery(sql).getInt("iraupena"));
+		            	filma.setGeneroa(s1.executeQuery(sql).getString("generoa"));
+		            	filma.setPrezioa(s1.executeQuery(sql).getDouble("Prezioa"));
+		            	filma.setIzena(s1.executeQuery(sql).getString("izenburua"));
+		            	filma.setZuzendaria(s1.executeQuery(sql).getString("Zuzendaria"));
+		            	filma.setSinopsia(s1.executeQuery(sql).getString("Sinopsia"));
 		            	
+		            	saioa.setFilma(filma);
 		            	Saioak[s] = saioa;
 		            	s++;
 		            }

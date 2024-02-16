@@ -29,7 +29,7 @@ public class Modelo {
         // Erabiltzaile eta pasahitza lortu
         String erabiltzailea = lblErabiltzailea.getText();
         String pasahitza = lblPasahitza.getText();
-       
+        
         // Metodora deitu erabiltzailea eta pasahitza berifikatzeko
         boolean datuakBerif = baieztatuAdmin(erabiltzailea, pasahitza);
         
