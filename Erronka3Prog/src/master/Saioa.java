@@ -64,6 +64,7 @@ public class Saioa {
 		public Saioa() {
 		}
 		
+
 		public Saioa[] load(Connection conexioa) {   
 		    Saioa[] saioak = null;  
 		    try {
@@ -108,4 +109,5 @@ public class Saioa {
 		    return saioak;
 		}
 			
+
 }
