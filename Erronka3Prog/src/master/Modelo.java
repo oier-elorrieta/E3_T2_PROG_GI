@@ -22,17 +22,6 @@ public class Modelo {
     public int asaioa = 0;
     public boolean irekiLogin = false;
     
-    public void zinemaproba() {
-    	Aretoa aretoa2 = new Aretoa(1, "");
-    	Aretoa[] aretoarray = new Aretoa[]{aretoa2};
-        Saioa[] saio = new Saioa[1];
-
-        Zinema zinema1 = new Zinema(23, "izena", "Helbidea", "kontaktua", "deskribapena", aretoarray, saio);
-        Zinema zinema2 = new Zinema(23, "izena", "Helbidea", "kontaktua", "deskribapena", aretoarray, saio);
-        Zinemak = new Zinemak[]{zinema1, zinema2};
-        setZinemak(Zinemak);
-    }
-    
     
     public boolean egiaztatuDatuak(JTextField lblErabiltzailea,JTextField  lblPasahitza) {
         // Erabiltzaile eta pasahitza lortu
@@ -57,21 +46,7 @@ public class Modelo {
 			model.addRow(new Object[] { i, Filmak[i].getIzena(), false});
 		}
 	}
-    public  void Kontsulta() {
-    	Date date1 = new Date();
-        Date date2 = new Date();
-       
-        Bezero[] bezeroArray = new Bezero[2];
-    
-        Bezero bezero1 = new Bezero("12345678A", "Jon", "Jon69", "Pérez", date1, "jon@gmail.com", 'M', "1234");
-        Bezero bezero2 = new Bezero("87654321B", "Ane", "Ane44", "González", date2, "ane@gmail.com", 'F', "4321");
-        
-        bezeroArray[0] = bezero1;
-        bezeroArray[1] = bezero2;
-        
-        setBezeroak(bezeroArray);
-        System.out.println(this.Bezeroak.length);
-    }
+
     
 
     
