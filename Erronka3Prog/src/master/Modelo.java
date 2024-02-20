@@ -16,13 +16,18 @@ import java.util.Date;
 import vista.vEtorria;
 
 public class Modelo {
+	//
     Aretoa Aretoak[];
     Bezero Bezeroak[];
     Erosketa Erosketak[];
     Filma Filmak[];
     Saioa Saioak[];
     Sarrera Sarrerak[];
+    //
     Zinema Zinemak[];
+    int azinema = 0;
+    int afilma = 0;
+    int asaioa = 0;
     
 
     public boolean egiaztatuDatuak(JTextField lblErabiltzailea,JTextField  lblPasahitza) {
@@ -43,6 +48,7 @@ public class Modelo {
 	}
     public void ezarrifilmak(DefaultTableModel model) {
 		Filma[] Filmak = getFilmak();
+		//Filma[] filmak = Zinemak[azinema].getFilmak();
 		for (int i = 0; i < Filmak.length; i++) {
 			model.addRow(new Object[] { i, Filmak[i].getIzena(), false});
 		}
@@ -164,31 +170,4 @@ public class Modelo {
        }    	   
         return login_ok_admin;
     }
-   /*  boolean login_ok_admin = false;
-      //  boolean[] emaitzak = new boolean[2];
-     //   
-    //    emaitzak[0] = false;
-      //  emaitzak[2] = false;
-        // Arraya rekorritzen du
-        // System.out.println(Bezeroak.length);
-        for (int i = 0; i < Bezeroak.length; i++) {
-            // Erabiltzailearen izena aztertu
-            if (Bezeroak[i].getErabiltzailea().equals(erabiltzailea)) {
-                // Pasahitza aztertu
-            	//emaitzak[1] = true;
-            	System.out.println("pasatu da 1");
-            if (Bezeroak[i].getPasahitza().equals(pasahitza)) {
-            	System.out.println("pasatu da 2");
-            	//emaitzak[2] = true;
-                    // Si ambos son iguales, establecemos login_ok_admin en true y salimos del bucle
-                    login_ok_admin = true;
-                    
-                    break;
-                }
-            }
-        }
-
-        return login_ok_admin;
-    }
-    */
 }
