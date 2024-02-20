@@ -21,20 +21,26 @@ public class Modelo {
     public int afilma = 0;
     public int asaioa = 0;
     public boolean irekiLogin = false;
+    private boolean loginOk = false;
     
-    public void zinemaproba() {
-    	Aretoa aretoa2 = new Aretoa(1, "");
-    	Aretoa[] aretoarray = new Aretoa[]{aretoa2};
-        Saioa[] saio = new Saioa[1];
-
-        Zinema zinema1 = new Zinema(23, "izena", "Helbidea", "kontaktua", "deskribapena", aretoarray, saio);
-        Zinema zinema2 = new Zinema(23, "izena", "Helbidea", "kontaktua", "deskribapena", aretoarray, saio);
-        Zinemak = new Zinemak[]{zinema1, zinema2};
-        setZinemak(Zinemak);
-    }
+    private Bezero[] bezeroak;
     
     
-    public boolean egiaztatuDatuak(JTextField lblErabiltzailea,JTextField  lblPasahitza) {
+    
+    
+    public Bezero[] getBezeroak() {
+		return bezeroak;
+	}
+	public void setBezeroak(Bezero[] bezeroak) {
+		this.bezeroak = bezeroak;
+	}
+	public boolean isLoginOk() {
+		return loginOk;
+	}
+	public void setLoginOk(boolean loginOk) {
+		this.loginOk = loginOk;
+	}
+	public boolean egiaztatuDatuak(JTextField lblErabiltzailea,JTextField  lblPasahitza) {
         // Erabiltzaile eta pasahitza lortu
         String erabiltzailea = lblErabiltzailea.getText();
         String pasahitza = lblPasahitza.getText();
@@ -51,27 +57,13 @@ public class Modelo {
 		}
 	}
     public void ezarrifilmak(DefaultTableModel model) {
-		Filma[] Filmak = getFilmak();
+		Filma[] Filmak = getfilmak();
 		//Filma[] filmak = Zinemak[azinema].getFilmak();
 		for (int i = 0; i < Filmak.length; i++) {
 			model.addRow(new Object[] { i, Filmak[i].getIzena(), false});
 		}
 	}
-    public  void Kontsulta() {
-    	Date date1 = new Date();
-        Date date2 = new Date();
-       
-        Bezero[] bezeroArray = new Bezero[2];
-    
-        Bezero bezero1 = new Bezero("12345678A", "Jon", "Jon69", "Pérez", date1, "jon@gmail.com", 'M', "1234");
-        Bezero bezero2 = new Bezero("87654321B", "Ane", "Ane44", "González", date2, "ane@gmail.com", 'F', "4321");
-        
-        bezeroArray[0] = bezero1;
-        bezeroArray[1] = bezero2;
-        
-        setBezeroak(bezeroArray);
-        System.out.println(this.Bezeroak.length);
-    }
+
     
 
     
@@ -105,13 +97,13 @@ public class Modelo {
     public boolean baieztatuAdmin(String erabiltzailea, String pasahitza) {
         boolean login_ok_admin = false;
         // Arraya rekorritzen du, bigarren alea-tik zortzigarrenaraino
-        System.out.println(Bezeroak.length);
+        System.out.println(bezeroak.length);
         int pos = 0;
         boolean aurkituta = false;
-        while (pos<Bezeroak.length && aurkituta==false) {
-        	System.out.println(Bezeroak[pos].getErabiltzailea());
+        while (pos < bezeroak.length && aurkituta==false) {
+        	System.out.println(bezeroak[pos].getErabiltzailea());
         	System.out.println(erabiltzailea);
-        	if (Bezeroak[pos].getErabiltzailea().equals(erabiltzailea)) {
+        	if (bezeroak[pos].getErabiltzailea().equals(erabiltzailea)) {
                 aurkituta = true;
         	}
         	pos++;
@@ -119,11 +111,13 @@ public class Modelo {
        if (aurkituta) {
     	   pos--;
     	   System.out.println("Encuentra");
-    	   if (Bezeroak[pos].getPasahitza().equals(pasahitza)) {
+    	   if (bezeroak[pos].getPasahitza().equals(pasahitza)) {
     		   System.out.println("Barruan");
     		   login_ok_admin = true;
     	   }
        }    	   
         return login_ok_admin;
     }
+    
+    
 }

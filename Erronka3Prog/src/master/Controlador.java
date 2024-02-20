@@ -16,7 +16,8 @@ public class Controlador {
         Connection saioa = k1.hasi();
         System.out.println("Konexioa burutu da");
         
-        k1.fullLoad(saioa);
+        k1.fullLoad(saioa, mDatuak);
+        k1.bezeroLoad(saioa, mDatuak);
 
         vEtorria Ongipanel = new vEtorria(mDatuak);
         Ongipanel.setVisible(true);
@@ -31,10 +32,9 @@ public class Controlador {
         
         Ongipanel.dispose();
 
-
-        
-        if (loginOk == true ) {
-        	
-        }
+        vLogin vLogin = new vLogin(mDatuak);
+		vLogin.setVisible(true);
+		if (mDatuak.isLoginOk() == true)
+		vLogin.dispose();
     }
 }
