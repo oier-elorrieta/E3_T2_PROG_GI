@@ -98,13 +98,14 @@ public class vData extends JFrame {
 
             // probak egiteko datak
             String[] fechasPrueba = { "2024-03-15", "2024-04-10", "2024-05-05" };
-            Saioak[] saioak = new Zinema[mDatuak.azinema]
-
+            Zinema[] zinemak = mDatuak.getZinemak();
+            Saioa[] saioak = zinemak[mDatuak.azinema].getSaioak();
+            
             // Egiaztatu probako datekin
             boolean dataZuzena = false;
             
-            for (String fecha : fechasPrueba) {
-                if (aukeratutakoData.equals(fecha)) {
+            for (Saioa saioa : saioak) {
+                if (aukeratutakoData.equals(saioa)) {
                     dataZuzena = true;
                     break;
                 }
