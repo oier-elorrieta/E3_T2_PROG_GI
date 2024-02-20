@@ -14,7 +14,9 @@ public class konexioa {
     
     public void itxi(Connection conexioa) {
         try {
-            conexioa.close();
+            if (conexioa != null && !conexioa.isClosed()) {
+                conexioa.close();
+            }
         } catch (SQLException e) { 
             e.printStackTrace();
         }
@@ -22,97 +24,139 @@ public class konexioa {
     
     
     //CONEXIOFROGARENA
-    public Zinema[] fullLoad(Connection conexioa) {
-    	System.out.println("FUNCIONA");
-		 Zinema[] zinemak = null;
-		 try {
-		        conexioa = konexioa.hasi();
-		        // Prestatu sententzia
-		        int i = 0;
-		        int a = 0;
-		        int s = 0;
-		        Statement s1 = conexioa.createStatement();
-		        String sql = "SELECT * FROM zinema";
-		        ResultSet lerroak = s1.executeQuery(sql);
-		        int count = 0;
-		        while(lerroak.next()) {
-		            count++;
-		        }
-		        zinemak = new Zinema[count];
-		        lerroak = s1.executeQuery(sql);
-		        while (lerroak.next()) {
-		            Zinema zinema = new Zinema();
-		            zinema.setId(lerroak.getInt("idzinema"));
-		            zinema.setIzena(lerroak.getString("Izena"));
-		            zinema.setHelbidea(lerroak.getString("Helbidea"));
-		            zinema.setKontaktua(lerroak.getString("Kontaktua"));
-		            zinema.setDeskribapena(lerroak.getString("Deskribapena"));
-		            
-		            //Aretoa kalkulatu
-		            Aretoa[] Aretoak = null;
-		            a = 0;
-		            sql = "SELECT * FROM Aretoa WHERE idZinema = " + i;
-		            while(s1.executeQuery(sql).next()) {
-		            	a++;
-		            }
-		            Aretoak = new Aretoa[a];
-		            a = 0;
-		            while(s1.executeQuery(sql).next()) {
-		            	Aretoa aretoa = new Aretoa(); 
-			            aretoa.setId(lerroak.getInt("idAretoa"));
-			            aretoa.setIzena(lerroak.getString("Izena"));
-			            Aretoak[a] = aretoa;
-			            a++;
-		            }
-		            zinema.setAretoak(Aretoak);
-		            
-		            //Saioak kalkulatu
-		            Saioa[] Saioak = null;
-		            s = 0;
-		            sql = "SELECT * FROM Saioa WHERE idZinema = " + i + " order by s_data asc"; // Datarik baxuena lehen
-		            while(s1.executeQuery(sql).next()) {
-		            	s++;
-		            }
-		            Saioak = new Saioa[s];
-		            s = 0;
-		            /*
-		    		private int id;
-		    		private Date data;
-		    		private Filma filma;
-		    		private Aretoa areto;*/
-		            
-		            while(s1.executeQuery(sql).next()) {
-		            	Saioa saioa = new Saioa();
-		            	saioa.setId(s1.executeQuery(sql).getInt("IdSaioa"));
-		            	saioa.setData(s1.executeQuery(sql).getDate("S_Data"));
-		            	Filma filma = new Filma();
-		            	sql = "SELECT f.* FROM Filma f inner join Saioa s using (idfilma) WHERE IdSaioa = "+ s +" and idZinema = " + i;
-		            	filma.setId(s1.executeQuery(sql).getInt("idfilma"));
-		            	filma.setIraupena(s1.executeQuery(sql).getInt("iraupena"));
-		            	filma.setGeneroa(s1.executeQuery(sql).getString("generoa"));
-		            	filma.setPrezioa(s1.executeQuery(sql).getDouble("Prezioa"));
-		            	filma.setIzena(s1.executeQuery(sql).getString("izenburua"));
-		            	filma.setZuzendaria(s1.executeQuery(sql).getString("Zuzendaria"));
-		            	filma.setSinopsia(s1.executeQuery(sql).getString("Sinopsia"));
-		            	
-		            	saioa.setFilma(filma);
-		            	Saioak[s] = saioa;
-		            	s++;
-		            }
-		            zinema.setSaioak(Saioak);
-		            zinemak[i] = zinema;
-		            i++;
-		        }
-		    } catch (Exception sqe) {
-		        sqe.printStackTrace();
-		    }		
-		 		
-		 			
-		 
-		 return zinemak;
-		 
-		 
-		 
-	 }
-     
+    public void fullLoad(Connection conexioa, Modelo mDatuak) {
+        System.out.println("FUNCIONA");
+        Zinema[] zinemak = null;
+        try {
+            int i = 0;
+            Statement s1 = conexioa.createStatement();
+            String sql = "SELECT * FROM zinema where Idzinema < 6";
+            try (ResultSet lerroak = s1.executeQuery(sql)) {
+                int count = 0;
+                while(lerroak.next()) {
+                    count++;
+                }
+                zinemak = new Zinema[count];
+            }
+            
+            try (ResultSet lerroak = s1.executeQuery(sql)) {
+                while (lerroak.next()) {
+                    Zinema zinema = new Zinema();
+                    zinema.setId(lerroak.getInt("idzinema"));
+                    zinema.setIzena(lerroak.getString("Izena"));
+                    zinema.setHelbidea(lerroak.getString("Herria"));
+                    zinema.setKontaktua(lerroak.getString("Kontaktua"));
+                    zinema.setDeskribapena(lerroak.getString("Deskribapena"));
+                    System.out.println("Zinema kargatuta");
+                    zinemak[i] = zinema;
+                    i++;
+                }
+            }
+            
+            System.out.println(zinemak.length);
+            for (int j = 0; j < zinemak.length; j++) {
+                zinemak[j].setAretoak(areotoload(zinemak[j].getId(), conexioa));
+                zinemak[j].setSaioak(saioaload(zinemak[j].getId(), conexioa));
+            }
+            
+        } catch (Exception sqe) {
+            sqe.printStackTrace();
+        } finally {
+            itxi(conexioa);
+        }
+        
+        Aretoa[] Aretoak2 = zinemak[1].getAretoak();
+        System.out.println(Aretoak2[1].getIzena());
+        mDatuak.setZinemak(zinemak);
+    }
+    
+    
+    private Aretoa[] areotoload(int id, Connection conexioa) {
+        Aretoa[] Aretoak = null;
+        try {
+            try (Statement s1 = conexioa.createStatement()) {
+                String sql = "SELECT * FROM Aretoa WHERE idZinema = " + id;
+                try (ResultSet lerroak = s1.executeQuery(sql)) {
+                    int a = 0;
+                    while(lerroak.next()) {
+                        a++;
+                    }
+                    Aretoak = new Aretoa[a];
+                }
+                
+                try (ResultSet lerroak = s1.executeQuery(sql)) {
+                    int a = 0;
+                    while(lerroak.next()) {
+                        System.out.println("Aretoa kargatzen");
+                        Aretoa aretoa = new Aretoa(); 
+                        aretoa.setId(lerroak.getInt("idAretoa"));
+                        aretoa.setIzena(lerroak.getString("Izena"));
+                        Aretoak[a] = aretoa;
+                        a++;
+                        System.out.println("Aretoa kargatuta");
+                    }
+                }
+            }
+        } catch (Exception sqe) {
+            sqe.printStackTrace();
+        }
+        return Aretoak;
+    }
+    
+    
+    private Saioa[] saioaload(int id, Connection conexioa) {
+        Saioa[] Saioak = null;
+        try {
+            try (Statement s1 = conexioa.createStatement()) {
+                String sql = "SELECT * FROM Saioa WHERE idZinema = " + id + " order by s_data asc";
+                try (ResultSet lerroak = s1.executeQuery(sql)) {
+                    int s = 0;
+                    while(lerroak.next()) {
+                        s++;
+                    }
+                    Saioak = new Saioa[s];
+                }
+                
+                try (ResultSet lerroak = s1.executeQuery(sql)) {
+                    int s = 0;
+                    while(lerroak.next()) {
+                        Saioa saioa = new Saioa();
+                        saioa.setId(lerroak.getInt("IdSaioa"));
+                        saioa.setData(lerroak.getDate("S_Data"));
+                        Filma filma = filmaload(s, id, conexioa);
+                        saioa.setFilma(filma);
+                        Saioak[s] = saioa;
+                        s++;
+                    }
+                }
+            }
+        } catch (Exception sqe) {
+            sqe.printStackTrace();
+        }
+        return Saioak;
+    }
+    
+    private Filma filmaload(int s, int id, Connection conexioa) {
+        Filma filma = null;
+        try {
+            try (Statement s1 = conexioa.createStatement()) {
+                String sql = "SELECT f.* FROM Filma f inner join Saioa s using (idfilma) WHERE IdSaioa = "+ s +" and idZinema = " + id;
+                try (ResultSet lerroak = s1.executeQuery(sql)) {
+                    filma = new Filma();
+                    if (lerroak.next()) {
+                        filma.setId(lerroak.getInt("idfilma"));
+                        filma.setIraupena(lerroak.getInt("iraupena"));
+                        filma.setGeneroa(lerroak.getString("generoa"));
+                        filma.setPrezioa(lerroak.getDouble("Prezioa"));
+                        filma.setIzena(lerroak.getString("izenburua"));
+                        filma.setZuzendaria(lerroak.getString("Zuzendaria"));
+                        filma.setSinopsia(lerroak.getString("Sinopsia"));
+                    }
+                }
+            }
+        } catch (Exception sqe) {
+            sqe.printStackTrace();
+        }
+        return filma;
+    }
 }

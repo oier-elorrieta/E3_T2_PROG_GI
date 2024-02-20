@@ -1,84 +1,139 @@
 package vista;
 
+import java.awt.Container;
 import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.SystemColor;
-import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Properties;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 
-import com.toedter.calendar.JCalendar;
+import org.jdatepicker.impl.DateComponentFormatter;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 
 import master.Modelo;
+import master.Saioa;
+import master.Zinema;
 import master.konexioa;
 
+import javax.swing.SpringLayout;
+
 public class vData extends JFrame {
-	private JCalendar egutegia;
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField txtAukeratuEguna;
-	private Modelo modelo;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Modelo modelo = new Modelo();
-					vData frame = new vData(modelo);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the frame.
-	 */
-	public vData(Modelo modelo) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    public vData(Modelo mDatuak) {
+        UtilDateModel model = new UtilDateModel();
+        Properties properties = new Properties();
+        properties.put("text.today", "Hoy");
+        properties.put("text.month", "Mes");
+        properties.put("text.year", "Año");
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		txtAukeratuEguna = new JTextField();
-		txtAukeratuEguna.setBounds(5, 5, 424, 28);
-		txtAukeratuEguna.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAukeratuEguna.setBackground(SystemColor.menu);
-		txtAukeratuEguna.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		txtAukeratuEguna.setText("Aukeratu eguna:");
-		contentPane.add(txtAukeratuEguna);
-		txtAukeratuEguna.setColumns(10);
-		
-		egutegia = new JCalendar();
-		egutegia.setTodayButtonText("");
-		egutegia.setSundayForeground(Color.BLUE);
-		egutegia.setBounds(112, 33, 212, 223);
-		contentPane.add(egutegia);
-		
-		JButton btnNewButton = new JButton("Hautatu");
-		btnNewButton.setBounds(334, 117, 78, 37);
-		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
-		contentPane.add(btnNewButton);
-		
-		btnNewButton.addActionListener(e -> {
-            java.util.Date erabakitakoEguna = egutegia.getDate();
-            System.out.println("Fecha seleccionada: " + erabakitakoEguna);
+        model.setDate(2024, Calendar.FEBRUARY, 1);
+
+        JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
+        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
+        SpringLayout springLayout = (SpringLayout) datePicker.getLayout();
+        springLayout.putConstraint(SpringLayout.WEST, datePicker.getJFormattedTextField(), 10, SpringLayout.WEST, datePicker);
+        datePicker.setBounds(41, 5, 202, 23);
+        datePicker.getJFormattedTextField().setEditable(true);
+
+        // Botón "Seleccionar Fecha"
+        JButton btnSeleccionarFecha = new JButton("Aukeratu");
+        btnSeleccionarFecha.setBounds(96, 39, 77, 23);
+        btnSeleccionarFecha.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                validarFechaSeleccionada(datePicker, model, mDatuak);
+            }
         });
 
-	}
-	
-	
+        Container container = getContentPane();
+        getContentPane().setLayout(null);
+        container.add(datePicker);
+        container.add(btnSeleccionarFecha);
+
+        model.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if ("value".equals(evt.getPropertyName())) {
+
+                }
+            }
+        });
+
+        setSize(300, 200);
+        setVisible(true);
+    }
+
+    private void validarFechaSeleccionada(JDatePickerImpl datePicker, UtilDateModel model, Modelo mDatuak) {
+        Date selectedDate = model.getValue();
+        Date currentDate = new Date();
+        
+        //Data gaurko eguna baino zaharragoa bada ezin da aukeratu
+        if (selectedDate != null && selectedDate.before(currentDate)) {
+            model.setDate(2024, Calendar.FEBRUARY, 1);
+            model.setSelected(true);
+            JOptionPane.showMessageDialog(this, "Ezin duzu data zaharrak aukeratu");
+        } else {
+            // Dataren formatua zuzena
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date aukeratutakoData = sdf.format(selectedDate);
+
+            // probak egiteko datak
+            Zinema[] zinemak = mDatuak.getZinemak();
+            Saioa[] saioak = zinemak[mDatuak.azinema].getSaioak();
+            
+            // Egiaztatu probako datekin
+            boolean dataZuzena = false;
+            
+            for (Saioa saioa : saioak) {
+                if (aukeratutakoData.equals(saioa)) {
+                    dataZuzena = true;
+                    break;
+                }
+            }
+
+            if (dataZuzena) {
+                
+                JOptionPane.showMessageDialog(this,  "Aukeratu duzun data zuzena da: " + aukeratutakoData);
+            } else {
+                
+                JOptionPane.showMessageDialog(this,
+                        "Data hau ez dago erabilgarri, mesedez beste bat aukeratu");
+            }
+        }
+    }
+
+    //Dataren eguna edo urtea edo hilabetea ateratzeko bakarrik
+    /*
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(selectedDate);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            // Imprimir solo el día
+            System.out.println("Día seleccionado: " + day);*/
+    
+    
+    
+    public static void main(String[] args) {
+    	Modelo mDatuak = new Modelo();
+    	 konexioa k1 = new konexioa();
+    	 Connection saioa = k1.hasi();
+    	 k1.fullLoad(saioa, mDatuak);
+        vData Data = new vData(mDatuak);
+        Data.setVisible(true);
+        
+    }
 }

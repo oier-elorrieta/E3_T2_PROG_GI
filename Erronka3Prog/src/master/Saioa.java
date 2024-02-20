@@ -19,6 +19,7 @@ public class Saioa {
 		public Date getData() {
 			return data;
 		}
+		
 		public void setData(Date data) {
 			this.data = data;
 		}
@@ -63,5 +64,50 @@ public class Saioa {
 		public Saioa() {
 		}
 		
+
+		public Saioa[] load(Connection conexioa) {   
+		    Saioa[] saioak = null;  
+		    try {
+		        conexioa = konexioa.hasi();
+		        System.out.println("Konektatuta");
+		        // Prestatu sententzia
+		        int i = 0;
+		        Statement s1 = conexioa.createStatement();
+		        String sql = "select * from saioa";
+		        ResultSet lerroak = s1.executeQuery(sql);
+		        int count = 0;
+		        while(lerroak.next()) {
+		            count++;
+		        }
+		        saioak = new Saioa[count];
+		        lerroak = s1.executeQuery(sql);
+		        while (lerroak.next()) {
+		            Saioa saioa = new Saioa();
+		            saioa.setId(lerroak.getInt("id"));
+		            saioa.setData(lerroak.getDate("data"));
+		            
+		            // Obtener los datos de la película y la sala
+		            Filma filma = new Filma(); // Debes crear una instancia de Filma aquí
+		            filma.setId(lerroak.getInt("id_pelicula")); // Suponiendo que el ID de la película está en una columna llamada id_pelicula
+		            saioa.setFilma(filma);
+		            
+		            Aretoa aretoa = new Aretoa(); // Debes crear una instancia de Aretoa aquí
+		            aretoa.setId(lerroak.getInt("id_aretoa")); // Suponiendo que el ID de la sala está en una columna llamada id_aretoa
+		            saioa.setAreto(aretoa);
+		            
+		            saioak[i] = saioa;
+		            i++;
+		        }
+		    } catch (Exception sqe) {
+		        sqe.printStackTrace();
+		    }
+		    
+		    for(int j = 0; j < saioak.length; j++) {
+		        System.out.println(saioak[j].toString());
+		    }
+		    
+		    return saioak;
+		}
+			
 
 }
