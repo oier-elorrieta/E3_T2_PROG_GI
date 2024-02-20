@@ -59,12 +59,15 @@ public class vLogin extends JFrame {
              */
             public void actionPerformed(ActionEvent e) {
             	
-            	modelo.Kontsulta();
+            	modelo.egiaztatuDatuak(textErabiltzailea, textErabiltzailea);
             	 //String erabiltzailea = textErabiltzailea.getText();
                  //String pasahitza = textPasahitza.getText();
                 if (modelo.egiaztatuDatuak(textErabiltzailea, textPasahitza)) {
                     // Datuak koinsiditzen dute
                     JOptionPane.showMessageDialog(contentPane, "Barruan zaude!");
+                    vZinema vZinema = new vZinema(modelo);
+                    vZinema.setVisible(true);
+                    
                 } else {
                     // Datuak ez dute koinsiditzen
                     JOptionPane.showMessageDialog(contentPane, "Zeozer txarto dago.");

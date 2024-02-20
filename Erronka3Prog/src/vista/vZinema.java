@@ -45,7 +45,7 @@ public class vZinema extends JFrame {
 		table.getColumnModel().getColumn(2).setCellRenderer(new RadioButtonRenderer());
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
-		Modelo.zinemaproba();
+		Modelo.ezarrizinemak(model);
 								//Modelo.ezarrizinemak(model);
 		// Gorde botoia sortu
 		JButton closeButton = new JButton("Jarraitu");
