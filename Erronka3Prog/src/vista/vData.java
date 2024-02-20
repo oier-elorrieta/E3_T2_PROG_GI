@@ -21,7 +21,10 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
+import master.Modelo;
 import master.Saioa;
+import master.Zinema;
+
 import javax.swing.SpringLayout;
 
 public class vData extends JFrame {
@@ -31,10 +34,11 @@ public class vData extends JFrame {
     public vData() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 200);
-        initialize();
+        Modelo mDatuak = new Modelo();
+        vData(mDatuak);
     }
 
-    private void initialize() {
+    private void vData(Modelo mDatuak) {
         UtilDateModel model = new UtilDateModel();
         Properties properties = new Properties();
         properties.put("text.today", "Hoy");
@@ -56,7 +60,7 @@ public class vData extends JFrame {
         btnSeleccionarFecha.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                validarFechaSeleccionada(datePicker, model);
+                validarFechaSeleccionada(datePicker, model, mDatuak);
             }
         });
 
@@ -78,7 +82,7 @@ public class vData extends JFrame {
         setVisible(true);
     }
 
-    private void validarFechaSeleccionada(JDatePickerImpl datePicker, UtilDateModel model) {
+    private void validarFechaSeleccionada(JDatePickerImpl datePicker, UtilDateModel model, Modelo mDatuak) {
         Date selectedDate = model.getValue();
         Date currentDate = new Date();
         
@@ -94,6 +98,7 @@ public class vData extends JFrame {
 
             // probak egiteko datak
             String[] fechasPrueba = { "2024-03-15", "2024-04-10", "2024-05-05" };
+            Saioak[] saioak = new Zinema[mDatuak.azinema]
 
             // Egiaztatu probako datekin
             boolean dataZuzena = false;

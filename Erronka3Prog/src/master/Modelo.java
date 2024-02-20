@@ -25,9 +25,9 @@ public class Modelo {
     Sarrera Sarrerak[];
     //
     Zinema Zinemak[];
-    int azinema = 0;
-    int afilma = 0;
-    int asaioa = 0;
+    public int azinema = 0;
+    public int afilma = 0;
+    public int asaioa = 0;
     
     public void zinemaproba() {
     	Aretoa aretoa2 = new Aretoa(1, "");
