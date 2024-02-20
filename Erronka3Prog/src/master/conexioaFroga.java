@@ -86,16 +86,67 @@ public class conexioaFroga {
 		            	Saioak[s] = saioa;
 		            	s++;
 		            }
+		            zinema.setSaioak(Saioak);
 		            zinemak[i] = zinema;
 		            i++;
 		        }
 		    } catch (Exception sqe) {
 		        sqe.printStackTrace();
-		    }
+		    }		
+		 		
+		 			
 		 
 		 return zinemak;
-	 }
+		 
+		 
+		 
+	 }}
+
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
+	public void GehituSaioak(Connection connection, int idZinema, int idAretoa, int idFilma, Date s_data) {
+			try {
+				// Sesio berri bat insertatxeko kontsulta
+				"Saioa" taulan datuak sartzen dituzten SQL kontsulta prestatua. "?" kontsulta-parametroen toki-markatzaileak dira. 
+				 * Horiek parametroen balioak segurtasun handiarekin ezarri ahal izatea bermatzen dute,
+					SQL datu-basea seguruago kudeatzeko.
+			//	String sql = "INSERT INTO Saioa (IdZinema, IdAretoa, IdFilma, S_Data) VALUES (?, ?, ?, ?)";
+				//PreparedStatement pstmt = connection.prepareStatement(sql);
+
+
+				//pstmt-ek PreparedStatement-ren instantzia errepresentatzen du Java-n, eta datu-baseko kontsultak prestatzeko erabiltzen da, parametroak ezarri aurretik.
+				pstmt.setInt(1, idZinema);
+            	pstmt.setInt(2, idAretoa);
+            	pstmt.setInt(3, idFilma);
+            	pstmt.setDate(4, new java.sql.Date(s_data.getTime())); // Data java.sql.Date-ra bihurtu
+
+            	// Kontsulta ejekutatu
+            	pstmt.executeUpdate();
+            
+          
+            	pstmt.close();
+			} catch (SQLException e) {
+            	e.printStackTrace();
+        	}
+    }
+    
+    */
+	/*
+	 * 
+	 * EN ZINEMA AÑANDIR SAIOA
 	 * public Zinema[] Zinemaload(Connection conexioa) { //Zinemaren Datuak
 	 * Kargatu// Zinema[] zinemak = null; try { // Preparamos la consulta SQL para
 	 * obtener los datos de los cines, salas y películas String sql =
@@ -146,4 +197,4 @@ public class conexioaFroga {
 	 * return zinemak; }
 	 */
 
-}
+

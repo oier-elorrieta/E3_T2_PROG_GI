@@ -95,51 +95,5 @@ public class Zinema {
 	}
 	public Zinema() {
 	}
-	public Zinema[] Zinemaload(Connection conexioa) {   
-	    Zinema[] zinemak = null;  
-	    try {
-	        conexioa = konexioa.hasi();
-	        System.out.println("Konektatuta");
-	        // Prestatu sententzia
-	        int i = 0;
-	        Statement s1 = conexioa.createStatement();
-	        String sql = "select * from zinema";
-	        ResultSet lerroak = s1.executeQuery(sql);
-	        int count = 0;
-	        while(lerroak.next()) {
-	            count++;
-	        }
-	        zinemak = new Zinema[count];
-	        lerroak = s1.executeQuery(sql);
-	        while (lerroak.next()) {
-	            Zinema zinema = new Zinema();
-	            zinema.setId(lerroak.getInt("id"));
-	            zinema.setIzena(lerroak.getString("Izena"));
-	            zinema.setHelbidea(lerroak.getString("Helbidea"));
-	            zinema.setKontaktua(lerroak.getString("Kontaktua"));
-	            zinema.setDeskribapena(lerroak.getString("Deskribapena"));
-	            
-	            Aretoa aretoa = new Aretoa(); 
-	            aretoa.setId(lerroak.getInt("id_aretoa")); 
-	            zinema.setAretoak(new Aretoa[] {aretoa}); 
-	            
-	            Saioa saioa = new Saioa(); 
-	            saioa.setId(lerroak.getInt("IdSaioa")); 
-	            zinema.setSaioak(new Saioa[] {saioa}); 
-	  
-	            zinemak[i] = zinema;
-	            i++;
-	        }
-	    } catch (Exception sqe) {
-	        sqe.printStackTrace();
-	    }
-	    
-	    for(int j = 0; j < zinemak.length; j++) {
-	        System.out.println(zinemak[j].toString());
-	    }
-	    return zinemak;
-	}
-	
-	
-	
+
 }

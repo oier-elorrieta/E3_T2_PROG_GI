@@ -98,42 +98,5 @@ public class Filma {
                 + ", izena=" + izena + ", zuzendaria=" + zuzendaria + ", sinopsia=" + sinopsia + "]";
     }
 
-    public Filma[] load(Connection conexioa) {
-        Filma[] filmak = null;
-        try {
-            System.out.println("Konektatuta");
-            // Preparar sentencia
-            Statement s1 = conexioa.createStatement();
-            String sql = "select * from filma";
-            ResultSet lerroak = s1.executeQuery(sql);
-            int count = 0;
-            while (lerroak.next()) {
-                count++;
-            }
-            filmak = new Filma[count];
-            lerroak = s1.executeQuery(sql);
-            int i = 0;
-            while (lerroak.next()) {
-                Filma filma = new Filma();
-                filma.setId(lerroak.getInt("Idfilma"));
-                filma.setIzena(lerroak.getString("Izenburua"));
-                filma.setIraupena(lerroak.getInt("Iraupena"));
-                filma.setGeneroa(lerroak.getString("Generoa"));
-                filma.setPrezioa(lerroak.getDouble("Prezioa"));
-                filma.setZuzendaria(lerroak.getString("Zuzendaria"));
-                filma.setSinopsia(lerroak.getString("Sinopsia"));
-                filmak[i] = filma;
-                i++;
-            }
-        } catch (Exception sqe) {
-            sqe.printStackTrace();
-        }
-        for (int j = 0; j < filmak.length; j++) {
-            System.out.println(filmak[j].toString());
-        }
-        return filmak;
-    }
-
-    
 }
 
