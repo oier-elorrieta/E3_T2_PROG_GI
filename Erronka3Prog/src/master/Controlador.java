@@ -16,7 +16,7 @@ public class Controlador {
         Connection saioa = k1.hasi();
         System.out.println("Konexioa burutu da");
         
-        k1.fullLoad(saioa);
+        k1.fullLoad(saioa, mDatuak);
 
         vEtorria Ongipanel = new vEtorria(mDatuak);
         Ongipanel.setVisible(true);
