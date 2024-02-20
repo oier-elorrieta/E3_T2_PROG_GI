@@ -82,6 +82,7 @@ public class Saioa {
 		        saioak = new Saioa[count];
 		        lerroak = s1.executeQuery(sql);
 		        while (lerroak.next()) {
+System.out.println("lerro: " + i);
 		            Saioa saioa = new Saioa();
 		            saioa.setId(lerroak.getInt("id"));
 		            saioa.setData(lerroak.getDate("data"));

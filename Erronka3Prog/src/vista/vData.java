@@ -78,42 +78,37 @@ public class vData extends JFrame {
     }
 
     private void validarFechaSeleccionada(JDatePickerImpl datePicker, UtilDateModel model, Modelo mDatuak) {
-        Date selectedDate = model.getValue();
-        Date currentDate = new Date();
-        
-        //Data gaurko eguna baino zaharragoa bada ezin da aukeratu
-        if (selectedDate != null && selectedDate.before(currentDate)) {
-            model.setDate(2024, Calendar.FEBRUARY, 1);
-            model.setSelected(true);
-            JOptionPane.showMessageDialog(this, "Ezin duzu data zaharrak aukeratu");
-        } else {
-            // Dataren formatua zuzena
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date aukeratutakoData = sdf.format(selectedDate);
+    	Date selectedDate = model.getValue();
+    	Date currentDate = new Date();
 
-            // probak egiteko datak
-            Zinema[] zinemak = mDatuak.getZinemak();
-            Saioa[] saioak = zinemak[mDatuak.azinema].getSaioak();
-            
-            // Egiaztatu probako datekin
-            boolean dataZuzena = false;
-            
-            for (Saioa saioa : saioak) {
-                if (aukeratutakoData.equals(saioa)) {
-                    dataZuzena = true;
-                    break;
-                }
-            }
+    	//Data gaurko eguna baino zaharragoa bada ezin da aukeratu
+    	if (selectedDate != null && selectedDate.before(currentDate)) {
+    	    model.setDate(2024, Calendar.FEBRUARY, 1);
+    	    model.setSelected(true);
+    	    JOptionPane.showMessageDialog(this, "Ezin duzu data zaharrak aukeratu");
+    	} else {
+    	    // probak egiteko datak
+    	    Zinema[] zinemak = mDatuak.getZinemak();
+    	    Saioa[] saioak = zinemak[mDatuak.azinema].getSaioak();
 
-            if (dataZuzena) {
-                
-                JOptionPane.showMessageDialog(this,  "Aukeratu duzun data zuzena da: " + aukeratutakoData);
-            } else {
-                
-                JOptionPane.showMessageDialog(this,
-                        "Data hau ez dago erabilgarri, mesedez beste bat aukeratu");
-            }
-        }
+    	    // Egiaztatu probako datekin
+    	    boolean dataZuzena = false;
+
+    	    for (Saioa saioa : saioak) {
+    	        Date saioaData = saioa.getData(); // Data lortu
+    	        String egunaikusgarria = formatearFecha(selectedDate, "yyyy-MM-dd");
+    	        if (egunaikusgarria.equals(saioaData.toString())) {
+    	            dataZuzena = true;
+    	            break;
+    	        }
+    	    }
+
+    	    if (dataZuzena) {
+    	        JOptionPane.showMessageDialog(this, "Aukeratu duzun data zuzena da");
+    	    } else {
+    	        JOptionPane.showMessageDialog(this, "Data hau ez dago erabilgarri, mesedez beste bat aukeratu");
+    	    }
+    	}
     }
 
     //Dataren eguna edo urtea edo hilabetea ateratzeko bakarrik
@@ -124,7 +119,10 @@ public class vData extends JFrame {
 
             // Imprimir solo el día
             System.out.println("Día seleccionado: " + day);*/
-    
+    public static String formatearFecha(Date fecha, String formato) {
+        SimpleDateFormat sdf = new SimpleDateFormat(formato);
+        return sdf.format(fecha);
+    }
     
     
     public static void main(String[] args) {
