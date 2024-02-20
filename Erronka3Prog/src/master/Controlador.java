@@ -1,5 +1,6 @@
 package master;
 import java.sql.Connection;
+import vista.vData;
 
 import vista.vEtorria;
 import vista.vLogin;
@@ -30,7 +31,10 @@ public class Controlador {
         
         Ongipanel.dispose();
 
-        vLogin Loginpanel = new vLogin(mDatuak);
-        Loginpanel.setVisible(true);
+
+        
+        if (loginOk == true ) {
+        	
+        }
     }
 }
