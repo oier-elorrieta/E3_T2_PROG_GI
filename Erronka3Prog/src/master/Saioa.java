@@ -19,6 +19,7 @@ public class Saioa {
 		public Date getData() {
 			return data;
 		}
+		
 		public void setData(Date data) {
 			this.data = data;
 		}
@@ -106,8 +107,5 @@ public class Saioa {
 		    
 		    return saioak;
 		}
-
-		
-		
-		
+			
 }
