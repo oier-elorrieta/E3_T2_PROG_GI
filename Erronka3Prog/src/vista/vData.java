@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,6 +25,7 @@ import org.jdatepicker.impl.UtilDateModel;
 import master.Modelo;
 import master.Saioa;
 import master.Zinema;
+import master.konexioa;
 
 import javax.swing.SpringLayout;
 
@@ -31,14 +33,7 @@ public class vData extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
-    public vData() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 200);
-        Modelo mDatuak = new Modelo();
-        vData(mDatuak);
-    }
-
-    private void vData(Modelo mDatuak) {
+    public vData(Modelo mDatuak) {
         UtilDateModel model = new UtilDateModel();
         Properties properties = new Properties();
         properties.put("text.today", "Hoy");
@@ -94,17 +89,17 @@ public class vData extends JFrame {
         } else {
             // Dataren formatua zuzena
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String aukeratutakoData = sdf.format(selectedDate);
+            Date aukeratutakoData = sdf.format(selectedDate);
 
             // probak egiteko datak
-            String[] fechasPrueba = { "2024-03-15", "2024-04-10", "2024-05-05" };
-            Saioak[] saioak = new Zinema[mDatuak.azinema]
-
+            Zinema[] zinemak = mDatuak.getZinemak();
+            Saioa[] saioak = zinemak[mDatuak.azinema].getSaioak();
+            
             // Egiaztatu probako datekin
             boolean dataZuzena = false;
             
-            for (String fecha : fechasPrueba) {
-                if (aukeratutakoData.equals(fecha)) {
+            for (Saioa saioa : saioak) {
+                if (aukeratutakoData.equals(saioa)) {
                     dataZuzena = true;
                     break;
                 }
@@ -133,12 +128,12 @@ public class vData extends JFrame {
     
     
     public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                vData frame = new vData();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+    	Modelo mDatuak = new Modelo();
+    	 konexioa k1 = new konexioa();
+    	 Connection saioa = k1.hasi();
+    	 k1.fullLoad(saioa, mDatuak);
+        vData Data = new vData(mDatuak);
+        Data.setVisible(true);
+        
     }
 }

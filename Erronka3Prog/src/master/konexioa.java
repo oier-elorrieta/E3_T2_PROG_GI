@@ -24,7 +24,7 @@ public class konexioa {
     
     
     //CONEXIOFROGARENA
-    public Zinema[] fullLoad(Connection conexioa) {
+    public void fullLoad(Connection conexioa, Modelo mDatuak) {
         System.out.println("FUNCIONA");
         Zinema[] zinemak = null;
         try {
@@ -67,7 +67,7 @@ public class konexioa {
         
         Aretoa[] Aretoak2 = zinemak[1].getAretoak();
         System.out.println(Aretoak2[1].getIzena());
-        return zinemak;
+        mDatuak.setZinemak(zinemak);
     }
     
     
