@@ -29,7 +29,18 @@ public class Modelo {
     int afilma = 0;
     int asaioa = 0;
     
+    public void zinemaproba() {
+    	Aretoa aretoa2 = new Aretoa(1, "");
+    	Aretoa[] aretoarray = new Aretoa[]{aretoa2};
+        Saioa[] saio = new Saioa[1];
 
+        Zinema zinema1 = new Zinema(23, "izena", "Helbidea", "kontaktua", "deskribapena", aretoarray, saio);
+        Zinema zinema2 = new Zinema(23, "izena", "Helbidea", "kontaktua", "deskribapena", aretoarray, saio);
+        Zinemak = new Zinemak[]{zinema1, zinema2};
+        setZinemak(Zinemak);
+    }
+    
+    
     public boolean egiaztatuDatuak(JTextField lblErabiltzailea,JTextField  lblPasahitza) {
         // Erabiltzaile eta pasahitza lortu
         String erabiltzailea = lblErabiltzailea.getText();
