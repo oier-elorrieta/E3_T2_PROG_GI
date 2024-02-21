@@ -17,7 +17,7 @@ import vista.vEtorria;
 
 public class Modelo {
     Zinema Zinemak[];
-    public int azinema = 0;
+    public int azinema = 2;
     public int afilma = 0;
     public int asaioa = 0;
     public boolean irekiLogin = false;
