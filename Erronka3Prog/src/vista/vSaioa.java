@@ -41,9 +41,9 @@ public class vSaioa extends JFrame {
 		setSize(500, 300);
 		// taularen modeloa sortu
 		model = new DefaultTableModel();
-		model.addColumn("Ordu_Data");
-		model.addColumn("Izena");
-		model.addColumn("Aukera");
+		model.addColumn("Ordua");
+		model.addColumn("Pelikula");
+		model.addColumn("Prezioa");
 		// Taula berriaren modeloa sortu
 		JTable table = new JTable(model);
 		// Agregar un ActionListener al radio button para gestionar la selección única
@@ -51,7 +51,7 @@ public class vSaioa extends JFrame {
 		table.getColumnModel().getColumn(2).setCellRenderer(new RadioButtonRenderer());
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
-		Modelo.zinemaproba();
+		Modelo.ezarrizinemak(model);
 								//Modelo.ezarrizinemak(model);
 		// Gorde botoia sortu
 		JButton closeButton = new JButton("Jarraitu");
