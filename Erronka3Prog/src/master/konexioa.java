@@ -54,13 +54,9 @@ public class konexioa {
             }
             Saioa[] saioa;
             System.out.println(zinemak.length);
-            int count = 0;
             for (int j = 0; j < zinemak.length; j++) {
-
-            	zinemak[j].setAretoak(areotoload(zinemak[count].getId(), conexioa));
-                zinemak[j].setSaioak(saioaload(zinemak[count].getId(), conexioa));
-                
-                count++;
+            	zinemak[j].setAretoak(areotoload(zinemak[j].getId(), conexioa));
+                zinemak[j].setSaioak(saioaload(zinemak[j].getId(), conexioa));
             }
             
         } catch (Exception sqe) {
@@ -127,7 +123,7 @@ public class konexioa {
                         Saioa saioa = new Saioa();
                         saioa.setId(lerroak.getInt("IdSaioa"));
                         saioa.setData(lerroak.getDate("S_Data"));
-                        Filma filma = filmaload(s, id, conexioa);
+                        Filma filma = filmaload((s + 1), id, conexioa);
                         saioa.setFilma(filma);
                         Saioak[s] = saioa;
                         s++;
@@ -144,7 +140,7 @@ public class konexioa {
         Filma filma = null;
         try {
             try (Statement s1 = conexioa.createStatement()) {
-            	String sql = "SELECT f.* FROM Filma f inner join Saioa s using (idfilma) WHERE IdSaioa = "+ (s + 1) +" and idZinema = " + id;
+            	String sql = "SELECT f.* FROM Filma f inner join Saioa s using (idfilma) WHERE IdAretoa = "+ s +" and idZinema = " + id;
             	/*String sql = "SELECT f.* FROM Filma f " +
                         "INNER JOIN Saioa s USING (idfilma) " +
                         "INNER JOIN Aretoa a ON s.idaretoa = a.idaretoa " +
