@@ -8,6 +8,7 @@ import vista.vLogin;
 public class Controlador {
 
     public static void main(String[] args) {
+    	
     	System.out.println("HASI DA");
         Modelo mDatuak = new Modelo();
 
@@ -18,10 +19,16 @@ public class Controlador {
         
         k1.fullLoad(saioa, mDatuak);
         k1.bezeroLoad(saioa, mDatuak);
-
+		/*Zinema zinema = mDatuak.Zinemak[0];
+		Saioa[] saioak = zinema.getSaioak();
+		Filma filmak;
+		for (int i = 0; i < saioak.length; i++) {
+			filmak = saioak[i].getFilma();
+			System.out.println(filmak);
+		}*/
         vEtorria Ongipanel = new vEtorria(mDatuak);
         Ongipanel.setVisible(true);
-         
+        
         while (!mDatuak.irekiLogin) {
             try {
                 Thread.sleep(100);
