@@ -13,6 +13,7 @@ public class Zinema {
 	private String deskribapena;
 	private Aretoa[] aretoak;
 	private Saioa[] saioak;
+	
 	public int getId() {
 		return id;
 	}
