@@ -31,7 +31,7 @@ public class vFilma extends JFrame {
 		
 		// Hasierako leihoa konfiguratu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Admin menua");
+		setTitle("Filma menua");
 		setSize(500, 300);
 		// taularen modeloa sortu
 		model = new DefaultTableModel();
@@ -69,7 +69,7 @@ public class vFilma extends JFrame {
 				// Fila bat baino gehiago dagoela konfirmatu
 				if (rowCount > 1) {
 					int selectedRow = table.getSelectedRow();
-					if (selectedRow > 0) {
+					if (selectedRow >= 0) {
 						JOptionPane.showMessageDialog(vFilma.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
 						Modelo.afilma = selectedRow;
 						vSaioa vSaioa = new vSaioa(Modelo);
