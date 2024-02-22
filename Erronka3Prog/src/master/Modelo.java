@@ -20,6 +20,7 @@ public class Modelo {
     public int azinema = 2;
     public int afilma = 0;
     public int asaioa = 0;
+    public Date adata;
     public boolean irekiLogin = false;
     
     private boolean loginOk = false;
@@ -59,17 +60,37 @@ public class Modelo {
 			model.addRow(new Object[] { i, Zinemak[i].getIzena(), false});
 		}
 	}
-    public void ezarrifilmak(DefaultTableModel model) {
-		Zinema zinema = Zinemak[azinema];
-		Saioa[] saioak = zinema.getSaioak();
-		Filma filmak;
-		for (int i = 0; i < saioak.length; i++) {
-			filmak = saioak[i].getFilma();
-			model.addRow(new Object[] { i, filmak.getIzena(), false});
-		}
-	}
+    	public void ezarrifilmak(DefaultTableModel model) {
+    		Zinema zinema = Zinemak[azinema];
+    		Saioa[] saioak = zinema.getSaioak();
+    		Filma filmak;
+    		for (int i = 0; i < saioak.length; i++) {
+    			filmak = saioak[i].getFilma();
+    			model.addRow(new Object[] { i, filmak.getIzena(), false});
+    		}
+    	}
 
-    
+    public void ezarrisaioak(DefaultTableModel model) {
+    	Zinema zinemak = Zinemak[azinema];
+    	int cont = 0;
+    	Saioa[] saioak = new Saioa[zinemak.getSaioak().length];
+    	Saioa[] serabilgarri;
+    	for (int i = 0; i < saioak.length; i++) {
+    		if (adata.equals(saioak[i].getData())) {
+    			cont++;
+    		}
+    	}
+    	serabilgarri = new Saioa[cont];
+    	for (int i = 0; i < saioak.length; i++) {
+    		if (adata.equals(saioak[i].getData())) {
+    			serabilgarri[i] = saioak[i];
+    		}
+    	}
+    	for (int i = 0; i < serabilgarri.length; i++) {
+			model.addRow(new Object[] { i, serabilgarri[i].getData(),serabilgarri[i].getFilma(), false});
+		}
+		
+	}
 
     
 
@@ -80,8 +101,9 @@ public class Modelo {
 	public void setZinemak(Zinema[] zinemak) {
 		Zinemak = zinemak;
 	}
-
-    public Modelo() {
+	
+   
+	public Modelo() {
     }
 
 

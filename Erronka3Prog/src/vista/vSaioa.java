@@ -37,7 +37,7 @@ public class vSaioa extends JFrame {
 		
 		// Hasierako leihoa konfiguratu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Admin menua");
+		setTitle("Saioak");
 		setSize(500, 300);
 		// taularen modeloa sortu
 		model = new DefaultTableModel();
@@ -51,7 +51,7 @@ public class vSaioa extends JFrame {
 		table.getColumnModel().getColumn(2).setCellRenderer(new RadioButtonRenderer());
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
-		Modelo.ezarrizinemak(model);
+		Modelo.ezarrisaioak(model);
 								//Modelo.ezarrizinemak(model);
 		// Gorde botoia sortu
 		JButton closeButton = new JButton("Jarraitu");
@@ -66,7 +66,7 @@ public class vSaioa extends JFrame {
 						JOptionPane.showMessageDialog(vSaioa.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
 					}
 				} else {
-					JOptionPane.showMessageDialog(vSaioa.this, "Aukeratu Zinema bat", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(vSaioa.this, "Aukeratu saio bat", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

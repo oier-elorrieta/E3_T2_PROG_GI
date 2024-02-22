@@ -105,6 +105,7 @@ public class vData extends JFrame {
 
     	    if (dataZuzena) {
     	        JOptionPane.showMessageDialog(this, "Aukeratu duzun data zuzena da");
+    	        //Gorde data modeloan eta ireki vista
     	    } else {
     	        JOptionPane.showMessageDialog(this, "Data hau ez dago erabilgarri, mesedez beste bat aukeratu");
     	    }
