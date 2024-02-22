@@ -67,9 +67,9 @@ public class vFilma extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int rowCount = model.getRowCount();
 				// Fila bat baino gehiago dagoela konfirmatu
-				if (rowCount > 1) {
+				
 					int selectedRow = table.getSelectedRow();
-					if (selectedRow >= 0) {
+	
 						JOptionPane.showMessageDialog(vFilma.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
 						Modelo.afilma = selectedRow;
 						vSaioa vSaioa = new vSaioa(Modelo);
@@ -77,10 +77,9 @@ public class vFilma extends JFrame {
 						dispose();
 						
 					}
-				} else {
-					JOptionPane.showMessageDialog(vFilma.this, "Aukeratu Filma bat", "Error", JOptionPane.ERROR_MESSAGE);
-				}
-			}
+				
+				
+			
 		});
 		// Botoiak panel barruan sartu
 		JPanel buttonPanel = new JPanel();
