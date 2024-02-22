@@ -5,7 +5,7 @@ import org.junit.Test;
 import master.Aretoa;
 
 public class AretoaTest {
-
+//oierp
     @Test
     public void testEqualsAndHashCode() {
         Aretoa aretoa1 = new Aretoa(1, "aka");
