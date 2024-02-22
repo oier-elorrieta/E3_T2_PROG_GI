@@ -54,13 +54,13 @@ public class konexioa {
             }
             Saioa[] saioa;
             System.out.println(zinemak.length);
+            int count = 0;
             for (int j = 0; j < zinemak.length; j++) {
 
-            	zinemak[j].setAretoak(areotoload(zinemak[j].getId(), conexioa));
-                zinemak[j].setSaioak(saioaload(zinemak[j].getId(), conexioa));
-            	saioa = zinemak[j].getSaioak();
-                for (int p = 0; p < saioa.length; p++)
-                System.out.println(saioa[p].getFilma());
+            	zinemak[j].setAretoak(areotoload(zinemak[count].getId(), conexioa));
+                zinemak[j].setSaioak(saioaload(zinemak[count].getId(), conexioa));
+                
+                count++;
             }
             
         } catch (Exception sqe) {
@@ -76,7 +76,7 @@ public class konexioa {
     
     
     private Aretoa[] areotoload(int id, Connection conexioa) {
-        Aretoa[] Aretoak = null;
+    	Aretoa[] Aretoak = null;
         try {
             try (Statement s1 = conexioa.createStatement()) {
                 String sql = "SELECT * FROM Aretoa WHERE idZinema = " + id;
@@ -144,11 +144,20 @@ public class konexioa {
         Filma filma = null;
         try {
             try (Statement s1 = conexioa.createStatement()) {
-            	//String sql = "SELECT f.* FROM Filma f inner join Saioa s using (idfilma) WHERE IdSaioa = "+ s +" and idZinema = " + id;
-            	String sql = "SELECT f.* FROM Filma f " +
+            	String sql = "SELECT f.* FROM Filma f inner join Saioa s using (idfilma) WHERE IdSaioa = "+ (s + 1) +" and idZinema = " + id;
+            	/*String sql = "SELECT f.* FROM Filma f " +
                         "INNER JOIN Saioa s USING (idfilma) " +
                         "INNER JOIN Aretoa a ON s.idaretoa = a.idaretoa " +
-                        "INNER JOIN Zinema z ON a.idzinema = z.idzinema";
+                        "INNER JOIN Zinema z ON a.idzinema = z.idzinema" +
+                        "WHERE IdSaioa = "+ s +" and idZinema = " + id;*/
+            	
+            	
+            	/*BERDINA BAINA SQL-EN FUNTZIONATZEN DU
+            	 * SELECT f.* FROM Filma f 
+                        INNER JOIN Saioa s USING (idfilma)
+                        INNER JOIN Aretoa a ON s.idaretoa = a.idaretoa
+                        INNER JOIN Zinema z ON a.idzinema = z.idzinema
+                        WHERE s.IdSaioa and z.idZinema;*/
            	            	 
 
                 try (ResultSet lerroak = s1.executeQuery(sql)) {

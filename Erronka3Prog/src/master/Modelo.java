@@ -21,6 +21,7 @@ public class Modelo {
     public int afilma = 0;
     public int asaioa = 0;
     public boolean irekiLogin = false;
+    
     private boolean loginOk = false;
     
     private Bezero[] bezeroak;
@@ -40,6 +41,7 @@ public class Modelo {
 	public void setLoginOk(boolean loginOk) {
 		this.loginOk = loginOk;
 	}
+	
 	public boolean egiaztatuDatuak(JTextField lblErabiltzailea,JTextField  lblPasahitza) {
         // Erabiltzaile eta pasahitza lortu
         String erabiltzailea = lblErabiltzailea.getText();
@@ -50,6 +52,7 @@ public class Modelo {
         
         return datuakBerif;
     }
+	
     public void ezarrizinemak(DefaultTableModel model) {
 		Zinema[] Zinemak = getZinemak();
 		for (int i = 0; i < Zinemak.length; i++) {
