@@ -47,6 +47,19 @@ public class vZinema extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(table);
 		Modelo.ezarrizinemak(model);
 								//Modelo.ezarrizinemak(model);
+		
+		JButton atzeraButton = new JButton("Atzera");
+		atzeraButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int rowCount = model.getRowCount();
+				
+				Modelo.afilma = 0;
+				dispose();
+				 vLogin vLogin = new vLogin(Modelo);
+	             vLogin.setVisible(true);
+			
+			}
+		});
 		// Gorde botoia sortu
 		JButton closeButton = new JButton("Jarraitu");
 		closeButton.addActionListener(new ActionListener() {
@@ -56,8 +69,15 @@ public class vZinema extends JFrame {
 				if (rowCount > 1) {
 					int selectedRow = table.getSelectedRow();
 					if (selectedRow >= 0) {
-						model.removeRow(selectedRow);
 						JOptionPane.showMessageDialog(vZinema.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
+					//hurrengo leioa "Filma" zabaldu behar da.
+						dispose();
+						// pasatu azinema bariablea gorde ahal izateko
+						vFilma vFilma = new vFilma(Modelo);
+	                    vFilma.setVisible(true);
+	                    
+						
+					
 					}
 				} else {
 					JOptionPane.showMessageDialog(vZinema.this, "Aukeratu Zinema bat", "Error", JOptionPane.ERROR_MESSAGE);
@@ -66,11 +86,14 @@ public class vZinema extends JFrame {
 		});
 		// Botoiak panel barruan sartu
 		JPanel buttonPanel = new JPanel();
+		buttonPanel.add(atzeraButton);
 		buttonPanel.add(closeButton);
 		// Komponenteak aukeratu non sartuko diren
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+
+		
 	}
 	
 	

@@ -65,6 +65,7 @@ public class vLogin extends JFrame {
                 if (modelo.egiaztatuDatuak(textErabiltzailea, textPasahitza)) {
                     // Datuak koinsiditzen dute
                     JOptionPane.showMessageDialog(contentPane, "Barruan zaude!");
+                    dispose();
                     vZinema vZinema = new vZinema(modelo);
                     vZinema.setVisible(true);
                     

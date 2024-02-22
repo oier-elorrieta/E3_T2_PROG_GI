@@ -72,14 +72,14 @@ public class vFilma extends JFrame {
 						dispose();
 					}
 				} else {
-					JOptionPane.showMessageDialog(vFilma.this, "Aukeratu Zinema bat", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(vFilma.this, "Aukeratu Filma bat", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
 		// Botoiak panel barruan sartu
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.add(closeButton);
 		buttonPanel.add(atzeraButton);
+		buttonPanel.add(closeButton);
 		// Komponenteak aukeratu non sartuko diren
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
