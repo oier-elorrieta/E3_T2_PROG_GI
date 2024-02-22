@@ -70,6 +70,8 @@ public class vZinema extends JFrame {
 					int selectedRow = table.getSelectedRow();
 					if (selectedRow >= 0) {
 						JOptionPane.showMessageDialog(vZinema.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
+						Modelo.azinema = selectedRow;
+						System.out.println(Modelo.azinema);
 					//hurrengo leioa "Filma" zabaldu behar da.
 						dispose();
 						// pasatu azinema bariablea gorde ahal izateko

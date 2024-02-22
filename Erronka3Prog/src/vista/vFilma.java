@@ -55,6 +55,9 @@ public class vFilma extends JFrame {
 				
 				Modelo.afilma = 0;
 				dispose();
+				vZinema vZinema = new vZinema(Modelo);
+	            vZinema.setVisible(true);
+			
 			
 			}
 		});
@@ -69,7 +72,10 @@ public class vFilma extends JFrame {
 					if (selectedRow > 0) {
 						JOptionPane.showMessageDialog(vFilma.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
 						Modelo.afilma = selectedRow;
+						vSaioa vSaioa = new vSaioa(Modelo);
+			            vSaioa.setVisible(true);
 						dispose();
+						
 					}
 				} else {
 					JOptionPane.showMessageDialog(vFilma.this, "Aukeratu Filma bat", "Error", JOptionPane.ERROR_MESSAGE);

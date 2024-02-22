@@ -52,11 +52,15 @@ public class konexioa {
                     i++;
                 }
             }
-            
+            Saioa[] saioa;
             System.out.println(zinemak.length);
             for (int j = 0; j < zinemak.length; j++) {
-                zinemak[j].setAretoak(areotoload(zinemak[j].getId(), conexioa));
+
+            	zinemak[j].setAretoak(areotoload(zinemak[j].getId(), conexioa));
                 zinemak[j].setSaioak(saioaload(zinemak[j].getId(), conexioa));
+            	saioa = zinemak[j].getSaioak();
+                for (int p = 0; p < saioa.length; p++)
+                System.out.println(saioa[p].getFilma());
             }
             
         } catch (Exception sqe) {
@@ -140,7 +144,13 @@ public class konexioa {
         Filma filma = null;
         try {
             try (Statement s1 = conexioa.createStatement()) {
-                String sql = "SELECT f.* FROM Filma f inner join Saioa s using (idfilma) WHERE IdSaioa = "+ s +" and idZinema = " + id;
+            	//String sql = "SELECT f.* FROM Filma f inner join Saioa s using (idfilma) WHERE IdSaioa = "+ s +" and idZinema = " + id;
+            	String sql = "SELECT f.* FROM Filma f " +
+                        "INNER JOIN Saioa s USING (idfilma) " +
+                        "INNER JOIN Aretoa a ON s.idaretoa = a.idaretoa " +
+                        "INNER JOIN Zinema z ON a.idzinema = z.idzinema";
+           	            	 
+
                 try (ResultSet lerroak = s1.executeQuery(sql)) {
                     filma = new Filma();
                     if (lerroak.next()) {
