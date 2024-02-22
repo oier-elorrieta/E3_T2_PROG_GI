@@ -53,6 +53,18 @@ public class vSaioa extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(table);
 		Modelo.ezarrisaioak(model);
 								//Modelo.ezarrizinemak(model);
+		JButton atzeraButton = new JButton("Atzera");
+		atzeraButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int rowCount = model.getRowCount();
+				
+				Modelo.afilma = 0;
+				dispose();
+				 vLogin vLogin = new vLogin(Modelo);
+	             vLogin.setVisible(true);
+			
+			}
+		});
 		// Gorde botoia sortu
 		JButton closeButton = new JButton("Jarraitu");
 		closeButton.addActionListener(new ActionListener() {

@@ -5,7 +5,7 @@ public class konexioa {
     public static Connection hasi() {//Konexioa Datu Basearekin// 
         Connection conexioa = null;
         try {
-            conexioa = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zinema", "root", "");
+            conexioa = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_e3zinema", "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -148,7 +148,7 @@ public class konexioa {
             	String sql = "SELECT f.* FROM Filma f " +
                         "INNER JOIN Saioa s USING (idfilma) " +
                         "INNER JOIN Aretoa a ON s.idaretoa = a.idaretoa " +
-                        "INNER JOIN Zinema z ON a.idzinema = z.idzinema";
+                        "INNER JOIN Zinema z ON a.idzinema = z.idzinema" + "WHERE IdSaioa = "+ s +" and idZinema = " + id;
            	            	 
 
                 try (ResultSet lerroak = s1.executeQuery(sql)) {

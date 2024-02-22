@@ -31,7 +31,7 @@ public class vZinema extends JFrame {
 		
 		// Hasierako leihoa konfiguratu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Admin menua");
+		setTitle("Zinema menua");
 		setSize(500, 300);
 		// taularen modeloa sortu
 		model = new DefaultTableModel();
