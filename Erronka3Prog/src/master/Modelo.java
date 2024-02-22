@@ -58,10 +58,18 @@ public class Modelo {
 		}
 	}
     public void ezarrifilmak(DefaultTableModel model) {
+
 		Filma[] Filmak = getFilmak();
 		//Filma[] filmak = Zinemak[azinema].getFilmak();
 		for (int i = 0; i < Filmak.length; i++) {
 			model.addRow(new Object[] { i, Filmak[i].getIzena(), false});
+
+		Zinema zinema = Zinemak[azinema];
+		Saioa[] saioak = zinema.getSaioak();
+		Filma filmak;
+		for (int i = 0; i < saioak.length; i++) {
+			filmak = saioak[i].getFilma();
+			model.addRow(new Object[] { i, filmak.getIzena(), false});
 		}
 	}
 
