@@ -21,7 +21,7 @@ public class Controlador {
         vEtorria Ongipanel = new vEtorria(mDatuak);
         Ongipanel.setVisible(true);
         
-        while (!mDatuak.irekiLogin) {
+        while (!mDatuak.isIrekiLogin()) {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
