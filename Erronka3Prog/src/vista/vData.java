@@ -89,7 +89,7 @@ public class vData extends JFrame {
     	} else {
     	    // probak egiteko datak
     	    Zinema[] zinemak = mDatuak.getZinemak();
-    	    Saioa[] saioak = zinemak[mDatuak.azinema].getSaioak();
+    	    Saioa[] saioak = zinemak[mDatuak.getAzinema()].getSaioak();
 
     	    // Egiaztatu probako datekin
     	    boolean dataZuzena = false;

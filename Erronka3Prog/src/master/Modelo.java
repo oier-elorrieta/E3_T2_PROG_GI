@@ -16,21 +16,46 @@ import java.util.Date;
 import vista.vEtorria;
 
 public class Modelo {
-    Zinema Zinemak[];
-    public int azinema = 2;
-    public int afilma = 0;
-    public int asaioa = 0;
-    public Date adata;
-    public boolean irekiLogin = false;
-    
+    private Zinema Zinemak[];
+    private int azinema = 0;
+    private int afilma = 0;
+    private int asaioa = 0;
+    private Date adata;
+    private boolean irekiLogin = false;
     private boolean loginOk = false;
-    
     private Bezero[] bezeroak;
     
-    
-    
-    
-    public Bezero[] getBezeroak() {
+    public int getAzinema() {
+		return azinema;
+	}
+	public void setAzinema(int azinema) {
+		this.azinema = azinema;
+	}
+	public int getAfilma() {
+		return afilma;
+	}
+	public void setAfilma(int afilma) {
+		this.afilma = afilma;
+	}
+	public int getAsaioa() {
+		return asaioa;
+	}
+	public void setAsaioa(int asaioa) {
+		this.asaioa = asaioa;
+	}
+	public Date getAdata() {
+		return adata;
+	}
+	public void setAdata(Date adata) {
+		this.adata = adata;
+	}
+	public boolean isIrekiLogin() {
+		return irekiLogin;
+	}
+	public void setIrekiLogin(boolean irekiLogin) {
+		this.irekiLogin = irekiLogin;
+	}
+	public Bezero[] getBezeroak() {
 		return bezeroak;
 	}
 	public void setBezeroak(Bezero[] bezeroak) {
@@ -115,21 +140,13 @@ public class Modelo {
             }
         });
     }
-
-    public void dispose() {
-      // leioa ixteko
-    }
-    
     
     public boolean baieztatuAdmin(String erabiltzailea, String pasahitza) {
         boolean login_ok_admin = false;
         // Arraya rekorritzen du, bigarren alea-tik zortzigarrenaraino
-        System.out.println(bezeroak.length);
         int pos = 0;
         boolean aurkituta = false;
         while (pos < bezeroak.length && aurkituta==false) {
-        	System.out.println(bezeroak[pos].getErabiltzailea());
-        	System.out.println(erabiltzailea);
         	if (bezeroak[pos].getErabiltzailea().equals(erabiltzailea)) {
                 aurkituta = true;
         	}
@@ -137,9 +154,7 @@ public class Modelo {
         }
        if (aurkituta) {
     	   pos--;
-    	   System.out.println("Encuentra");
     	   if (bezeroak[pos].getPasahitza().equals(pasahitza)) {
-    		   System.out.println("Barruan");
     		   login_ok_admin = true;
     	   }
        }    	   

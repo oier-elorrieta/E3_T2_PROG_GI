@@ -2,7 +2,7 @@ package master;
 import java.sql.*;
 
 public class konexioa {
-    public static Connection hasi() {//Konexioa Datu Basearekin// 
+    public Connection hasi() {//Konexioa Datu Basearekin// 
         Connection conexioa = null;
         try {
             conexioa = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_e3zinema", "root", "");
@@ -22,10 +22,8 @@ public class konexioa {
         }
     }
     
-    
     //CONEXIOFROGARENA
     public void fullLoad(Connection conexioa, Modelo mDatuak) {
-        System.out.println("FUNCIONA");
         Zinema[] zinemak = null;
         try {
             int i = 0;
@@ -47,13 +45,10 @@ public class konexioa {
                     zinema.setHelbidea(lerroak.getString("Herria"));
                     zinema.setKontaktua(lerroak.getString("Kontaktua"));
                     zinema.setDeskribapena(lerroak.getString("Deskribapena"));
-                    System.out.println("Zinema kargatuta");
                     zinemak[i] = zinema;
                     i++;
                 }
             }
-            Saioa[] saioa;
-            System.out.println(zinemak.length);
             for (int j = 0; j < zinemak.length; j++) {
             	zinemak[j].setAretoak(areotoload(zinemak[j].getId(), conexioa));
                 zinemak[j].setSaioak(saioaload(zinemak[j].getId(), conexioa));
@@ -64,12 +59,8 @@ public class konexioa {
         } finally {
             itxi(conexioa);
         }
-        
-        Aretoa[] Aretoak2 = zinemak[1].getAretoak();
-        System.out.println(Aretoak2[1].getIzena());
         mDatuak.setZinemak(zinemak);
     }
-    
     
     private Aretoa[] areotoload(int id, Connection conexioa) {
     	Aretoa[] Aretoak = null;
@@ -87,13 +78,11 @@ public class konexioa {
                 try (ResultSet lerroak = s1.executeQuery(sql)) {
                     int a = 0;
                     while(lerroak.next()) {
-                        System.out.println("Aretoa kargatzen");
                         Aretoa aretoa = new Aretoa(); 
                         aretoa.setId(lerroak.getInt("idAretoa"));
                         aretoa.setIzena(lerroak.getString("Izena"));
                         Aretoak[a] = aretoa;
                         a++;
-                        System.out.println("Aretoa kargatuta");
                     }
                 }
             }
@@ -102,7 +91,6 @@ public class konexioa {
         }
         return Aretoak;
     }
-    
     
     private Saioa[] saioaload(int id, Connection conexioa) {
         Saioa[] Saioak = null;
@@ -141,25 +129,6 @@ public class konexioa {
         try {
             try (Statement s1 = conexioa.createStatement()) {
             	String sql = "SELECT f.* FROM Filma f inner join Saioa s using (idfilma) WHERE IdAretoa = "+ s +" and idZinema = " + id;
-            	/*String sql = "SELECT f.* FROM Filma f " +
-                        "INNER JOIN Saioa s USING (idfilma) " +
-                        "INNER JOIN Aretoa a ON s.idaretoa = a.idaretoa " +
-
-                        "INNER JOIN Zinema z ON a.idzinema = z.idzinema" + "WHERE IdSaioa = "+ s +" and idZinema = " + id;
-
-                        "INNER JOIN Zinema z ON a.idzinema = z.idzinema" +
-                        "WHERE IdSaioa = "+ s +" and idZinema = " + id;*/
-            	
-            	
-            	/*BERDINA BAINA SQL-EN FUNTZIONATZEN DU
-            	 * SELECT f.* FROM Filma f 
-                        INNER JOIN Saioa s USING (idfilma)
-                        INNER JOIN Aretoa a ON s.idaretoa = a.idaretoa
-                        INNER JOIN Zinema z ON a.idzinema = z.idzinema
-                        WHERE s.IdSaioa and z.idZinema;*/
-
-           	            	 
-
                 try (ResultSet lerroak = s1.executeQuery(sql)) {
                     filma = new Filma();
                     if (lerroak.next()) {
@@ -178,13 +147,12 @@ public class konexioa {
         }
         return filma;
     }
+    
     public void bezeroLoad(Connection conexioa, Modelo mDatuak) { 
 
 		 Bezero[] bezeroak = null;;
 		 try {
 	    	   conexioa = konexioa.hasi();
-	           System.out.println("Konektatuta");
-	           // Prestatu sententzia
 	           int i = 0;
 	           Statement s1 = conexioa.createStatement();
 	           String sql = "select * from bezeroa";
@@ -196,7 +164,6 @@ public class konexioa {
 	           bezeroak =  new Bezero[count];
 	           lerroak = s1.executeQuery(sql);
 	           while (lerroak.next()) {
-	        	   System.out.println("a");
 	        	   Bezero bezeroa = new Bezero();
 	               bezeroa.setNan(lerroak.getString("NAN"));
 	               bezeroa.setErabiltzailea(lerroak.getString("Erabiltzailea"));
@@ -212,9 +179,6 @@ public class konexioa {
 	       } catch (Exception sqe) {
 	           sqe.printStackTrace();
 	       }
-		 for(int j = 0; j < bezeroak.length; j++) {
-		 System.out.println(bezeroak[j].toString());
-		 }
 		 mDatuak.setBezeroak(bezeroak);
 	      
 	}

@@ -9,16 +9,15 @@ public class Controlador {
 
     public static void main(String[] args) {
     	
-    	System.out.println("HASI DA");
         Modelo mDatuak = new Modelo();
 
+        //Konexioa eta datuak
         konexioa k1 = new konexioa();
-        System.out.println("Konexioa burutuko da");
         Connection saioa = k1.hasi();
-        System.out.println("Konexioa burutu da");
-        
         k1.fullLoad(saioa, mDatuak);
         k1.bezeroLoad(saioa, mDatuak);
+        
+        //Ongi etorri menua kargatu
         vEtorria Ongipanel = new vEtorria(mDatuak);
         Ongipanel.setVisible(true);
         
@@ -32,6 +31,7 @@ public class Controlador {
         
         Ongipanel.dispose();
 
+        //Login ezarri eta jarraitu ondo badago
         vLogin vLogin = new vLogin(mDatuak);
 		vLogin.setVisible(true);
 		if (mDatuak.isLoginOk() == true)
