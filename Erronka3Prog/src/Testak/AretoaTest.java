@@ -5,12 +5,12 @@ import org.junit.Test;
 import master.Aretoa;
 
 public class AretoaTest {
-//oierp
+
     @Test
     public void testEqualsAndHashCode() {
-        Aretoa aretoa1 = new Aretoa(1, "aka");
-        Aretoa aretoa2 = new Aretoa(1, "aka");
-        Aretoa aretoa3 = new Aretoa(2, "kak");
+        Aretoa aretoa1 = new Aretoa(1, "Yelmo");
+        Aretoa aretoa2 = new Aretoa(1, "Yelmo");
+        Aretoa aretoa3 = new Aretoa(2, "Cinesa");
 
         // Test equals method 
         assertTrue(aretoa1.equals(aretoa2));
@@ -23,22 +23,19 @@ public class AretoaTest {
 
     @Test
     public void testToString() {
-        Aretoa aretoa = new Aretoa(3, "kak");
-        String expected = "Aretoa [izena=3, id=103, zinema=203]";
-        
-        //TO DO, EZ PASATZEN HEMENDIK (OBJETU BERDINA, BERDINAREKIN KONPARATZEN DA) EN VEZ el primer aretoa.toString ira un String o expected
-        assertEquals(aretoa.toString(), aretoa.toString());
+        Aretoa aretoa = new Aretoa(3, "Zubiarte");
+        String expected = "Aretoa [id=3, izena=Zubiarte, zinema=]";
+        assertEquals(expected, aretoa.toString());
     }
 
     @Test
     public void testGettersAndSetters() {
-    	
         Aretoa aretoa = new Aretoa(0, "");
         
         aretoa.setId(104);
         assertEquals(104, aretoa.getId());
 
+        aretoa.setIzena("New Name");
+        assertEquals("New Name", aretoa.getIzena());
     }
 }
-
-
