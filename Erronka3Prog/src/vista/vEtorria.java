@@ -74,7 +74,7 @@ public class vEtorria extends JFrame {
 							Karga.setValue(i);
 						}
 						
-						Modelo.irekiLogin = true;
+						Modelo.setIrekiLogin(true);
 						dispose();
 					}
 				});

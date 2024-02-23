@@ -31,101 +31,105 @@ import javax.swing.SpringLayout;
 
 public class vData extends JFrame {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
+	private Date adata;
 
-    public vData(Modelo mDatuak) {
-        UtilDateModel model = new UtilDateModel();
-        Properties properties = new Properties();
-        properties.put("text.today", "Hoy");
-        properties.put("text.month", "Mes");
-        properties.put("text.year", "Año");
+	public vData(Modelo mDatuak) {
+		UtilDateModel model = new UtilDateModel();
+		Properties properties = new Properties();
+		properties.put("text.today", "Hoy");
+		properties.put("text.month", "Mes");
+		properties.put("text.year", "Año");
 
-        model.setDate(2024, Calendar.FEBRUARY, 1);
+		model.setDate(2024, Calendar.FEBRUARY, 1);
 
-        JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
-        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
-        SpringLayout springLayout = (SpringLayout) datePicker.getLayout();
-        springLayout.putConstraint(SpringLayout.WEST, datePicker.getJFormattedTextField(), 10, SpringLayout.WEST, datePicker);
-        datePicker.setBounds(41, 5, 202, 23);
-        datePicker.getJFormattedTextField().setEditable(true);
+		JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
+		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
+		SpringLayout springLayout = (SpringLayout) datePicker.getLayout();
+		springLayout.putConstraint(SpringLayout.WEST, datePicker.getJFormattedTextField(), 10, SpringLayout.WEST, datePicker);
+		datePicker.setBounds(41, 5, 202, 23);
+		datePicker.getJFormattedTextField().setEditable(true);
 
-        
 		JButton atzeraButton = new JButton("Atzera");
 		atzeraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mDatuak.setAfilma(0);
-		//Ezarri beste botoian
 				dispose();
-				vSaioa vSaioa = new vSaioa(mDatuak);
-	            vSaioa.setVisible(true);
+				vFilma vFilma = new vFilma(mDatuak);
+				vFilma.setVisible(true);
 			}
 		});
-        
-        // Botón "Seleccionar Fecha"
-        JButton btnSeleccionarFecha = new JButton("Aukeratu");
-        btnSeleccionarFecha.setBounds(96, 39, 77, 23);
-        btnSeleccionarFecha.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                validarFechaSeleccionada(datePicker, model, mDatuak);
-            }
-        });
 
-        Container container = getContentPane();
-        getContentPane().setLayout(null);
-        container.add(datePicker);
-        container.add(btnSeleccionarFecha);
+		// Botón "Seleccionar Fecha"
+		JButton btnSeleccionarFecha = new JButton("Aukeratu");
+		btnSeleccionarFecha.setBounds(96, 39, 77, 23);
+		btnSeleccionarFecha.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (validarFechaSeleccionada(datePicker, model, mDatuak)) {
+					JOptionPane.showInputDialog(this, "Aukeratu duzun data zuzena da");
+					mDatuak.setAdata(adata);
+					dispose();
+					vSaioa vSaioa = new vSaioa(mDatuak);
+					vSaioa.setVisible(true);
+				} else {
+					JOptionPane.showInputDialog(this, "Data hau ez dago erabilgarri, mesedez beste bat aukeratu");
+				}
+			}
+		});
 
-        model.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                if ("value".equals(evt.getPropertyName())) {
+		Container container = getContentPane();
+		getContentPane().setLayout(null);
+		container.add(datePicker);
+		container.add(btnSeleccionarFecha);
 
-                }
-            }
-        });
+		model.addPropertyChangeListener(new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if ("value".equals(evt.getPropertyName())) {
 
-        setSize(300, 200);
-        setVisible(true);
-    }
+				}
+			}
+		});
 
-    private void validarFechaSeleccionada(JDatePickerImpl datePicker, UtilDateModel model, Modelo mDatuak) {
-    	Date selectedDate = model.getValue();
-    	Date currentDate = new Date();
+		setSize(300, 200);
+		setVisible(true);
+	}
 
-    	//Data gaurko eguna baino zaharragoa bada ezin da aukeratu
-    	if (selectedDate != null && selectedDate.before(currentDate)) {
-    	    model.setDate(2024, Calendar.FEBRUARY, 1);
-    	    model.setSelected(true);
-    	    JOptionPane.showMessageDialog(this, "Ezin duzu data zaharrak aukeratu");
-    	} else {
-    	    // probak egiteko datak
-    	    Zinema[] zinemak = mDatuak.getZinemak();
-    	    Saioa[] saioak = zinemak[mDatuak.getAzinema()].getSaioak();
+	private boolean validarFechaSeleccionada(JDatePickerImpl datePicker, UtilDateModel model, Modelo mDatuak) {
+		Date selectedDate = model.getValue();
+		Date currentDate = new Date();
+		boolean dataZuzena = false;
 
-    	    // Egiaztatu probako datekin
-    	    boolean dataZuzena = false;
+		// Data gaurko eguna baino zaharragoa bada ezin da aukeratu
+		if (selectedDate != null && selectedDate.before(currentDate)) {
+			model.setDate(2024, Calendar.FEBRUARY, 1);
+			model.setSelected(true);
+			JOptionPane.showMessageDialog(this, "Ezin duzu data zaharrak aukeratu");
+		} else {
+			// probak egiteko datak
+			Zinema[] zinemak = mDatuak.getZinemak();
+			Saioa[] saioak = zinemak[mDatuak.getAzinema()].getSaioak();
 
-    	    for (Saioa saioa : saioak) {
-    	        Date saioaData = saioa.getData(); // Data lortu
-    	        String egunaikusgarria = formatearFecha(selectedDate, "yyyy-MM-dd");
-    	        if (egunaikusgarria.equals(saioaData.toString())) {
-    	            dataZuzena = true;
-    	            break;
-    	        }
-    	    }
+			// Egiaztatu probako datekin
 
-    	    if (dataZuzena) {
-    	        JOptionPane.showMessageDialog(this, "Aukeratu duzun data zuzena da");
-    	    } else {
-    	        JOptionPane.showMessageDialog(this, "Data hau ez dago erabilgarri, mesedez beste bat aukeratu");
-    	    }
-    	}
-    }
-    
-    public static String formatearFecha(Date fecha, String formato) {
-        SimpleDateFormat sdf = new SimpleDateFormat(formato);
-        return sdf.format(fecha);
-    }
-    
+			for (Saioa saioa : saioak) {
+				Date saioaData = saioa.getData(); // Data lortu
+				String egunaikusgarria = formatearFecha(selectedDate, "yyyy-MM-dd");
+				if (egunaikusgarria.equals(saioaData.toString())) {
+					this.adata = saioaData;
+					dataZuzena = true;
+					break;
+				}
+			}
+		}
+		return dataZuzena;
+
+	}
+
+	public static String formatearFecha(Date fecha, String formato) {
+		SimpleDateFormat sdf = new SimpleDateFormat(formato);
+		return sdf.format(fecha);
+	}
+
 }

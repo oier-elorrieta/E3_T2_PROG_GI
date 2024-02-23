@@ -18,13 +18,11 @@ public class vLogin extends JFrame {
     private JPanel contentPane;
     private JTextField textPasahitza;
     private JTextField textErabiltzailea;
-    private Modelo modelo;
 
     /**
      * Create the frame.
      */
     public vLogin(Modelo modelo) {
-        this.modelo = modelo;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
@@ -78,19 +76,4 @@ public class vLogin extends JFrame {
         btnAdos.setBounds(171, 183, 89, 23);
         contentPane.add(btnAdos);
     }
-
-    /**
-     * Description: Erabiltzailea eta pasahitza berifikatu.
-     */
-   /* private boolean egiaztatuDatuak() {
-       // Erabiltzaile eta pasahitza lortu
-       
-        System.out.println(erabiltzailea);
-        // Metodora deitu erabiltzailea eta pasahitza berifikatzeko
-        boolean datuakBerif = modelo.baieztatuAdmin(erabiltzailea, pasahitza);
-        
-        return datuakBerif;
-    }*/
-    
-
 }

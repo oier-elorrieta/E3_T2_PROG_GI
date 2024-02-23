@@ -65,8 +65,8 @@ public class vFilma extends JFrame {
 					int selectedRow = table.getSelectedRow();
 						JOptionPane.showMessageDialog(vFilma.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
 						Modelo.setAfilma(selectedRow);
-						vSaioa vSaioa = new vSaioa(Modelo);
-			            vSaioa.setVisible(true);
+						vData vData = new vData(Modelo);
+						vData.setVisible(true);
 						dispose();
 						
 					}

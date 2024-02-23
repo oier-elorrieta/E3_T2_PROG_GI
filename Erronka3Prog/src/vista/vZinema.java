@@ -27,8 +27,6 @@ public class vZinema extends JFrame {
 	 * @param Modelo
 	 */
 	public vZinema(Modelo Modelo) {
-		//setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\in1dm3-d\\Downloads\\logoErronka2.jpg"));
-		
 		// Hasierako leihoa konfiguratu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Zinema menua");
@@ -46,14 +44,10 @@ public class vZinema extends JFrame {
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
 		Modelo.ezarrizinemak(model);
-								//Modelo.ezarrizinemak(model);
-		
 		JButton atzeraButton = new JButton("Atzera");
 		atzeraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int rowCount = model.getRowCount();
-				
-				Modelo.afilma = 0;
+				Modelo.setAfilma(0);
 				dispose();
 				 vLogin vLogin = new vLogin(Modelo);
 	             vLogin.setVisible(true);
@@ -70,16 +64,13 @@ public class vZinema extends JFrame {
 					int selectedRow = table.getSelectedRow();
 					if (selectedRow >= 0) {
 						JOptionPane.showMessageDialog(vZinema.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
-						Modelo.azinema = selectedRow;
-						System.out.println(Modelo.azinema);
+						Modelo.setAzinema(selectedRow);
 					//hurrengo leioa "Filma" zabaldu behar da.
 						dispose();
 						// pasatu azinema bariablea gorde ahal izateko
 						vFilma vFilma = new vFilma(Modelo);
 	                    vFilma.setVisible(true);
-	                    
-						
-					
+
 					}
 				} else {
 					JOptionPane.showMessageDialog(vZinema.this, "Aukeratu Zinema bat", "Error", JOptionPane.ERROR_MESSAGE);

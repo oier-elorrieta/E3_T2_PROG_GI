@@ -99,12 +99,14 @@ public class Modelo {
     	Zinema zinemak = Zinemak[azinema];
     	int cont = 0;
     	Saioa[] saioak = new Saioa[zinemak.getSaioak().length];
+    	saioak = zinemak.getSaioak();
     	Saioa[] serabilgarri;
     	for (int i = 0; i < saioak.length; i++) {
     		if (adata.equals(saioak[i].getData())) {
     			cont++;
     		}
     	}
+
     	serabilgarri = new Saioa[cont];
     	for (int i = 0; i < saioak.length; i++) {
     		if (adata.equals(saioak[i].getData())) {
@@ -112,7 +114,7 @@ public class Modelo {
     		}
     	}
     	for (int i = 0; i < serabilgarri.length; i++) {
-			model.addRow(new Object[] { i, serabilgarri[i].getData(),serabilgarri[i].getFilma(), false});
+			model.addRow(new Object[] { i, serabilgarri[i].getData(), serabilgarri[i].getFilma(), false});
 		}
 		
 	}
