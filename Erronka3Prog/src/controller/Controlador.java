@@ -1,5 +1,8 @@
-package master;
+package controller;
 import java.sql.Connection;
+
+import master.Modelo;
+import master.konexioa;
 import vista.vData;
 
 import vista.vEtorria;

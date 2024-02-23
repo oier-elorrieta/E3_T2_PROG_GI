@@ -47,9 +47,7 @@ public class vSaioa extends JFrame {
 		JTable table = new JTable(model);
 		// Agregar un ActionListener al radio button para gestionar la selección única
 		table.getColumnModel().getColumn(2).setCellEditor(new RadioButtonEditor());
-		System.out.println("edited");
 		table.getColumnModel().getColumn(2).setCellRenderer(new RadioButtonRenderer());
-		System.out.println("rendered");
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
 		Modelo.ezarrisaioak(model);
@@ -71,7 +69,6 @@ public class vSaioa extends JFrame {
 				if (rowCount >= 0) {
 					int selectedRow = table.getSelectedRow();
 					if (selectedRow >= 0) {
-						model.removeRow(selectedRow);
 						JOptionPane.showMessageDialog(vSaioa.this,
 								table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera",
 								JOptionPane.INFORMATION_MESSAGE);
