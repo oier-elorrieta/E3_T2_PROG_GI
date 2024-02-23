@@ -49,6 +49,18 @@ public class vData extends JFrame {
         datePicker.setBounds(41, 5, 202, 23);
         datePicker.getJFormattedTextField().setEditable(true);
 
+        
+		JButton atzeraButton = new JButton("Atzera");
+		atzeraButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mDatuak.setAfilma(0);
+		//Ezarri beste botoian
+				dispose();
+				vSaioa vSaioa = new vSaioa(mDatuak);
+	            vSaioa.setVisible(true);
+			}
+		});
+        
         // Botón "Seleccionar Fecha"
         JButton btnSeleccionarFecha = new JButton("Aukeratu");
         btnSeleccionarFecha.setBounds(96, 39, 77, 23);
@@ -105,34 +117,15 @@ public class vData extends JFrame {
 
     	    if (dataZuzena) {
     	        JOptionPane.showMessageDialog(this, "Aukeratu duzun data zuzena da");
-    	        //Gorde data modeloan eta ireki vista
     	    } else {
     	        JOptionPane.showMessageDialog(this, "Data hau ez dago erabilgarri, mesedez beste bat aukeratu");
     	    }
     	}
     }
-
-    //Dataren eguna edo urtea edo hilabetea ateratzeko bakarrik
-    /*
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(selectedDate);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-            // Imprimir solo el día
-            System.out.println("Día seleccionado: " + day);*/
+    
     public static String formatearFecha(Date fecha, String formato) {
         SimpleDateFormat sdf = new SimpleDateFormat(formato);
         return sdf.format(fecha);
     }
     
-    
-    public static void main(String[] args) {
-    	Modelo mDatuak = new Modelo();
-    	 konexioa k1 = new konexioa();
-    	 Connection saioa = k1.hasi();
-    	 k1.fullLoad(saioa, mDatuak);
-        vData Data = new vData(mDatuak);
-        Data.setVisible(true);
-        
-    }
 }

@@ -27,8 +27,6 @@ public class vFilma extends JFrame {
 	 * @param Modelo
 	 */
 	public vFilma(Modelo Modelo) {
-		//setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\in1dm3-d\\Downloads\\logoErronka2.jpg"));
-		
 		// Hasierako leihoa konfiguratu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Filma menua");
@@ -51,9 +49,7 @@ public class vFilma extends JFrame {
 		JButton atzeraButton = new JButton("Atzera");
 		atzeraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int rowCount = model.getRowCount();
-				
-				Modelo.afilma = 0;
+				Modelo.setAfilma(0);
 				dispose();
 				vZinema vZinema = new vZinema(Modelo);
 	            vZinema.setVisible(true);
@@ -65,21 +61,15 @@ public class vFilma extends JFrame {
 		JButton closeButton = new JButton("Jarraitu");
 		closeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int rowCount = model.getRowCount();
 				// Fila bat baino gehiago dagoela konfirmatu
-				
 					int selectedRow = table.getSelectedRow();
-	
 						JOptionPane.showMessageDialog(vFilma.this, table.getModel().getValueAt(selectedRow, 1).toString(), "Aukera", JOptionPane.INFORMATION_MESSAGE);
-						Modelo.afilma = selectedRow;
+						Modelo.setAfilma(selectedRow);
 						vSaioa vSaioa = new vSaioa(Modelo);
 			            vSaioa.setVisible(true);
 						dispose();
 						
 					}
-				
-				
-			
 		});
 		// Botoiak panel barruan sartu
 		JPanel buttonPanel = new JPanel();
@@ -91,10 +81,7 @@ public class vFilma extends JFrame {
 		getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 		getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 	}
-	
-	
-	
-	
+
 	
 // Radio buttonak ikusgarri agertzeko
 	class RadioButtonRenderer implements TableCellRenderer {
