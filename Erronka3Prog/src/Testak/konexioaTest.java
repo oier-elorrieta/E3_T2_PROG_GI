@@ -6,77 +6,83 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import master.Filma;
+import master.Modelo;
 import master.konexioa;
 
 public class konexioaTest {
 
-	@Test
-	public void testhasi() {
-        Connection conexioa = null;
-		try {
-            conexioa = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_zinema", "root", "");
+    private Connection connection;
+
+    @Before
+    public void konexioSortu() throws SQLException {
+        // Konexioa sortu datu-basearekin
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/db_e3zinema", "root", "");
+    }
+
+    @After
+    public void konexioItxi() throws SQLException {
+        // Konexioa itxi
+        if (connection != null && !connection.isClosed()) {
+            connection.close();
+        }
+    }
+    
+    
+    @Test
+    public void testHasi() {
+    	konexioa kone = new konexioa();
+        // Testatu konexioa hasi
+        Connection konexioa = konexioa.hasi();
+        // Konexioa ezin daiteke null izan
+        assertNotNull(konexioa);
+        try {
+            // Egiaztatu konexioa ez dela itxita
+            assertFalse(konexioa.isClosed());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-		Connection egokia = konexioa.hasi();
-		assertEquals(egokia, conexioa);
-	}
-	
-	@Test
-	public void testAretoload() {
-		Connection egokia = konexioa.hasi();
-		konexioa k1 = new konexioa();
-		
-		assertEquals(k1.Aretoload(egokia), k1.Aretoload(egokia));
-	}
-	
-	@Test
-	public void testBezeroload() {
-		Connection egokia = konexioa.hasi();
-		konexioa k1 = new konexioa();
-		
-		assertEquals(k1.Bezeroload(egokia), k1.Bezeroload(egokia));
-	}
-	@Test
-	public void testFilmaload() {
-		Connection egokia = konexioa.hasi();
-		konexioa k1 = new konexioa();
-		Filma f1 = new Filma ();
-		Filma f2 = new Filma ();
-		System.out.println(f1.equals(f2));
-		//assertArrayEquals(f1,f2);
-	}
-	@Test
-	public void testSaioaload() {
-		Connection egokia = konexioa.hasi();
-		konexioa k1 = new konexioa();
-		
-		assertEquals(k1.Saioaload(egokia), k1.Saioaload(egokia));
-	}
-	@Test
-	public void testSarreraload() {
-		Connection egokia = konexioa.hasi();
-		konexioa k1 = new konexioa();
-		
-		assertEquals(k1.Sarreraload(egokia), k1.Sarreraload(egokia));
-	}
-	@Test
-	public void testZinemaload() {
-		Connection egokia = konexioa.hasi();
-		konexioa k1 = new konexioa();
-		
-		assertEquals(k1.Zinemaload(egokia), k1.Zinemaload(egokia));
-	}
-	@Test
-	public void testErosketaload() {
-		Connection egokia = konexioa.hasi();
-		konexioa k1 = new konexioa();
-		
-		assertEquals(k1.Erosketaload(egokia), k1.Erosketaload(egokia));
-	}
-	
-	
+    }
+
+    @Test
+    public void testAretoload() {
+        konexioa kone = new konexioa();
+        assertNotNull(connection);
+        // Aretoload metodoa probatu
+        assertNotNull(kone.areotoload(1, connection)); // ID bezala parametroa
+    }
+
+    @Test
+    public void testBezeroload() {
+        konexioa kone = new konexioa();
+        Modelo mDatuak = new Modelo();
+        assertNotNull(connection);
+        // Bezeroload metodoa probatu
+        assertNotNull(kone.bezeroLoad(connection, mDatuak));
+    }
+
+    @Test
+    public void testFilmaload() {
+        konexioa kone = new konexioa();
+        assertNotNull(connection);
+        // Filmaload metodoa probatu
+        Filma film = kone.filmaload(1, 1, connection); // ID-ak ondo daudenean
+        assertNotNull(film); // Film objektua ezin daiteke null izan
+    }
+
+    @Test
+    public void testSaioaload() {
+        konexioa kone = new konexioa();
+        assertNotNull(connection);
+        // Saioaload metodoa probatu
+        assertNotNull(kone.saioaload(1, connection)); // ID bezala parametroa
+    }
+
+
+
+  
 }
