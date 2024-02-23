@@ -58,7 +58,7 @@ public class vSaioa extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int rowCount = model.getRowCount();
 				
-				Modelo.afilma = 0;
+				Modelo.setAfilma(0);
 				dispose();
 				 vLogin vLogin = new vLogin(Modelo);
 	             vLogin.setVisible(true);
