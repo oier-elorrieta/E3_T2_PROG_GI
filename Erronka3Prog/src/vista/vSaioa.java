@@ -34,7 +34,6 @@ public class vSaioa extends JFrame {
 	 * @param Modelo
 	 */
 	public vSaioa(Modelo Modelo) {
-
 		// Hasierako leihoa konfiguratu
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Saioak");
@@ -47,8 +46,10 @@ public class vSaioa extends JFrame {
 		// Taula berriaren modeloa sortu
 		JTable table = new JTable(model);
 		// Agregar un ActionListener al radio button para gestionar la selección única
-		table.getColumnModel().getColumn(3).setCellEditor(new RadioButtonEditor());
-		table.getColumnModel().getColumn(3).setCellRenderer(new RadioButtonRenderer());
+		table.getColumnModel().getColumn(2).setCellEditor(new RadioButtonEditor());
+		System.out.println("edited");
+		table.getColumnModel().getColumn(2).setCellRenderer(new RadioButtonRenderer());
+		System.out.println("rendered");
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
 		Modelo.ezarrisaioak(model);
@@ -121,8 +122,7 @@ public class vSaioa extends JFrame {
 			button.addActionListener(this);
 		}
 
-		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row,
-				int column) {
+		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 			this.selectedRow = row;
 			button.setSelected((value != null && (Boolean) value));
 			return button;

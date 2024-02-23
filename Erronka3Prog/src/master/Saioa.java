@@ -8,9 +8,17 @@ import java.util.Objects;
 public class Saioa {
 		private int id;
 		private Date data;
+		private String ordua;
 		private Filma filma;
 		private Aretoa areto;
 		
+		
+		public String getOrdua() {
+			return ordua;
+		}
+		public void setOrdua(String ordua) {
+			this.ordua = ordua;
+		}
 		public int getId() {
 			return id;
 		}

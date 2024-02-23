@@ -110,6 +110,7 @@ public class konexioa {
                     while(lerroak.next()) {
                         Saioa saioa = new Saioa();
                         saioa.setId(lerroak.getInt("IdSaioa"));
+                        saioa.setOrdua(lerroak.getString("Ordu_Data"));
                         saioa.setData(lerroak.getDate("S_Data"));
                         Filma filma = filmaload((s + 1), id, conexioa);
                         saioa.setFilma(filma);

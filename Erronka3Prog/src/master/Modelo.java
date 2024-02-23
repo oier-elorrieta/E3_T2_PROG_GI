@@ -113,8 +113,10 @@ public class Modelo {
     			serabilgarri[i] = saioak[i];
     		}
     	}
+    	Filma filma;
     	for (int i = 0; i < serabilgarri.length; i++) {
-			model.addRow(new Object[] { i, serabilgarri[i].getData(), serabilgarri[i].getFilma(), false});
+    		filma = serabilgarri[i].getFilma();
+    		model.addRow(new Object[] { serabilgarri[i].getOrdua(), filma.getIzena(), false});
 		}
 		
 	}
