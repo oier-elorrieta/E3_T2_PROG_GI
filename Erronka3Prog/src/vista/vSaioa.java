@@ -71,7 +71,7 @@ public class vSaioa extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int rowCount = model.getRowCount();
 				// Fila bat baino gehiago dagoela konfirmatu
-				if (rowCount > 1) {
+				if (rowCount >= 0) {
 					int selectedRow = table.getSelectedRow();
 					if (selectedRow >= 0) {
 						model.removeRow(selectedRow);
