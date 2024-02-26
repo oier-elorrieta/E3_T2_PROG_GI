@@ -52,15 +52,16 @@ public class vLogin extends JFrame {
 
         JButton btnAdos = new JButton("Ados");
         btnAdos.addActionListener(new ActionListener() {
+        	public String pasahitza;
+            public String erabiltzailea;
+        	 erabiltzailea = textErabiltzailea.getText();
+        	 pasahitza = textPasahitza.getText();
             /**
              * Description: Egiaztatu erabiltzailea eta pasahitza modeloan
              */
             public void actionPerformed(ActionEvent e) {
-            	
-            	modelo.egiaztatuDatuak(textErabiltzailea, textErabiltzailea);
-            	 //String erabiltzailea = textErabiltzailea.getText();
-                 //String pasahitza = textPasahitza.getText();
-                if (modelo.egiaztatuDatuak(textErabiltzailea, textPasahitza)) {
+            	 
+                if (modelo.egiaztatuDatuak(erabiltzailea, pasahitza)) {
                     // Datuak koinsiditzen dute
                     JOptionPane.showMessageDialog(contentPane, "Barruan zaude!");
                     dispose();
