@@ -79,11 +79,9 @@ public class Modelo {
         return datuakBerif;
     }
 	
-    public void ezarrizinemak(DefaultTableModel model) {
+    public void zinemaIzena(int i) {
 		Zinema[] Zinemak = getZinemak();
-		for (int i = 0; i < Zinemak.length; i++) {
-			model.addRow(new Object[] { i, Zinemak[i].getIzena(), false});
-		}
+		return Zinemak[i].getIzena();
 	}
     	public void ezarrifilmak(DefaultTableModel model) {
     		Zinema zinema = Zinemak[azinema];
@@ -93,7 +91,7 @@ public class Modelo {
     			filmak = saioak[i].getFilma();
     			model.addRow(new Object[] { i, filmak.getIzena(), false});
     		}
-    	}
+    }
 
     public void ezarrisaioak(DefaultTableModel model) {
     	Zinema zinemak = Zinemak[azinema];

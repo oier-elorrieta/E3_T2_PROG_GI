@@ -43,7 +43,11 @@ public class vZinema extends JFrame {
 		table.getColumnModel().getColumn(2).setCellRenderer(new RadioButtonRenderer());
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
-		Modelo.ezarrizinemak(model);
+		
+		for (int i = 0; i < Modelo.Zinemak.length; i++) {
+			model.addRow(new Object[] { i, Modelo.zinemaIzena(i), false});
+		}
+		
 		JButton atzeraButton = new JButton("Atzera");
 		atzeraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -88,9 +92,6 @@ public class vZinema extends JFrame {
 
 		
 	}
-	
-	
-	
 	
 	
 // Radio buttonak ikusgarri agertzeko
