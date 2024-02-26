@@ -83,14 +83,13 @@ public class Modelo {
 		Zinema[] Zinemak = getZinemak();
 		return Zinemak[i].getIzena();
 	}
-    	public void ezarrifilmak(DefaultTableModel model) {
-    		Zinema zinema = Zinemak[azinema];
-    		Saioa[] saioak = zinema.getSaioak();
-    		Filma filmak;
-    		for (int i = 0; i < saioak.length; i++) {
-    			filmak = saioak[i].getFilma();
-    			model.addRow(new Object[] { i, filmak.getIzena(), false});
-    		}
+    
+    public void ezarriIzenak(int i) {
+			Zinema zinema = Zinemak[azinema];
+			Saioa[] saioak = zinema.getSaioak();
+			Filma filmak;
+			filmak = saioak[i].getFilma();
+		}
     }
 
     public void ezarrisaioak(DefaultTableModel model) {

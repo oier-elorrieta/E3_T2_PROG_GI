@@ -43,7 +43,11 @@ public class vFilma extends JFrame {
 		table.getColumnModel().getColumn(2).setCellRenderer(new RadioButtonRenderer());
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
-		Modelo.ezarrifilmak(model);
+		
+		for (int i = 0; i < saioak.length; i++) {
+			model.addRow(new Object[] { i, Modelo.ezarriIzenak(i), false});
+		}
+		
 		// Gorde botoia sortu
 		
 		JButton atzeraButton = new JButton("Atzera");
