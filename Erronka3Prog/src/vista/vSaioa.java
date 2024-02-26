@@ -50,7 +50,10 @@ public class vSaioa extends JFrame {
 		table.getColumnModel().getColumn(2).setCellRenderer(new RadioButtonRenderer());
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
-		Modelo.ezarrisaioak(model);
+		
+    	for (int i = 0; i < saioaklength(); i++) {
+    		model.addRow(new Object[] { Modelo.saioOrdua(i), saioFilma(i), false});
+		}
 		JButton atzeraButton = new JButton("Atzera");
 		atzeraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
