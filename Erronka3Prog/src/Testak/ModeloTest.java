@@ -28,12 +28,12 @@ public class ModeloTest {
 
         // Metodoa deitu eta emaitza egiaztatu
         assertFalse(modelo.egiaztatuDatuak(null, null)); // Dena hutsik dagoenean
-        assertFalse(modelo.egiaztatuDatuak(null, new JTextField())); // Erabiltzaile eremua hutsik denean
-        assertFalse(modelo.egiaztatuDatuak(new JTextField(), null)); // Pasahitz eremua hutsik denean
-        assertFalse(modelo.egiaztatuDatuak(new JTextField(), new JTextField())); // Bi eremuak hutsik daudenean
-        assertFalse(modelo.egiaztatuDatuak(new JTextField(erabiltzailea), null)); // Erabiltzaile eremua beteta denean
-        assertFalse(modelo.egiaztatuDatuak(null, new JTextField(pasahitza))); // Pasahitz eremua beteta denean
-        assertTrue(modelo.egiaztatuDatuak(new JTextField(erabiltzailea), new JTextField(pasahitza))); // Bi eremuak beteta daudenean
+        assertFalse(modelo.egiaztatuDatuak(null, pasahitza)); // Erabiltzaile eremua hutsik denean
+        assertFalse(modelo.egiaztatuDatuak(erabiltzailea, null)); // Pasahitz eremua hutsik denean
+        assertFalse(modelo.egiaztatuDatuak(erabiltzailea, pasahitza)); // Bi eremuak hutsik daudenean
+        assertFalse(modelo.egiaztatuDatuak(erabiltzailea, null)); // Erabiltzaile eremua beteta denean
+        assertFalse(modelo.egiaztatuDatuak(null, pasahitza)); // Pasahitz eremua beteta denean
+        assertTrue(modelo.egiaztatuDatuak(erabiltzailea, pasahitza)); // Bi eremuak beteta daudenean
     }
 
     @Test

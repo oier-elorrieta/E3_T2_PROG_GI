@@ -81,32 +81,26 @@ public class Modelo {
 		this.loginOk = loginOk;
 	}
 
-	public boolean egiaztatuDatuak(JTextField lblErabiltzailea, JTextField lblPasahitza) {
-		// Erabiltzaile eta pasahitza lortu
-		String erabiltzailea = lblErabiltzailea.getText();
-		String pasahitza = lblPasahitza.getText();
-
-		// Metodora deitu erabiltzailea eta pasahitza berifikatzeko
-		boolean datuakBerif = baieztatuAdmin(erabiltzailea, pasahitza);
-
-		return datuakBerif;
+	public boolean egiaztatuDatuak(String erabiltzailea,String pasahitza) {
+        
+        // Metodora deitu erabiltzailea eta pasahitza berifikatzeko
+        boolean datuakBerif = baieztatuAdmin(erabiltzailea, pasahitza);
+        
+        return datuakBerif;
+    }
+	public String zinemaIzena(int i) {
+		Zinema zinema = Zinemak[azinema];
+		return zinema.getIzena();
 	}
-
-	public void zinemaIzena(int i) {
-		Zinema[] Zinemak = getZinemak();
-		return Zinemak[i].getIzena();
-	}
-
-	public void ezarriIzenak(int i) {
+	
+	public String ezarriIzenak(int i) {
 		Zinema zinema = Zinemak[azinema];
 		Saioa[] saioak = zinema.getSaioak();
 		Filma filmak;
-		filmak = saioak[i].getFilma();
+		return filmak = saioak[i].getFilma();
 	}
 
-	}
-
-	public void saioaklength() {
+	public int saioaklength() {
 		Zinema zinemak = Zinemak[azinema];
 		int cont = 0;
 		Saioa[] saioak = new Saioa[zinemak.getSaioak().length];
@@ -120,7 +114,7 @@ public class Modelo {
 		return cont;
 	}
 
-	public void saioOrdua(int i) {
+	public String saioOrdua(int i) {
 		Zinema zinemak = Zinemak[azinema];
 		int cont = 0;
 		Saioa[] saioak = new Saioa[zinemak.getSaioak().length];
@@ -135,7 +129,7 @@ public class Modelo {
 		return serabilgarri[i].getOrdua();
 	}
 	
-	public void saioFilma(int i) {
+	public String saioFilma(int i) {
 		Zinema zinemak = Zinemak[azinema];
 		int cont = 0;
 		Saioa[] saioak = new Saioa[zinemak.getSaioak().length];
