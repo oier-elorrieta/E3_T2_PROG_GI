@@ -68,10 +68,7 @@ public class Modelo {
 		this.loginOk = loginOk;
 	}
 	
-	public boolean egiaztatuDatuak(JTextField lblErabiltzailea,JTextField  lblPasahitza) {
-        // Erabiltzaile eta pasahitza lortu
-        String erabiltzailea = lblErabiltzailea.getText();
-        String pasahitza = lblPasahitza.getText();
+	public boolean egiaztatuDatuak(String erabiltzailea,String pasahitza) {
         
         // Metodora deitu erabiltzailea eta pasahitza berifikatzeko
         boolean datuakBerif = baieztatuAdmin(erabiltzailea, pasahitza);
