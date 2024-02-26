@@ -51,8 +51,8 @@ public class vSaioa extends JFrame {
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
 		
-    	for (int i = 0; i < saioaklength(); i++) {
-    		model.addRow(new Object[] { Modelo.saioOrdua(i), saioFilma(i), false});
+    	for (int i = 0; i < Modelo.saioakErabilgarrilength(); i++) {
+    		model.addRow(new Object[] { Modelo.aukeraSaioOrdua(i), Modelo.aukeraSaioFilma(i), false});
 		}
 		JButton atzeraButton = new JButton("Atzera");
 		atzeraButton.addActionListener(new ActionListener() {

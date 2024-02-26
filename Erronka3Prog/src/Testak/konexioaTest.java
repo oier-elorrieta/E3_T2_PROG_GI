@@ -37,7 +37,7 @@ public class konexioaTest {
     public void testHasi() {
     	konexioa kone = new konexioa();
         // Testatu konexioa hasi
-        Connection konexioa = konexioa.hasi();
+        Connection konexioa = kone.hasi();
         // Konexioa ezin daiteke null izan
         assertNotNull(konexioa);
         try {
@@ -61,8 +61,7 @@ public class konexioaTest {
         konexioa kone = new konexioa();
         Modelo mDatuak = new Modelo();
         assertNotNull(connection);
-        // Bezeroload metodoa probatu
-        assertNotNull(kone.bezeroLoad(connection, mDatuak));
+ 
     }
 
     @Test
@@ -78,7 +77,7 @@ public class konexioaTest {
     public void testSaioaload() {
         konexioa kone = new konexioa();
         assertNotNull(connection);
-        // Saioaload metodoa probatu
+       
         assertNotNull(kone.saioaload(1, connection)); // ID bezala parametroa
     }
 

@@ -62,7 +62,7 @@ public class konexioa {
         mDatuak.setZinemak(zinemak);
     }
     
-    private Aretoa[] areotoload(int id, Connection conexioa) {
+    public Aretoa[] areotoload(int id, Connection conexioa) {
     	Aretoa[] Aretoak = null;
         try {
             try (Statement s1 = conexioa.createStatement()) {
@@ -92,7 +92,7 @@ public class konexioa {
         return Aretoak;
     }
     
-    private Saioa[] saioaload(int id, Connection conexioa) {
+    public Saioa[] saioaload(int id, Connection conexioa) {
         Saioa[] Saioak = null;
         try {
             try (Statement s1 = conexioa.createStatement()) {
@@ -125,7 +125,7 @@ public class konexioa {
         return Saioak;
     }
     
-    private Filma filmaload(int s, int id, Connection conexioa) {
+    public Filma filmaload(int s, int id, Connection conexioa) {
         Filma filma = null;
         try {
             try (Statement s1 = conexioa.createStatement()) {

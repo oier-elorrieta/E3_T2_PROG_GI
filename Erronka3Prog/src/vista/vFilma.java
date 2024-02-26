@@ -44,7 +44,7 @@ public class vFilma extends JFrame {
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
 		
-		for (int i = 0; i < saioak.length; i++) {
+		for (int i = 0; i < Modelo.saioaklength(); i++) {
 			model.addRow(new Object[] { i, Modelo.ezarriIzenak(i), false});
 		}
 		

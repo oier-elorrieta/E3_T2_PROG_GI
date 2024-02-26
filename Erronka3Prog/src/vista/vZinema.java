@@ -44,7 +44,7 @@ public class vZinema extends JFrame {
 		// Taula JScrollPane barruan ezarri
 		JScrollPane scrollPane = new JScrollPane(table);
 		
-		for (int i = 0; i < Modelo.Zinemak.length; i++) {
+		for (int i = 0; i < Modelo.getZinemak().length; i++) {
 			model.addRow(new Object[] { i, Modelo.zinemaIzena(i), false});
 		}
 		

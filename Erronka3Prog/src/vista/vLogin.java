@@ -52,28 +52,24 @@ public class vLogin extends JFrame {
 
         JButton btnAdos = new JButton("Ados");
         btnAdos.addActionListener(new ActionListener() {
-        	public String pasahitza;
-            public String erabiltzailea;
-        	 erabiltzailea = textErabiltzailea.getText();
-        	 pasahitza = textPasahitza.getText();
-            /**
-             * Description: Egiaztatu erabiltzailea eta pasahitza modeloan
-             */
             public void actionPerformed(ActionEvent e) {
-            	 
-                if (modelo.egiaztatuDatuak(erabiltzailea, pasahitza)) {
+                String erabiltzailea = textErabiltzailea.getText();
+                String pasahitza = textPasahitza.getText();
+
+                // Description: Egiaztatu erabiltzailea eta pasahitza modeloan
+                if (modelo.baieztatuAdmin(erabiltzailea, pasahitza)) {
                     // Datuak koinsiditzen dute
                     JOptionPane.showMessageDialog(contentPane, "Barruan zaude!");
                     dispose();
                     vZinema vZinema = new vZinema(modelo);
                     vZinema.setVisible(true);
-                    
                 } else {
                     // Datuak ez dute koinsiditzen
                     JOptionPane.showMessageDialog(contentPane, "Zeozer txarto dago.");
                 }
             }
         });
+
         btnAdos.setBounds(171, 183, 89, 23);
         contentPane.add(btnAdos);
     }

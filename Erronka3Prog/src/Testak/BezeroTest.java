@@ -41,6 +41,14 @@ public class BezeroTest {
         assertEquals('O', bezero.getSexua());
     }
 	
+	@Test
+	public void TestGetAbizena() {
+		Date d1 = new Date();
+		Bezero bz = new Bezero ("11111111-A","Unai", d1, "kk@kk.es"); {
+		bz.setAbizena("Zubiri");
+		assertEquals("Zubiri",bz.getAbizena());
+		}
+	}
 }
 
 

@@ -81,15 +81,9 @@ public class Modelo {
 		this.loginOk = loginOk;
 	}
 
-	public boolean egiaztatuDatuak(String erabiltzailea,String pasahitza) {
-        
-        // Metodora deitu erabiltzailea eta pasahitza berifikatzeko
-        boolean datuakBerif = baieztatuAdmin(erabiltzailea, pasahitza);
-        
-        return datuakBerif;
-    }
+	
 	public String zinemaIzena(int i) {
-		Zinema zinema = Zinemak[azinema];
+		Zinema zinema = Zinemak[i];
 		return zinema.getIzena();
 	}
 	
@@ -97,15 +91,21 @@ public class Modelo {
 		Zinema zinema = Zinemak[azinema];
 		Saioa[] saioak = zinema.getSaioak();
 		Filma filmak;
-		return filmak = saioak[i].getFilma();
+		filmak = saioak[i].getFilma();
+		return filmak.getIzena();
+	}
+	
+	public int saioaklength() {
+		Zinema zinema = Zinemak[azinema];
+		Saioa[] saioak = zinema.getSaioak();
+		return saioak.length;
 	}
 
-	public int saioaklength() {
+	public int saioakErabilgarrilength() {
 		Zinema zinemak = Zinemak[azinema];
 		int cont = 0;
 		Saioa[] saioak = new Saioa[zinemak.getSaioak().length];
 		saioak = zinemak.getSaioak();
-		Saioa[] serabilgarri;
 		for (int j = 0; j < saioak.length; j++) {
 			if (adata.equals(saioak[j].getData())) {
 				cont++;
@@ -114,13 +114,12 @@ public class Modelo {
 		return cont;
 	}
 
-	public String saioOrdua(int i) {
+	public String aukeraSaioOrdua(int i) {
 		Zinema zinemak = Zinemak[azinema];
-		int cont = 0;
 		Saioa[] saioak = new Saioa[zinemak.getSaioak().length];
 		saioak = zinemak.getSaioak();
 		Saioa[] serabilgarri;
-		serabilgarri = new Saioa[saioaklength()];
+		serabilgarri = new Saioa[saioakErabilgarrilength()];
 		for (int j = 0; j < saioak.length; j++) {
 			if (adata.equals(saioak[i].getData())) {
 				serabilgarri[j] = saioak[j];
@@ -129,13 +128,12 @@ public class Modelo {
 		return serabilgarri[i].getOrdua();
 	}
 	
-	public String saioFilma(int i) {
+	public String aukeraSaioFilma(int i) {
 		Zinema zinemak = Zinemak[azinema];
-		int cont = 0;
 		Saioa[] saioak = new Saioa[zinemak.getSaioak().length];
 		saioak = zinemak.getSaioak();
 		Saioa[] serabilgarri;
-		serabilgarri = new Saioa[saioaklength()];
+		serabilgarri = new Saioa[saioakErabilgarrilength()];
 		for (int j = 0; j < saioak.length; j++) {
 			if (adata.equals(saioak[i].getData())) {
 				serabilgarri[j] = saioak[j];
@@ -168,6 +166,7 @@ public class Modelo {
 
 	public boolean baieztatuAdmin(String erabiltzailea, String pasahitza) {
 		boolean login_ok_admin = false;
+		
 		// Arraya rekorritzen du, bigarren alea-tik zortzigarrenaraino
 		int pos = 0;
 		boolean aurkituta = false;
@@ -184,6 +183,10 @@ public class Modelo {
 			}
 		}
 		return login_ok_admin;
+	}
+
+	public boolean getIrekiLogin() {
+		return this.irekiLogin;
 	}
 
 }
